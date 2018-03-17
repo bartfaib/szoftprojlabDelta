@@ -1,7 +1,8 @@
 
 public class Lada {
 	Kimenetel Mozog(Irany i){
-		return Kimenetel;
+		Kimenetel a = null;
+		return a;
 	}
 
 }
