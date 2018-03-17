@@ -1,7 +1,8 @@
 
 public class Cel {
 	Kimenetel Mozog(Irany i){
-		return Kimenetel;
+		Kimenetel a = null;
+		return a;
 	}
 	boolean add(Munkas m){
 		return false;
