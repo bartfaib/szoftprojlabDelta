@@ -1,0 +1,1 @@
+"# szoftprojlabDelta" 
