@@ -1,4 +1,4 @@
 
 public enum Kimenetel {
-	Mozoghat, NemMozoghat, PontotErt
+	Mozoghat, NemMozoghat, PontotErt;
 }
