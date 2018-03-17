@@ -25,7 +25,7 @@ public class Lyuk extends Mezo {
  }
  //Kitorli a rajta levo elemet
  public void Torol(){
-	 System.out.println("Torol");
+	 System.out.println("");
  }
  
 }
