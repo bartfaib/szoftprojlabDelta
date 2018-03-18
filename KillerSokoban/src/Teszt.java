@@ -78,7 +78,7 @@ public class Teszt {
 	private void MunkasUresMezoreLep(){
 		Mezo m1 = new Mezo();	
 		Mezo m0 = new Mezo();
-		Munkas m = new Munkas("munkas",m0);
+		Munkas m = new Munkas("kezo munkas",m0, true);
 		m0.setSzomszed(Irany.JOBBRA, m1);
 		m0.Add(m);
 		
@@ -95,7 +95,7 @@ public class Teszt {
 		Mezo m1 = new Mezo();
 		Lada l = new Lada();
 		Mezo m2 = new Mezo();
-		Munkas m = new Munkas("Kezdomunkas",m0);
+		Munkas m = new Munkas("Kezdo munkas",m0, true);
 		m0.setSzomszed(Irany.JOBBRA, m1);
 		m1.setSzomszed(Irany.JOBBRA, m2);
 		m1.setLada(l);
@@ -116,7 +116,7 @@ public class Teszt {
 		Mezo m1 = new Mezo();
 		Lada l = new Lada();
 		Lyuk ly = new Lyuk();
-		Munkas m = new Munkas("KEzdo munkas",m0);
+		Munkas m = new Munkas("Kezdo munkas",m0, true);
 		m0.setSzomszed(Irany.JOBBRA, m1);
 		m0.setMunkas(m);
 		m1.setSzomszed(Irany.JOBBRA, ly);
@@ -139,7 +139,7 @@ public class Teszt {
 		m1.Add(l);
 		l.setIndulo(m1);
 		m1.setSzomszed(Irany.JOBBRA, f);
-		Munkas m = new Munkas("Kezdo munkas",m0);
+		Munkas m = new Munkas("Kezdo munkas",m0, true);
 		m0.Add(m);
 		
 		Irany i = Irany.JOBBRA;

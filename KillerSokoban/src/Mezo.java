@@ -18,15 +18,15 @@ public class Mezo {
 			return k;
 		}else if (munkas != null) {
 			k = munkas.Mozog(i);
-			System.out.println("Mezo mozog Return"+k);
+			System.out.println("Mezo Mozog Return "+k);
 			return k;
 		}else {
-			System.out.println("Mezo mozog Return Mozoghat");
+			System.out.println("Mezo Mozog Return Mozoghat");
 			return Kimenetel.Mozoghat;
 		}
 	}
 	public Mezo SzomszedokLekerdez ( Irany i ){
-		System.out.println("Szomszedok Lekerdez"+i);
+		System.out.println("Szomszedok Lekerdez "+i);
 		return szomszedok.get(i.getValue());		
 	}
 	

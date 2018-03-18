@@ -17,6 +17,7 @@ public class Fal extends Mezo {
 		System.out.println("Fal Ctor");
 	}
 	public Kimenetel Mozog(Irany i){
+		System.out.println("Fal mozog " + i);
 		System.out.println("Fal Return Nem mozoghat");
 		return Kimenetel.NemMozoghat;
 	}

@@ -13,14 +13,11 @@ public class Lada {
 		
 		Kimenetel k = szomszed.Mozog(i);
 		
-		if(szomszed.Mozog(i) == Kimenetel.Mozoghat || szomszed.Mozog(i) == Kimenetel.PontotErt) {
+		if(k == Kimenetel.Mozoghat || k == Kimenetel.PontotErt) {
 			szomszed.Add(this);
 			indulo.Torol();
-			System.out.println("Return Mozoghat a Lada");
-		}else {
-			System.out.println("Return Nem mozoghat a Lada");
 		}
-		
+		System.out.println("Lada Mozog Return " +k);
 		return k;
 	}
 

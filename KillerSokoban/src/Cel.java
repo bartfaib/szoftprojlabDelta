@@ -63,11 +63,11 @@ public class Cel extends Mezo {
 		System.out.println("Cel Return Mozoghat");
 		return Kimenetel.Mozoghat;
 	}
-	public void add(Munkas m){
+	public void Add(Munkas m){
 		System.out.println("Cel ADD munkas");
 		this.setMunkas(m);
 	}
-	public void add(Lada l){
+	public void Add(Lada l){
 		System.out.println("Cel ADD lada");
 		this.setLada(l);
 	}

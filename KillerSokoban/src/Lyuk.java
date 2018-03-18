@@ -21,16 +21,16 @@ public Lyuk(List<Mezo> szomsz) {
 
 
  public Kimenetel Mozog(Irany i){
-		System.out.println("Mezo MOZOG "+ i);
+		System.out.println("Lyuk MOZOG "+ i);
 		
 		if(this.getLada() != null) {
-			System.out.println("Kapcsolo mozog Return"+this.getLada().Mozog(i));
+			System.out.println("Lyuk mozog Return"+this.getLada().Mozog(i));
 			return this.getLada().Mozog(i);
 		}else if (this.getMunkas() != null) {
-			System.out.println("Kapcsolo mozog Return"+this.getMunkas().Mozog(i));
+			System.out.println("Lyuk mozog Return"+this.getMunkas().Mozog(i));
 			return this.getMunkas().Mozog(i);
 		}else {
-			System.out.println("Kapcsolo mozog Return Mozoghat");
+			System.out.println("Lyuk mozog Return Mozoghat");
 			return Kimenetel.Mozoghat;
 		}
  }
