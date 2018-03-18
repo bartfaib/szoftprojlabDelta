@@ -14,29 +14,32 @@ public class Mezo {
 		if(lada != null) {
 			k = lada.Mozog(i);
 			
-			System.out.println("Mezo mozog Return"+k);
+			System.out.println("Mezo mozog RETURN"+k);
 			return k;
 		}else if (munkas != null) {
 			k = munkas.Mozog(i);
-			System.out.println("Mezo Mozog Return "+k);
+			System.out.println("Mezo Mozog RETURN "+k);
 			return k;
 		}else {
-			System.out.println("Mezo Mozog Return Mozoghat");
+			System.out.println("Mezo Mozog RETURN Mozoghat");
 			return Kimenetel.Mozoghat;
 		}
 	}
 	public Mezo SzomszedokLekerdez ( Irany i ){
 		System.out.println("Szomszedok Lekerdez "+i);
+		System.out.println("Szomszedok Lekerdez RETURN");
 		return szomszedok.get(i.getValue());		
 	}
 	
 	public void Add (Munkas m) {
 		System.out.println("Mezo ADD Munkas");
+		System.out.println("Mezo ADD Munkas RETURN");
 		this.munkas=m;
 	}	
 
 	public void Add (Lada l) {
 		System.out.println("Mezo ADD Lada");
+		System.out.println("Mezo ADD Lada RETURN");
 		this.lada=l;
 	}
 	
@@ -92,8 +95,8 @@ public class Mezo {
 		this.munkas = m;
 	}
 	
-	public Munkas getLada() {
-		return this.munkas;
+	public Lada getLada() {
+		return this.lada;
 	}
 	
 	public void setLada(Lada l) {

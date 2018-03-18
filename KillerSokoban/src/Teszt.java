@@ -260,7 +260,7 @@ public class Teszt {
 	private void lyukbaLepes(){
 		System.out.println("Teszthez szukseges objektumok inicializalasa");
 		Mezo m0 = new Mezo();
-		Lyuk ly = new Lyuk();
+		Lyuk ly = new Lyuk(true);
 		Munkas m = new Munkas("Kezdo munkas",m0);
 		m0.setSzomszed(Irany.JOBBRA, ly);
 		m0.Add(m);
@@ -276,7 +276,7 @@ public class Teszt {
 		System.out.println("Teszthez szukseges objektumok inicializalasa");
 		Mezo m0 = new Mezo();
 		Fal f = new Fal();
-		Munkas m = new Munkas("Kezdo munkas",m0);
+		Munkas m = new Munkas("Kezdo munkas",m0, true);
 		m0.Add(m);
 		m0.setSzomszed(Irany.JOBBRA, f);
 		
@@ -330,7 +330,7 @@ public class Teszt {
 		Mezo m0 = new Mezo();
 		Mezo m1 = new Mezo();
 		Fal f = new Fal();
-		Munkas m = new Munkas("Kezdo munkas",m0);
+		Munkas m = new Munkas("Kezdo munkas",m0, true);
 		m0.Add(m);
 		m0.setSzomszed(Irany.JOBBRA, m1);
 		Munkas mb = new Munkas("Munkas B",m1);
@@ -349,7 +349,7 @@ public class Teszt {
 		System.out.println("Teszthez szukseges objektumok inicializalasa");
 		Mezo m0 = new Mezo();
 		Mezo m1 = new Mezo();
-		Lyuk ly = new Lyuk();
+		Lyuk ly = new Lyuk(true);
 		Munkas m = new Munkas("Kezdo munkas",m0);
 		m0.Add(m);
 		m0.setSzomszed(Irany.JOBBRA, m1);
@@ -450,6 +450,7 @@ public class Teszt {
 		Munkas m = new Munkas("Kezdo munkas",m0);
 		m0.setMunkas(m);
 		m1.setSzomszed(Irany.JOBBRA, m2);
+		m1.setSzomszed(Irany.BALRA, m0);
 		m1.setLada(l1);
 		l1.setIndulo(m1);
 		m2.setSzomszed(Irany.JOBBRA, m3);

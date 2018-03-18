@@ -14,12 +14,16 @@ public Lyuk(){
 	szomszedok.add(null);
 }
 
-public Lyuk(List<Mezo> szomsz) {
+public Lyuk(List<Mezo> szomsz, boolean nyit) {
 	super(szomsz);
 	System.out.println("Lyuk Ctor");
+	this.Nyitott =nyit;
 }
 
-
+public Lyuk(boolean nyit) {
+	System.out.println("Lyuk Ctor" + nyit);
+	this.Nyitott =nyit;
+}
  public Kimenetel Mozog(Irany i){
 		System.out.println("Lyuk MOZOG "+ i);
 		
@@ -38,7 +42,7 @@ public Lyuk(List<Mezo> szomsz) {
  public void Add(Munkas m){
 	 if(this.Nyitott == true) {
 		System.out.println("Lyuk ADD munkas Nyitott");
-		this.getMunkas().Halal();
+		m.Halal();
 	 } else {
 			System.out.println("Lyuk ADD munkas Zart");
 			this.setMunkas(m);

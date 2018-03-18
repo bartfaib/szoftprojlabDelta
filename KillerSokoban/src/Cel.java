@@ -46,23 +46,26 @@ public class Cel extends Mezo {
 	
 	public Kimenetel Mozog(Irany i){
 		System.out.println("Cel Mozog");
+		
 		if (this.getMunkas()!= null) {
 			if (this.getMunkas().Mozog(i) != Kimenetel.NemMozoghat) {
-				if (this.getSzomsz().get(iranyEllentetes(i)).getLada() != null) { //-2 kell mert ellent騁es ir疣yb j k駻dezek Felt騁el ( ha mtem l疆a val)
+				if (this.getSzomsz().get(iranyEllentetes(i)).getLada() != null) {
 					System.out.println("Cel Return PontotErt");
 					return Kimenetel.PontotErt;
 				}
 			}
 			System.out.println("Cel Return"+this.getMunkas().Mozog(i));
-			return this.getMunkas().Mozog(i);
 		}
-		if (this.getSzomsz().get(iranyEllentetes(i)).getLada() == null) {//itt ez valamiért nem jó == != kellene ide de mégis az == vel működik úgy ahogy kéne neki //-2 kell mert ellent騁es ir疣yb j k駻dezek Felt騁el ( ha mtem l疆a val)
+		
+		if (this.getSzomsz().get(iranyEllentetes(i)).getLada() != null) {
 			System.out.println("Cel Return PontotErt ");
 			return Kimenetel.PontotErt;
 		}
+		
 		System.out.println("Cel Return Mozoghat");
 		return Kimenetel.Mozoghat;
 	}
+	
 	public void Add(Munkas m){
 		System.out.println("Cel ADD munkas");
 		this.setMunkas(m);
