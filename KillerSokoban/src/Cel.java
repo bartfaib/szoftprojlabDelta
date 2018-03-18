@@ -1,6 +1,18 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cel extends Mezo {
+	
+	//Ures konstruktor
+	public Cel(){
+		System.out.println("Cel osztaly ctor");
+		this.szomszedok = new ArrayList<Mezo>();
+		szomszedok.add(null);
+		szomszedok.add(null);
+		szomszedok.add(null);
+		szomszedok.add(null);
+	}
+	
 	public Cel(List<Mezo> szomsz) {
 		super(szomsz);
 		System.out.println("Cel Ctor");

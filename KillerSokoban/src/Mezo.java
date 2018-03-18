@@ -4,17 +4,22 @@ import java.util.List;
 public class Mezo {
 	private Munkas munkas;
 	private Lada lada;
-	private List<Mezo> szomszedok;
+	protected List<Mezo> szomszedok;
 	
 	public Kimenetel Mozog ( Irany i ) {
 		System.out.println("Mezo MOZOG "+ i);
+		//csak a kiiras miatt kell felvenni
+		Kimenetel k = null;
 		
 		if(lada != null) {
-			System.out.println("Mezo mozog Return"+lada.Mozog(i));
-			return lada.Mozog(i);
+			k = lada.Mozog(i);
+			
+			System.out.println("Mezo mozog Return"+k);
+			return k;
 		}else if (munkas != null) {
-			System.out.println("Mezo mozog Return"+munkas.Mozog(i));
-			return munkas.Mozog(i);
+			k = munkas.Mozog(i);
+			System.out.println("Mezo mozog Return"+k);
+			return k;
 		}else {
 			System.out.println("Mezo mozog Return Mozoghat");
 			return Kimenetel.Mozoghat;
@@ -35,11 +40,34 @@ public class Mezo {
 		this.lada=l;
 	}
 	
+	//szomszed hozzaadasa
+	public void setSzomszed(Irany i, Mezo m){
+		szomszedok.add(i.getValue(),m);
+	}
+	
 	
 	public void Torol () {
 		System.out.println("Mezo TOROL");
 		this.munkas=null;
 		this.lada=null;
+	}
+	//Ures konstruktor
+	public Mezo(){
+		Class<?> enclosingClass = getClass().getEnclosingClass();
+		if (enclosingClass != null) {
+		  System.out.println(enclosingClass.getName());
+		} else {
+		  System.out.println(getClass().getName());
+		}
+		
+		System.out.println("Mezo osztaly ctor");
+		this.szomszedok = new ArrayList<Mezo>();
+		szomszedok.add(null);
+		szomszedok.add(null);
+		szomszedok.add(null);
+		szomszedok.add(null);
+		this.lada = null;
+		this.munkas = null;
 	}
 	
 	public Mezo(List<Mezo> szomsz, Lada l){

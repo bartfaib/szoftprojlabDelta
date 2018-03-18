@@ -1,8 +1,19 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Kapcsolo extends Mezo {
 	
 	private Lyuk lyuk;
+	
+	//Ures konstruktor
+	public Kapcsolo(){
+		System.out.println("Kapcsolo osztaly ctor");
+		this.szomszedok = new ArrayList<Mezo>();
+		szomszedok.add(null);
+		szomszedok.add(null);
+		szomszedok.add(null);
+		szomszedok.add(null);
+	}
 	
 	public Kapcsolo(List<Mezo> szomsz) {
 		super(szomsz);

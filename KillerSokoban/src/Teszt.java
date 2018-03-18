@@ -1,34 +1,19 @@
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Teszt {
-	
-	private static final Mezo NULL = null;
 	//A fo menuvel kapcsolatos kiirasok
 	public void tesztMainMenu(){
 		System.out.println("Udvozol a Killer sokoban tesztprogramja");
 		System.out.println();
 		System.out.println("Kerlek add meg azt a szamot ami az altalad valasztott tesztesetet jelzi");
-		System.out.println();
 		System.out.println("1. Munkas ures mezore leptetes");
-		System.out.println();
 		System.out.println("2. Lada eltolasa");
-		System.out.println();
 		System.out.println("3. Lyukba lepes");
-		System.out.println();
 		System.out.println("4. Munkas falnak lep");
-		System.out.println();
 		System.out.println("5. Cel mezore lepes");
-		System.out.println();
 		System.out.println("6. Masik munkas eltolasa");
-		System.out.println();
 		System.out.println("7. Kapcsolora lepes");
-		System.out.println();
 		System.out.println("8. Osszetetteb esetek");
-		System.out.println();
 		System.out.println("9. Kilepes");
 	}
 	
@@ -80,40 +65,45 @@ public class Teszt {
 	
 	//Input beolvasasa konzolrol
 	private int input(){
-		Scanner input = new Scanner(System.in);
+	    Scanner input = new Scanner(System.in);
 		
 		int number;
 		
 		number = input.nextInt();
-		input.close();
+		//input.close();
 		return number;
 	}
 	
 	//Munkas ures mezore lep teszt eset
 	private void MunkasUresMezoreLep(){
-		List<Mezo> szomsz = new ArrayList<Mezo>();
-		szomsz.add(NULL);
-		Mezo m1 = new Mezo(szomsz);
-		szomsz.add(m1);
-		
-		Mezo m0 = new Mezo(szomsz);
+		Mezo m1 = new Mezo();	
+		Mezo m0 = new Mezo();
 		Munkas m = new Munkas("munkas",m0);
+		m0.setSzomszed(Irany.JOBBRA, m1);
+		m0.Add(m);
 		
 		Irany i = Irany.JOBBRA;
 		
 		m.Mozog(i);
 	}
-	/*
+	
 	//Lada ures mezore tolasa
 	private void ladaEltolasaUresMezore(){
 		//Palya mezok munkasok lada inicializalasa
-		Munkas m = new Munkas();
+		System.out.println("Teszthez szukseges objektumok inicializalasa");
 		Mezo m0 = new Mezo();
 		Mezo m1 = new Mezo();
 		Lada l = new Lada();
 		Mezo m2 = new Mezo();
+		Munkas m = new Munkas("Kezdomunkas",m0);
+		m0.setSzomszed(Irany.JOBBRA, m1);
+		m1.setSzomszed(Irany.JOBBRA, m2);
+		m1.setLada(l);
+		l.setIndulo(m1);
+		m0.setMunkas(m);
 		
-		Irany i = Irany.Jobbra;
+		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
+		Irany i = Irany.JOBBRA;
 		
 		m.Mozog(i);
 	}
@@ -121,72 +111,106 @@ public class Teszt {
 	//Lada lyukra tolasa
 	private void LadaEltolasaLyukra(){
 		//Palya mezok munkasok lada inicializalasa
-		Munkas m = new Munkas();
+		System.out.println("Teszthez szukseges objektumok inicializalasa");
 		Mezo m0 = new Mezo();
 		Mezo m1 = new Mezo();
 		Lada l = new Lada();
 		Lyuk ly = new Lyuk();
-		
-		Irany i = Irany.Jobbra;
-		
+		Munkas m = new Munkas("KEzdo munkas",m0);
+		m0.setSzomszed(Irany.JOBBRA, m1);
+		m0.setMunkas(m);
+		m1.setSzomszed(Irany.JOBBRA, ly);
+		m1.setLada(l);
+		l.setIndulo(m1);
+		Irany i = Irany.JOBBRA;
+		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
 		m.Mozog(i);
 	}
 	
 	//Lada falnak tolasa
 	private void ldaFalnakTolasa(){
 		//Palya mezok munkasok lada inicializalasa
-		Munkas m = new Munkas();
+		System.out.println("Teszthez szukseges objektumok inicializalasa");
 		Mezo m0 = new Mezo();
 		Mezo m1 = new Mezo();
 		Lada l = new Lada();
 		Fal f = new Fal();
+		m0.setSzomszed(Irany.JOBBRA, m1);
+		m1.Add(l);
+		l.setIndulo(m1);
+		m1.setSzomszed(Irany.JOBBRA, f);
+		Munkas m = new Munkas("Kezdo munkas",m0);
+		m0.Add(m);
 		
-		Irany i = Irany.Jobbra;
+		Irany i = Irany.JOBBRA;
 		
+		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
 		m.Mozog(i);	
 	}
 	
 	//Lada celteruletre tolasa
 	private void ladaCelteruletreTolasa(){
 		//Palya mezok munkasok lada inicializalasa
-		Munkas m = new Munkas();
+		System.out.println("Teszthez szukseges objektumok inicializalasa");
 		Mezo m0 = new Mezo();
 		Mezo m1 = new Mezo();
 		Lada l = new Lada();
 		Cel c = new Cel();
+		Munkas m = new Munkas("Kezdo munkas",m0);
+		m0.setSzomszed(Irany.JOBBRA, m1);
+		m0.setMunkas(m);
+		m1.setSzomszed(Irany.JOBBRA, c);
+		m1.setLada(l);
+		l.setIndulo(m1);
 		
-		Irany i = Irany.Jobbra;
-		
+		Irany i = Irany.JOBBRA;
+	
+		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
 		m.Mozog(i);	
 	}
 	
 	//Lada tolasa munkasra
 	private void ladaTolasaMunkasra(){
 		//Palya mezok munkasok lada inicializalasa
-		Munkas m = new Munkas();
+		System.out.println("Teszthez szukseges objektumok inicializalasa");
 		Mezo m0 = new Mezo();
 		Mezo m1 = new Mezo();
 		Lada l = new Lada();
 		Mezo m2 = new Mezo();
-		Munkas mu = new Munkas();
 		Mezo m3 = new Mezo();
+		Munkas m = new Munkas("Kezdo munkas",m0);
+		m0.setSzomszed(Irany.JOBBRA, m1);
+		m0.Add(m);
+		m1.setSzomszed(Irany.JOBBRA, m2);
+		m1.setLada(l);
+		l.setIndulo(m1);
+		m2.setSzomszed(Irany.JOBBRA, m3);
+		Munkas mu = new Munkas("Munkas B",m2);
+		m2.setMunkas(mu);
+		Irany i = Irany.JOBBRA;
 		
-		Irany i = Irany.Jobbra;
-		
+		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
 		m.Mozog(i);	
 	}
 	
 	//Lada tolasa kapcsolora
 	private void ladaTolasaKapcsolora(){
 		//Palya mezok munkasok lada inicializalasa
-		Munkas m = new Munkas();
+		System.out.println("Teszthez szukseges objektumok inicializalasa");
 		Mezo m0 = new Mezo();
 		Mezo m1 = new Mezo();
 		Lada l = new Lada();
 		Kapcsolo k = new Kapcsolo();
+		Munkas m = new Munkas("Kezdo munkas",m0);
+		m0.setSzomszed(Irany.JOBBRA, m1);
+		m0.Add(m);
+		m1.setSzomszed(Irany.JOBBRA, k);
+		m1.Add(l);
+		l.setIndulo(m1);
 		
-		Irany i = Irany.Jobbra;
+		Irany i = Irany.JOBBRA;
 		
+		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
 		m.Mozog(i);	
 	}
 	
@@ -230,81 +254,110 @@ public class Teszt {
 			}
 		}
 	}
-	
+
 	//MUnkas lyukba lep
 	private void lyukbaLepes(){
-		Munkas m = new Munkas();
+		System.out.println("Teszthez szukseges objektumok inicializalasa");
 		Mezo m0 = new Mezo();
 		Lyuk ly = new Lyuk();
+		Munkas m = new Munkas("Kezdo munkas",m0);
+		m0.setSzomszed(Irany.JOBBRA, ly);
+		m0.Add(m);
+		Irany i = Irany.JOBBRA;
 		
-		Irany i = Irany.Jobbra;
-		
+		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
 		m.Mozog(i);	
 	}
 	
 	//Munkas falnak lep
 	private void munkasFalnakLep(){
 		//Palya mezok munkasok lada inicializalasa
-		Munkas m = new Munkas();
+		System.out.println("Teszthez szukseges objektumok inicializalasa");
 		Mezo m0 = new Mezo();
 		Fal f = new Fal();
+		Munkas m = new Munkas("Kezdo munkas",m0);
+		m0.Add(m);
+		m0.setSzomszed(Irany.JOBBRA, f);
 		
-		Irany i = Irany.Jobbra;
+		Irany i = Irany.JOBBRA;
 		
+		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
 		m.Mozog(i);	
 	}
 	
 	//Munkas celteruletre lep
 	private void munkasCelteruletreLEp(){
 		//Palya mezok munkasok lada inicializalasa
-		Munkas m = new Munkas();
+		System.out.println("Teszthez szukseges objektumok inicializalasa");
 		Mezo m0 = new Mezo();
-		Fal f = new Fal();
+		Cel c = new Cel();
+		Munkas m = new Munkas("Kezdo munkas",m0);
+		m0.Add(m);
+		m0.setSzomszed(Irany.JOBBRA, c);
+		Irany i = Irany.JOBBRA;
 		
-		Irany i = Irany.Jobbra;
-		
+		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
 		m.Mozog(i);	
 	}
 	
 	//Masik munkas ures mezore tolasa
 	private void masikMunkasUresMezoreTolasa(){
 		//Palya mezok munkasok lada inicializalasa
-		Munkas m = new Munkas();
+		System.out.println("Teszthez szukseges objektumok inicializalasa");
 		Mezo m0 = new Mezo();
 		Mezo m1 = new Mezo();
-		Munkas mb = new Munkas();
 		Mezo m2 = new Mezo();
+		Munkas m = new Munkas("Kezdo munkas",m0);
+		m0.setMunkas(m);
+		m0.setSzomszed(Irany.JOBBRA, m1);
+		Munkas mb = new Munkas("Munkas B",m1);
+		m1.setMunkas(mb);
+		m1.setSzomszed(Irany.JOBBRA, m2);
 		
-		Irany i = Irany.Jobbra;
 		
+		Irany i = Irany.JOBBRA;
+		
+		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
 		m.Mozog(i);	
 	}
 	
 	//Masik munkas falnak tolasa	
 	private void masikMunkasFalnakTolasa(){
 		//Palya mezok munkasok lada inicializalasa
-		Munkas m = new Munkas();
+		System.out.println("Teszthez szukseges objektumok inicializalasa");
 		Mezo m0 = new Mezo();
 		Mezo m1 = new Mezo();
-		Munkas mb = new Munkas();
 		Fal f = new Fal();
+		Munkas m = new Munkas("Kezdo munkas",m0);
+		m0.Add(m);
+		m0.setSzomszed(Irany.JOBBRA, m1);
+		Munkas mb = new Munkas("Munkas B",m1);
+		m1.Add(mb);
+		m1.setSzomszed(Irany.JOBBRA, f);
 		
-		Irany i = Irany.Jobbra;
+		Irany i = Irany.JOBBRA;
 		
+		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
 		m.Mozog(i);	
 	}
 	
 	//Masik munkas ures mezore tolasa
 	private void masikMunkasLyukbaTolasa(){
 		//Palya mezok munkasok lada inicializalasa
-		Munkas m = new Munkas();
+		System.out.println("Teszthez szukseges objektumok inicializalasa");
 		Mezo m0 = new Mezo();
 		Mezo m1 = new Mezo();
-		Munkas mb = new Munkas();
 		Lyuk ly = new Lyuk();
+		Munkas m = new Munkas("Kezdo munkas",m0);
+		m0.Add(m);
+		m0.setSzomszed(Irany.JOBBRA, m1);
+		Munkas mb = new Munkas("Mnkas B",m1);
+		m1.Add(mb);
+		m1.setSzomszed(Irany.JOBBRA, ly);
 		
-		Irany i = Irany.Jobbra;
+		Irany i = Irany.JOBBRA;
 		
+		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
 		m.Mozog(i);	
 	}
 	
@@ -340,16 +393,99 @@ public class Teszt {
 	//Munkas Kapcsolora lep
 	private void munkasKapcsoloraLep(){
 		//Palya mezok munkasok lada inicializalasa
-		Munkas m = new Munkas();
+		System.out.println("Teszthez szukseges objektumok inicializalasa");
 		Mezo m0 = new Mezo();
-		Mezo m1 = new Mezo();
 		Kapcsolo k = new Kapcsolo();
+		Munkas m = new Munkas("Kezdo munkas",m0);
+		m0.setMunkas(m);
+		m0.setSzomszed(Irany.JOBBRA, k);
 		
-		Irany i = Irany.Jobbra;
+		Irany i = Irany.JOBBRA;
 		
+		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
 		m.Mozog(i);	
 	}
-	*/
+	//Munkás->láda->munkás->láda->fal
+	private void mlmlf(){
+		System.out.println("Teszthez szukseges objektumok inicializalasa");
+		Mezo m0 = new Mezo();
+		Mezo m1 = new Mezo();
+		Lada l1 = new Lada();
+		Mezo m2 = new Mezo();
+		Mezo m3 = new Mezo();
+		Lada l2 = new Lada();
+		Fal f = new Fal();
+		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
+		m0.setSzomszed(Irany.JOBBRA, m1);
+		Munkas m = new Munkas("Kezdo munkas",m0);
+		m0.setMunkas(m);
+		m1.setSzomszed(Irany.JOBBRA, m2);
+		m1.setLada(l1);
+		l1.setIndulo(m1);
+		m2.setSzomszed(Irany.JOBBRA, m3);
+		Munkas mb = new Munkas("Munkas B",m2);
+		m2.Add(mb);
+		m3.setSzomszed(Irany.JOBBRA, f);
+		m3.Add(l2);
+		l2.setIndulo(m3);
+		
+		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
+		m.Mozog(Irany.JOBBRA);
+	}
+	
+	//Munkás->láda->munkás->láda->cél
+	private void mlmlc(){
+		System.out.println("Teszthez szukseges objektumok inicializalasa");
+		Mezo m0 = new Mezo();
+		Mezo m1 = new Mezo();
+		Lada l1 = new Lada();
+		Mezo m2 = new Mezo();
+		Mezo m3 = new Mezo();
+		Lada l2 = new Lada();
+		Cel c = new Cel();
+		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
+		m0.setSzomszed(Irany.JOBBRA, m1);
+		Munkas m = new Munkas("Kezdo munkas",m0);
+		m0.setMunkas(m);
+		m1.setSzomszed(Irany.JOBBRA, m2);
+		m1.setLada(l1);
+		l1.setIndulo(m1);
+		m2.setSzomszed(Irany.JOBBRA, m3);
+		Munkas mb = new Munkas("Munkas B",m2);
+		m2.Add(mb);
+		m3.setSzomszed(Irany.JOBBRA, c);
+		m3.Add(l2);
+		l2.setIndulo(m3);
+		
+		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
+		m.Mozog(Irany.JOBBRA);
+	}
+	
+	//Oszetetteb esetek menuje
+	private void oszetetteb(){
+		while(true){
+			tesztnyolc();
+			
+			switch(input()){
+			
+			case 1: 
+				mlmlf();
+			break;			
+			
+			case 2: 
+				mlmlc();
+			break;	
+			
+			case 3: 
+				return;
+				
+			default:
+				
+			break;
+			}
+		}
+	}
+
 	//Fo teszt fuggveny ezt hivja meg a main fuggveny
 	public void tesztFG(){
 		
@@ -363,27 +499,31 @@ public class Teszt {
 			break;			
 			
 			case 2: 
-				//ladaEltolasa();
+				ladaEltolasa();
 			break;	
 			
 			case 3: 
-				//lyukbaLepes();
+				lyukbaLepes();
 			break;
 			
 			case 4: 
-				////munkasFalnakLep();
+				munkasFalnakLep();
 			break;
 			
 			case 5: 
-				//munkasCelteruletreLEp();
+				munkasCelteruletreLEp();
 			break;
 			
 			case 6: 
-				//masikMunkasEltolasa();
+				masikMunkasEltolasa();
 			break;
 			
 			case 7: 
-				//munkasKapcsoloraLep();
+				munkasKapcsoloraLep();
+			break;
+			
+			case 8: 
+				oszetetteb();
 			break;
 			
 			case 9: 

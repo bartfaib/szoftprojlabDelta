@@ -2,6 +2,10 @@
 public class Lada {
 	private Mezo indulo;
 	
+	public void setIndulo(Mezo indulo){
+		this.indulo = indulo;
+	}
+	
 	Kimenetel Mozog(Irany i){
 		System.out.println("Lada mozog");
 		

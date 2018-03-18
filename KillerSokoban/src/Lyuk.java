@@ -1,9 +1,19 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Lyuk extends Mezo {
 private boolean Nyitott = false;
  
- 
+//Ures konstruktor
+public Lyuk(){
+	System.out.println("Lyuk osztaly ctor");
+	this.szomszedok = new ArrayList<Mezo>();
+	szomszedok.add(null);
+	szomszedok.add(null);
+	szomszedok.add(null);
+	szomszedok.add(null);
+}
+
 public Lyuk(List<Mezo> szomsz) {
 	super(szomsz);
 	System.out.println("Lyuk Ctor");
