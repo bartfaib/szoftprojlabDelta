@@ -1,10 +1,12 @@
+import java.util.List;
 
 public class Kapcsolo extends Mezo {
 	
 	private Lyuk lyuk;
 	
-	public Kapcsolo(){
-		System.out.println("Kapcsolo");
+	public Kapcsolo(List<Mezo> szomsz) {
+		super(szomsz);
+		System.out.println("Kapcsolo Constructor");
 	}
 	
 	public Kimenetel Mozog(Irany i){

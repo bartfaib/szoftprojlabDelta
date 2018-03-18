@@ -1,6 +1,12 @@
+import java.util.List;
 
-public class Cel {
-	Kimenetel Mozog(Irany i){
+public class Cel extends Mezo {
+	public Cel(List<Mezo> szomsz) {
+		super(szomsz);
+		System.out.println("Cel Constructor");
+	}
+	
+	public Kimenetel Mozog(Irany i){
 		Kimenetel a = null;
 		return a;
 	}

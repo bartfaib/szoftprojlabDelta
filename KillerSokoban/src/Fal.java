@@ -1,6 +1,12 @@
+import java.util.List;
 
-public class Fal {
-	Kimenetel Mozog(Irany i){
+public class Fal extends Mezo {
+	
+	public Fal(List<Mezo> szomsz) {
+		super(szomsz);
+		System.out.println("Fal Constructor");
+	}
+	public Kimenetel Mozog(Irany i){
 		Kimenetel a = null;
 		return a;
 	}
