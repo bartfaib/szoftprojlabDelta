@@ -91,7 +91,7 @@ public class Teszt {
 	
 	//Munkas ures mezore lep teszt eset
 	private void MunkasUresMezoreLep(){
-		List<Mezo> szomsz = new ArrayList<>();
+		List<Mezo> szomsz = new ArrayList<Mezo>();
 		szomsz.add(NULL);
 		Mezo m1 = new Mezo(szomsz);
 		szomsz.add(m1);

@@ -12,9 +12,9 @@ public class Lada {
 		if(szomszed.Mozog(i) == Kimenetel.Mozoghat || szomszed.Mozog(i) == Kimenetel.PontotErt) {
 			szomszed.Add(this);
 			indulo.Torol();
-			System.out.println("Mozoghat a Lada");
+			System.out.println("Return Mozoghat a Lada");
 		}else {
-			System.out.println("Nem mozoghat a Lada");
+			System.out.println("Return Nem mozoghat a Lada");
 		}
 		
 		return k;

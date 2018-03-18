@@ -20,17 +20,23 @@ public class Munkas{
 				this.pontok +=1;
 				System.out.println(nev+"Kapott"+"1 pontot igy van :"+this.pontok);
 			}
-			System.out.println("Mozoghat a munkas");
 		}else {
 			System.out.println("Nem mozoghat a munkas");
+			if (this.kezdo == false) {
+				this.Halal();
+				indulo.Torol();
+				System.out.println("Munkas mozog Return Mozoghat");
+				return Kimenetel.Mozoghat;
+			}			
 		}
-		
+		System.out.println("Munkas mozog Return"+k);
 		return k;
 		
 	}
 	
 	public void Halal () {
-		
+		this.elet = false;
+		System.out.println("Meghalta a munkas");
 	}
 	
 	public Munkas (String n, Mezo i) {
