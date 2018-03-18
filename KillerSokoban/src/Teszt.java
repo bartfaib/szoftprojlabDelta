@@ -162,7 +162,8 @@ public class Teszt {
 		m1.setSzomszed(Irany.JOBBRA, c);
 		m1.setLada(l);
 		l.setIndulo(m1);
-		
+		c.setSzomszed(Irany.BALRA, m1);
+		c.getLada();
 		Irany i = Irany.JOBBRA;
 	
 		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
@@ -288,14 +289,15 @@ public class Teszt {
 	//Munkas celteruletre lep
 	private void munkasCelteruletreLEp(){
 		//Palya mezok munkasok lada inicializalasa
+		System.out.println("Munkas celteruletre lep");
 		System.out.println("Teszthez szukseges objektumok inicializalasa");
 		Mezo m0 = new Mezo();
 		Cel c = new Cel();
 		Munkas m = new Munkas("Kezdo munkas",m0);
 		m0.Add(m);
 		m0.setSzomszed(Irany.JOBBRA, c);
+		c.setSzomszed(Irany.BALRA, m0);
 		Irany i = Irany.JOBBRA;
-		
 		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
 		m.Mozog(i);	
 	}
@@ -456,6 +458,7 @@ public class Teszt {
 		m3.setSzomszed(Irany.JOBBRA, c);
 		m3.Add(l2);
 		l2.setIndulo(m3);
+		c.setSzomszed(Irany.BALRA, m3);
 		
 		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
 		m.Mozog(Irany.JOBBRA);

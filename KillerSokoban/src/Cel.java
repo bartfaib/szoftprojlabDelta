@@ -27,12 +27,28 @@ public class Cel extends Mezo {
 		super(szomsz, m);
 		System.out.println("Cel Ctor");
 	}
+	//a mozog irannyal ellentetes irany meghatarozasa
+	private int iranyEllentetes(Irany i){
+		switch(i.getValue()){
+		case 0:
+			return 2;
+		case 1:
+			return 3;
+		case 2:
+			return 0;
+		case 3:
+			return 1;
+		default:
+			break;
+		}
+		return 0;
+	}
 	
 	public Kimenetel Mozog(Irany i){
 		System.out.println("Cel Mozog");
 		if (this.getMunkas()!= null) {
 			if (this.getMunkas().Mozog(i) != Kimenetel.NemMozoghat) {
-				if (this.getSzomsz().get(i.getValue()-2).getLada() != null) { //-2 kell mert ellentétes irányból jövõt kérdezek Feltétel ( ha mögöttem láda val)
+				if (this.getSzomsz().get(iranyEllentetes(i)).getLada() != null) { //-2 kell mert ellenté¨es irç–£ybî‰  jî’î  ké§»dezek Felté¨el ( ha mî’î’œtem lç–†a val)
 					System.out.println("Cel Return PontotErt");
 					return Kimenetel.PontotErt;
 				}
@@ -40,8 +56,8 @@ public class Cel extends Mezo {
 			System.out.println("Cel Return"+this.getMunkas().Mozog(i));
 			return this.getMunkas().Mozog(i);
 		}
-		if (this.getSzomsz().get(i.getValue()-2).getLada() != null) { //-2 kell mert ellentétes irányból jövõt kérdezek Feltétel ( ha mögöttem láda val)
-			System.out.println("Cel Return PontotErt");
+		if (this.getSzomsz().get(iranyEllentetes(i)).getLada() == null) {//itt ez valamiÃ©rt nem jÃ³ == != kellene ide de mÃ©gis az == vel mÅ±kÃ¶dik Ãºgy ahogy kÃ©ne neki //-2 kell mert ellenté¨es irç–£ybî‰  jî’î  ké§»dezek Felté¨el ( ha mî’î’œtem lç–†a val)
+			System.out.println("Cel Return PontotErt ");
 			return Kimenetel.PontotErt;
 		}
 		System.out.println("Cel Return Mozoghat");

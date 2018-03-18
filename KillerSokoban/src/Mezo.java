@@ -53,13 +53,6 @@ public class Mezo {
 	}
 	//Ures konstruktor
 	public Mezo(){
-		Class<?> enclosingClass = getClass().getEnclosingClass();
-		if (enclosingClass != null) {
-		  System.out.println(enclosingClass.getName());
-		} else {
-		  System.out.println(getClass().getName());
-		}
-		
 		System.out.println("Mezo osztaly ctor");
 		this.szomszedok = new ArrayList<Mezo>();
 		szomszedok.add(null);
