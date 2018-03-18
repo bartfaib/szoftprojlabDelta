@@ -1,6 +1,6 @@
 
 public enum Irany {
-	FEL(1), JOBBRA(2), LE(3), BALRA(4);
+	FEL(0), JOBBRA(1), LE(2), BALRA(3);
 	
 	 private int value;
 
