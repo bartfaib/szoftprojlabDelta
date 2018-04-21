@@ -6,6 +6,7 @@ public class Teszt {
 		System.out.println("Udvozol a Killer sokoban tesztprogramja");
 		System.out.println();
 		System.out.println("Kerlek add meg azt a szamot ami az altalad valasztott tesztesetet jelzi");
+		System.out.println("Megjegyzes: A tesztesetek kiirasa munkassal kezdodik, de a diagrammok nagyrésze szomszedlekerdezessel indul.");
 		System.out.println("1. Munkas ures mezore leptetes");
 		System.out.println("2. Lada eltolasa");
 		System.out.println("3. Lyukba lepes");
@@ -19,6 +20,7 @@ public class Teszt {
 	
 	//LAda eltolassal kapcsolatos Kiirasok
 	private void tesztketto(){
+		System.out.println();
 		System.out.println("Lada tolasakor letrejovo esetek almenuje");
 		System.out.println("Kerlek add meg a kivalasztani kivant opciot a megfelelo szammal");
 		System.out.println();
@@ -39,6 +41,7 @@ public class Teszt {
 	
 	//Munkas eltolassal kapcsolatos kiirasok
 	private void teszthat(){
+		System.out.println();
 		System.out.println("Masik munkas eltolasa eset almenuje");
 		System.out.println("Kerlek add meg a kivalasztani kivant opciot a megfelelo szammal");
 		System.out.println();
@@ -53,12 +56,13 @@ public class Teszt {
 	
 	//Oszetetteb esetekkel kapcsolatos kiirasok
 	private void tesztnyolc(){
+		System.out.println();
 		System.out.println("Oszetettebb esetek almenuje");
 		System.out.println("Kerlek add meg a kivalasztani kivant opciot a megfelelo szammal");
 		System.out.println();
-		System.out.println("1. Munkás mozgatás a következő láncban: Munkás->láda->munkás->láda->fal");
+		System.out.println("1. Munkas mozgatas a kovetkezo lancban: Munkas->lada->munkas->lada->fal");
 		System.out.println();
-		System.out.println("2. Munkás mozgatás a következő láncban:Munkás->láda->munkás->láda->cél");
+		System.out.println("2. Munkas mozgatas a kovetkezo lancban:Munkas->lada->munkas->lada->cel");
 		System.out.println();
 		System.out.println("3. visza");
 	}
@@ -101,8 +105,9 @@ public class Teszt {
 		m1.setLada(l);
 		l.setIndulo(m1);
 		m0.setMunkas(m);
-		
+		System.out.println();
 		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
+		System.out.println();
 		Irany i = Irany.JOBBRA;
 		
 		m.Mozog(i);
@@ -123,7 +128,9 @@ public class Teszt {
 		m1.setLada(l);
 		l.setIndulo(m1);
 		Irany i = Irany.JOBBRA;
+		System.out.println();
 		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
+		System.out.println();
 		m.Mozog(i);
 	}
 	
@@ -143,8 +150,9 @@ public class Teszt {
 		m0.Add(m);
 		
 		Irany i = Irany.JOBBRA;
-		
+		System.out.println();
 		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
+		System.out.println();
 		m.Mozog(i);	
 	}
 	
@@ -165,8 +173,9 @@ public class Teszt {
 		c.setSzomszed(Irany.BALRA, m1);
 		c.getLada();
 		Irany i = Irany.JOBBRA;
-	
+		System.out.println();
 		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
+		System.out.println();
 		m.Mozog(i);	
 	}
 	
@@ -189,8 +198,9 @@ public class Teszt {
 		Munkas mu = new Munkas("Munkas B",m2);
 		m2.setMunkas(mu);
 		Irany i = Irany.JOBBRA;
-		
+		System.out.println();
 		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
+		System.out.println();
 		m.Mozog(i);	
 	}
 	
@@ -210,8 +220,9 @@ public class Teszt {
 		l.setIndulo(m1);
 		
 		Irany i = Irany.JOBBRA;
-		
+		System.out.println();
 		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
+		System.out.println();
 		m.Mozog(i);	
 	}
 	
@@ -265,8 +276,9 @@ public class Teszt {
 		m0.setSzomszed(Irany.JOBBRA, ly);
 		m0.Add(m);
 		Irany i = Irany.JOBBRA;
-		
+		System.out.println();
 		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
+		System.out.println();
 		m.Mozog(i);	
 	}
 	
@@ -281,8 +293,9 @@ public class Teszt {
 		m0.setSzomszed(Irany.JOBBRA, f);
 		
 		Irany i = Irany.JOBBRA;
-		
+		System.out.println();
 		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
+		System.out.println();
 		m.Mozog(i);	
 	}
 	
@@ -298,7 +311,9 @@ public class Teszt {
 		m0.setSzomszed(Irany.JOBBRA, c);
 		c.setSzomszed(Irany.BALRA, m0);
 		Irany i = Irany.JOBBRA;
+		System.out.println();
 		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
+		System.out.println();
 		m.Mozog(i);	
 	}
 	
@@ -318,8 +333,9 @@ public class Teszt {
 		
 		
 		Irany i = Irany.JOBBRA;
-		
+		System.out.println();
 		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
+		System.out.println();
 		m.Mozog(i);	
 	}
 	
@@ -338,8 +354,9 @@ public class Teszt {
 		m1.setSzomszed(Irany.JOBBRA, f);
 		
 		Irany i = Irany.JOBBRA;
-		
+		System.out.println();
 		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
+		System.out.println();
 		m.Mozog(i);	
 	}
 	
@@ -358,8 +375,9 @@ public class Teszt {
 		m1.setSzomszed(Irany.JOBBRA, ly);
 		
 		Irany i = Irany.JOBBRA;
-		
+		System.out.println();
 		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
+		System.out.println();
 		m.Mozog(i);	
 	}
 	
@@ -403,8 +421,9 @@ public class Teszt {
 		m0.setSzomszed(Irany.JOBBRA, k);
 		
 		Irany i = Irany.JOBBRA;
-		
+		System.out.println();
 		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
+		System.out.println();
 		m.Mozog(i);	
 	}
 	//Munkás->láda->munkás->láda->fal
@@ -417,7 +436,9 @@ public class Teszt {
 		Mezo m3 = new Mezo();
 		Lada l2 = new Lada();
 		Fal f = new Fal();
+		System.out.println();
 		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
+		System.out.println();
 		m0.setSzomszed(Irany.JOBBRA, m1);
 		Munkas m = new Munkas("Kezdo munkas",m0);
 		m0.setMunkas(m);
@@ -430,8 +451,9 @@ public class Teszt {
 		m3.setSzomszed(Irany.JOBBRA, f);
 		m3.Add(l2);
 		l2.setIndulo(m3);
-		
+		System.out.println();
 		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
+		System.out.println();
 		m.Mozog(Irany.JOBBRA);
 	}
 	
@@ -445,7 +467,9 @@ public class Teszt {
 		Mezo m3 = new Mezo();
 		Lada l2 = new Lada();
 		Cel c = new Cel();
+		System.out.println();
 		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
+		System.out.println();
 		m0.setSzomszed(Irany.JOBBRA, m1);
 		Munkas m = new Munkas("Kezdo munkas",m0);
 		m0.setMunkas(m);
@@ -460,8 +484,9 @@ public class Teszt {
 		m3.Add(l2);
 		l2.setIndulo(m3);
 		c.setSzomszed(Irany.BALRA, m3);
-		
+		System.out.println();
 		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
+		System.out.println();
 		m.Mozog(Irany.JOBBRA);
 	}
 	
