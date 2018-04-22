@@ -379,7 +379,7 @@ public class Teszt {
 		DrawToFile(m0, "teszt12.xml");
 	}
 	
-	//Masik munkas ures mezore tolasa
+	//Masik munkas lyukba tolasa
 	private void masikMunkasLyukbaTolasa() throws FileNotFoundException, UnsupportedEncodingException{
 		//Palya mezok munkasok lada inicializalasa
 		System.out.println("Teszthez szukseges objektumok inicializalasa");
@@ -447,7 +447,7 @@ public class Teszt {
 		m.Mozog(i);
 		DrawToFile(m0, "teszt14.xml");
 	}
-	//Munkás->láda->munkás->láda->fal
+	//Munkas->lada->munkas->lada->fal
 	private void mlmlf() throws FileNotFoundException, UnsupportedEncodingException{
 		System.out.println("Teszthez szukseges objektumok inicializalasa");
 		Mezo m0 = new Mezo();
@@ -479,7 +479,7 @@ public class Teszt {
 		DrawToFile(m0, "teszt15.xml");
 	}
 	
-	//Munkás->láda->munkás->láda->cél
+	//Munkas->lada->munkas->lada->cel
 	private void mlmlc() throws FileNotFoundException, UnsupportedEncodingException{
 		System.out.println("Teszthez szukseges objektumok inicializalasa");
 		Mezo m0 = new Mezo();
