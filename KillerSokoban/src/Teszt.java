@@ -86,7 +86,7 @@ public class Teszt {
 	}
 	
 	//Munkas ures mezore lep teszt eset
-	private void MunkasUresMezoreLep(){
+	private void MunkasUresMezoreLep() throws FileNotFoundException, UnsupportedEncodingException{
 		Mezo m1 = new Mezo();	
 		Mezo m0 = new Mezo();
 		Munkas m = new Munkas("kezo munkas",m0, true);
@@ -96,6 +96,7 @@ public class Teszt {
 		Irany i = Irany.JOBBRA;
 		
 		m.Mozog(i);
+		DrawToFile(m0, "teszt1.xml");
 	}
 	
 	//Lada ures mezore tolasa
@@ -523,7 +524,7 @@ public class Teszt {
 	}
 
 	//Fo teszt fuggveny ezt hivja meg a main fuggveny
-	public void tesztFG(){
+	public void tesztFG() throws FileNotFoundException, UnsupportedEncodingException{
 
 		
 		while(true){
@@ -575,8 +576,8 @@ public class Teszt {
 	}
 	
 	private void DrawToFile(Mezo start, String fileName) throws FileNotFoundException, UnsupportedEncodingException {
-		
-		PrintWriter writer = new PrintWriter("C:\\", "UTF-8"); // A fájlbaíráshoz
+		final String dir = System.getProperty("user.dir");
+		PrintWriter writer = new PrintWriter(dir+"\\Maps\\Test\\Outputs\\"+fileName, "UTF-8"); // A fajlbairashoz
 		List<Mezo> mezok; // Betöltjük a mezőket egy listába, ez alapján készül majd egy 2D tömb
 		mezok = new ArrayList<>();
 		mezok.add(start); //Első listaelemnek megadjuk az "m0" mezőket, ebből kiundulva építi fel majd a teljes listát
@@ -633,26 +634,26 @@ public class Teszt {
 		boolean done = false;
 		while(done != true){
 			palya[x][y] = m;
-			Mezo koztes = m.SzomszedokLekerdez(Irany.LE);
+			Mezo koztes = m.SzomszedokLekerdez(Irany.JOBBRA);
 			while(koztes != null){
 				y = y+1;
 				palya[x][y] = koztes;
-				koztes = koztes.SzomszedokLekerdez(Irany.LE);
+				koztes = koztes.SzomszedokLekerdez(Irany.JOBBRA);
 			}
 			x += 1;
-			if(m.SzomszedokLekerdez(Irany.JOBBRA) == null)
+			if(m.SzomszedokLekerdez(Irany.LE) == null)
 				done = true;
-			m = m.SzomszedokLekerdez(Irany.JOBBRA);
+			m = m.SzomszedokLekerdez(Irany.LE);
 		}
 		
-		// Az előző lépésben letrehozott tömb segítségvel kirajzoljuk a dolgokat.
+		// Az elozo lepesben letrehozott tomb segitsegevel kirajzoljuk a dolgokat.
 		for(x = 0; x <magassag;x++){
 			for(y = 0; y <szelesseg;y++){
-				if(palya[x][y] instanceof Fal){  // Fal kirajzolása
+				if(palya[x][y] instanceof Fal){  // Fal kirajzolasa
 					writer.print("F");
 				}else if(palya[x][y] instanceof Mezo){ 
 					if(palya[x][y].getLada() != null){
-						writer.print("L"); 			// Láda kirajzolása
+						writer.print("L"); 			// Lada kirajzolasa
 					}else if(palya[x][y].getMunkas() != null){
 						Munkas mu = palya[x][y].getMunkas();
 						for(int in = 0;in <munkasok.size();in++){
@@ -693,7 +694,7 @@ public class Teszt {
 			}
 			writer.println();
 		}
-		
+		writer.close();
 	}
 	
 }
