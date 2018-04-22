@@ -691,50 +691,50 @@ public class Teszt {
 		for(x = 0; x <magassag;x++){
 			for(y = 0; y <szelesseg;y++){
 				if(palya[x][y] instanceof Fal){
-					System.out.print("F");  //Fal kirajzolasa
+					writer.print("F");  //Fal kirajzolasa
 				}else if(palya[x][y] instanceof Kapcsolo){
 					if(palya[x][y].getLada() != null){
-						System.out.print("L");		//Lada kirajzolasa kapcsolon
+						writer.print("L");		//Lada kirajzolasa kapcsolon
 					}else if(palya[x][y].getMunkas()!= null){
 						Munkas mu = palya[x][y].getMunkas();
 						for(int in = 0;in <munkasok.size();in++){
 							if(munkasok.get(in) == mu)
-								System.out.print(in);		//Munkas kirajzolasa kapcsolon
+								writer.print(in);		//Munkas kirajzolasa kapcsolon
 						}
 					}else{
-						System.out.print("K");		//Kapcsolo kirajzolasa
+						writer.print("K");		//Kapcsolo kirajzolasa
 					}
 				}else if(palya[x][y] instanceof Lyuk){
-					System.out.print("Y");		//Lyuk kirajzolasa
+					writer.print("Y");		//Lyuk kirajzolasa
 				
 				}else if(palya[x][y] instanceof Cel){
 					if(palya[x][y].getLada() != null){
-						System.out.print("L");		//Lada kirajzolasa celon
+						writer.print("L");		//Lada kirajzolasa celon
 					}else if(palya[x][y].getMunkas()!= null){
 						Munkas mu = palya[x][y].getMunkas();
 						for(int in = 0;in <munkasok.size();in++){
 							if(munkasok.get(in) == mu)
-								System.out.print(in);		//Munkas kirajzolasa celon
+								writer.print(in);		//Munkas kirajzolasa celon
 						}
 					}else{
-						System.out.print("C");		//Cel kirajzolasa
+						writer.print("C");		//Cel kirajzolasa
 					}
 				}else if(palya[x][y] instanceof Mezo){
 					if(palya[x][y].getLada() != null){
-						System.out.print("L");		//Lada kirajzolasa mezon
+						writer.print("L");		//Lada kirajzolasa mezon
 					}else if(palya[x][y].getMunkas() != null){
 						Munkas mu = palya[x][y].getMunkas();
 						for(int in = 0;in <munkasok.size();in++){
 							if(munkasok.get(in) == mu)
-								System.out.print(in);		//Munkas kirajzolasa mezon
+								writer.print(in);		//Munkas kirajzolasa mezon
 						}
 					}else if(palya[x][y].getOlaj()){
-						System.out.println("O");		//Olaj kirajzolasa mezon
+						writer.println("O");		//Olaj kirajzolasa mezon
 					}else if(palya[x][y].getMez()){
-						System.out.println("E");		//Mez kirajzolasa mezon
+						writer.println("E");		//Mez kirajzolasa mezon
 					}
 					else{
-						System.out.print("M");		//Mezo kirajzolasa
+						writer.print("M");		//Mezo kirajzolasa
 					}
 				}
 			}
