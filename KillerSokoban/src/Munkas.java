@@ -38,6 +38,10 @@ public class Munkas{
 		System.out.println(this.nev + " Munkas Meghalt");
 	}
 	
+	public boolean Elet() {
+		return elet;
+	}
+	
 	public Munkas (String n, Mezo i) {
 		System.out.println("Munkas osztály ctor");
 		this.nev = n;
@@ -56,6 +60,14 @@ public class Munkas{
 		this.kezdo = a;
 		this.elet = true;
 		this.indulo = i;
+	}
+
+	public int getPont() {
+		return pontok;
+	}
+
+	public String getNev() {
+		return nev;
 	}	
 	
 }
