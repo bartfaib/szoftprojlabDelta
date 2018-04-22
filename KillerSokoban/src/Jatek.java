@@ -29,7 +29,7 @@ public class Jatek {
 					int i = generator.nextInt(mezok.size()) + 1;
 					
 					/*ha kapcsolo cel vagy mezo a veletlenul kivalasztott akkor
-					 * megnezi hogy va e rajta valami ha nincs akkor arra a mez≈ëre rakja
+					 * megnezi hogy va e rajta valami ha nincs akkor arra a mezıre rakja
 					 * a munkast
 					 */
 					if(mezok.get(i) instanceof Mezo || 
@@ -50,22 +50,22 @@ public class Jatek {
 	
 	public void Kor(){
 		
-		//Az aktu√°lis munk√°st sz√°montart√≥ v√°ltoz√≥
+		//Az aktu·lis munk·st sz·montartÛ v·ltozÛ
 		int aktivMunkas = 0;
 		
-		//Amilyen ir√°nyba mozgatjuk a munk√°st
+		//Amilyen ir·nyba mozgatjuk a munk·st
 		Irany i = null;
 		
-		//Mozgas kimenetel√©nek elt√°rol√°s√°t szolg√°l√≥ v√°ltoz√≥.
+		//Mozgas kimenetelÈnek elt·rol·s·t szolg·lÛ v·ltozÛ.
 		Kimenetel k = null;
 		
-		//Munkas √°lltal m√©g megtehet≈ë l√©p√©sek sz√°ma
+		//Munkas ·lltal mÈg megtehetı lÈpÈsek sz·ma
 		int megLephet = MaxLepes;
 		
-		//Jatek tare vagy v√©get √©rt-e v√°ltoz√≥
+		//Jatek tare vagy vÈget Èrt-e v·ltozÛ
 		boolean tart = true;
 		
-		//Volt-e √©rv√©nyes parancs 
+		//Volt-e ÈrvÈnyes parancs 
 		boolean volt = false;
 		
 		//Felhasznalo alltal megasott utasitasok
@@ -114,11 +114,11 @@ public class Jatek {
 			palya[x][y] = m;
 			Mezo koztes = m.SzomszedokLekerdez(Irany.LE);
 			while(koztes != null){
-				y = y+1;
+				x = x+1;
 				palya[x][y] = koztes;
 				koztes = koztes.SzomszedokLekerdez(Irany.LE);
 			}
-			x += 1;
+			y += 1;
 			if(m.SzomszedokLekerdez(Irany.JOBBRA) == null)
 				kessz = true;
 			m = m.SzomszedokLekerdez(Irany.JOBBRA);
@@ -129,18 +129,6 @@ public class Jatek {
 			for(y = 0; y <szelesseg;y++){
 				if(palya[x][y] instanceof Fal){
 					System.out.print("F");
-				}else if(palya[x][y] instanceof Mezo){
-					if(palya[x][y].getLada() != null){
-						System.out.print("L");
-					}else if(palya[x][y].getMunkas() != null){
-						Munkas mu = palya[x][y].getMunkas();
-						for(int in = 0;in <munkasok.size();in++){
-							if(munkasok.get(in) == mu)
-								System.out.print(in);
-						}
-					}else{
-						System.out.print("M");
-					}
 				}else if(palya[x][y] instanceof Kapcsolo){
 					if(palya[x][y].getLada() != null){
 						System.out.print("L");
@@ -168,11 +156,26 @@ public class Jatek {
 					}else{
 						System.out.print("C");
 					}
+				}else if(palya[x][y] instanceof Mezo){
+					if(palya[x][y].getLada() != null){
+						System.out.print("L");
+					}else if(palya[x][y].getMunkas() != null){
+						Munkas mu = palya[x][y].getMunkas();
+						for(int in = 0;in <munkasok.size();in++){
+							if(munkasok.get(in) == mu)
+								System.out.print(in);
+						}
+					}else if(palya[x][y].getOlaj()){
+						System.out.println("O");
+					}else if(palya[x][y].getMez()){
+						System.out.println("E");
+					}
+					else{
+						System.out.print("M");
+					}
 				}
 			}
 		}
-		System.out.println(x);
-		System.out.println(y);
 		
 		//Jatek maga addig tart amig a tart valtozo true
 		while(tart == true){
@@ -198,43 +201,48 @@ public class Jatek {
 					volt = true;
 				}else if(komm.equals("next")){
 					volt = true;
+				}else if(komm.equals("addOlaj")){
+					munkasok.get(aktivMunkas).addOlaj();
+					volt = true;
+				}else if(komm.equals("addMez")){
+					munkasok.get(aktivMunkas).addMez();
+					volt = true;
 				}
 			}
 			
 			//Ha a kovetkezo parancsot kapta a program
 			if(komm.equals("next")){
-				
 				megLephet = MaxLepes;
 				boolean kov = false;
-				
+				munkasok.get(aktivMunkas).setKezdo(false);
 				//Keresi a kovetkezo eletben levo munkast
-				while(kov = false){
+				while(kov == false){
 					
 					aktivMunkas += 1;
 					if(aktivMunkas == munkasok.size())
 						aktivMunkas = 0;
-					
+
 					//Ha a kovetkezo kivalasztott munkas eletben van akkor leallitja a kerest
 					if(munkasok.get(aktivMunkas).Elet() == true){
 						kov = true;
-						megLephet = MaxLepes;
+						munkasok.get(aktivMunkas).setKezdo(true);
 					}
 				}
 			//Ha valamelyik iranyba mozgas utasitast kapott a jatek
 			}else{
 				
-				//Megfelel≈ë ir√°nyba t√∂rt√©n≈ë l√©p√©s v√©grehajt√°sa a munk√°ssal
+				//Megfelelı ir·nyba tˆrtÈnı lÈpÈs vÈgrehajt·sa a munk·ssal
 				k = munkasok.get(aktivMunkas).Mozog(i);
 				
-				//Ha tudtunk l√©pni a munk√°ssal akkor a l√©p√©s sz√°mot cs√∂kkentj√ºk 1 el ha pontot √©rt√ºnk 
-				//Null√°zzuk a h√°tral√©v≈ë l√©p√©s sz√°mot.
+				//Ha tudtunk lÈpni a munk·ssal akkor a lÈpÈs sz·mot csˆkkentj¸k 1 el ha pontot Èrt¸nk 
+				//Null·zzuk a h·tralÈvı lÈpÈs sz·mot.
 				if(k == Kimenetel.Mozoghat){
 					megLephet -= megLephet;
 				}else if(k == Kimenetel.PontotErt){
 					megLephet = 0;
 				}
 				
-				//Ellenorzi hogy vege van e a jateknak a lepes ut√°n ha nm √©s az adott munk√°s m√°r 
+				//Ellenorzi hogy vege van e a jateknak a lepes ut·n ha nm Ès az adott munk·s m·r 
 				//nem tud tobbet lepni kivalasztja a soronkovetkezo munkast
 				if(JatekVege() == false){
 					
@@ -242,11 +250,11 @@ public class Jatek {
 					if(megLephet == 0){
 						megLephet = MaxLepes;
 						boolean kov = false;
-						
+						munkasok.get(aktivMunkas).setKezdo(false);
 						//Keresi a kovetkezo eletben levo munkast
-						while(kov = false){
+						while(kov == false){
 							
-							//Kovetkezo munkasra l√©p n√∂velve a v√°ltoz√≥t ha v√©gig √©r el≈ëre √°ll√≠tja
+							//Kovetkezo munkasra lÈp nˆvelve a v·ltozÛt ha vÈgig Èr elıre ·llÌtja
 							aktivMunkas += 1;
 							if(aktivMunkas == munkasok.size())
 								aktivMunkas = 0;
@@ -254,7 +262,7 @@ public class Jatek {
 							//Ha a kovetkezo kivalasztott munkas eletben van akkor leallitja a kerest
 							if(munkasok.get(aktivMunkas).Elet() == true){
 								kov = true;
-								megLephet = MaxLepes;
+								munkasok.get(aktivMunkas).setKezdo(true);
 							}
 						}
 					}
@@ -284,7 +292,7 @@ public class Jatek {
 					palya[x][y] = koztes;
 					koztes = koztes.SzomszedokLekerdez(Irany.LE);
 				}
-				x += 1;
+				y += 1;
 				if(m.SzomszedokLekerdez(Irany.JOBBRA) == null)
 					kessz = true;
 				m = m.SzomszedokLekerdez(Irany.JOBBRA);
@@ -295,18 +303,6 @@ public class Jatek {
 				for(y = 0; y <szelesseg;y++){
 					if(palya[x][y] instanceof Fal){
 						System.out.print("F");
-					}else if(palya[x][y] instanceof Mezo){
-						if(palya[x][y].getLada() != null){
-							System.out.print("L");
-						}else if(palya[x][y].getMunkas() != null){
-							Munkas mu = palya[x][y].getMunkas();
-							for(int in = 0;in <munkasok.size();in++){
-								if(munkasok.get(in) == mu)
-									System.out.print(in);
-							}
-						}else{
-							System.out.print("M");
-						}
 					}else if(palya[x][y] instanceof Kapcsolo){
 						if(palya[x][y].getLada() != null){
 							System.out.print("L");
@@ -334,44 +330,60 @@ public class Jatek {
 						}else{
 							System.out.print("C");
 						}
+					}else if(palya[x][y] instanceof Mezo){
+						if(palya[x][y].getLada() != null){
+							System.out.print("L");
+						}else if(palya[x][y].getMunkas() != null){
+							Munkas mu = palya[x][y].getMunkas();
+							for(int in = 0;in <munkasok.size();in++){
+								if(munkasok.get(in) == mu)
+									System.out.print(in);
+							}
+						}else if(palya[x][y].getOlaj()){
+							System.out.println("O");
+						}else if(palya[x][y].getMez()){
+							System.out.println("E");
+						}
+						else{
+							System.out.print("M");
+						}
 					}
 				}
-				System.out.println();
 			}
-				//JAtek vegen a gyoztes meghatarozasa
-			Munkas[] eredmeny = new Munkas[munkasok.size()];
-			int n = eredmeny.length;
-			
-			for (int index = 0; index < n; index++){
-				eredmeny[index] = munkasok.get(index);
+			System.out.println("Jelenleg aktiv munkas: "+aktivMunkas );
+		}
+		//J·tÈk vÈge kiirat·sok
+		//JAtek vegen a gyoztes meghatarozasa
+		Munkas[] eredmeny = new Munkas[munkasok.size()];
+		int n = eredmeny.length;
+		
+		for (int index = 0; index < n; index++){
+			eredmeny[index] = munkasok.get(index);
+		}
+	    Munkas temp;
+	    //sorba rakja oket
+	    for (int index = 0; index < n; index++) {
+	        for (int j = 1; j < (n - index); j++) {
+	
+	            if (eredmeny[j - 1].getPont() > eredmeny[j].getPont()) {
+	                temp = eredmeny[j - 1];
+	                eredmeny[j - 1] = eredmeny[j];
+	                eredmeny[j] = temp;
+	            }
+	
+	        }
+	    }
+	    //Eredmenyek kiirasa
+	    int helyezett = 1;
+	    for (int index = 0; index < n; index++){
+			if(index == 0){
+				System.out.println(helyezett + ". lett:" + eredmeny[index].getNev());
+			}else{
+				//Ha a kovetkezonek kevesebb pontja van akkor a helyezes szamanka novelese
+				if(eredmeny[index - 1].getPont() > eredmeny[index].getPont())
+					helyezett += 1;
+				System.out.println(helyezett + ". lett:" + eredmeny[index].getNev());
 			}
-		    Munkas temp;
-		    //sorba rakja oket
-		    for (int index = 0; index < n; index++) {
-		        for (int j = 1; j < (n - index); j++) {
-
-		            if (eredmeny[j - 1].getPont() > eredmeny[j].getPont()) {
-		                temp = eredmeny[j - 1];
-		                eredmeny[j - 1] = eredmeny[j];
-		                eredmeny[j] = temp;
-		            }
-
-		        }
-		    }
-		    //Eredmenyek kiirasa
-		    int helyezett = 1;
-		    for (int index = 0; index < n; index++){
-				if(index == 0){
-					System.out.println(helyezett + ". lett:" + eredmeny[index].getNev());
-				}else{
-					//Ha a kovetkezonek kevesebb pontja van akkor a helyezes szamanka novelese
-					if(eredmeny[index - 1].getPont() > eredmeny[index].getPont())
-						helyezett += 1;
-					System.out.println(helyezett + ". lett:" + eredmeny[index].getNev());
-				}
-			}
-		    
-		    
 		}
 	}
 	
@@ -383,7 +395,7 @@ public class Jatek {
 				elo = true;
 		}
 		
-		//Ha nincs elo munkas falsal ter vissza ami a jatek veg√©t jelenti
+		//Ha nincs elo munkas falsal ter vissza ami a jatek vegÈt jelenti
 		if(elo == false)
 			return true;
 		
@@ -397,8 +409,8 @@ public class Jatek {
 			m = jatekvm.get(i);
 			
 			/*Megnezi hogy a lada eltolhato e valamelyik iranyba ha igen akkor megnezi hogy van
-			 * emelette √ºres mezo ha igen akkor abb√≥l a mez≈ëb≈ël kiindulva megn√©zi az √∂sszes
-			 * lehetseges utat am√≠g nem tal√°l egy mez≈ën munk√°st vagy minden lehets√©ges √∫t el nem
+			 * emelette ¸res mezo ha igen akkor abbÛl a mezıbıl kiindulva megnÈzi az ˆsszes
+			 * lehetseges utat amÌg nem tal·l egy mezın munk·st vagy minden lehetsÈges ˙t el nem
 			 * fogyott. 
 			 */
 			int index = 0;
@@ -419,26 +431,26 @@ public class Jatek {
 						break;
 				}
 				//megnezi hogy mozoghat e a lada es ha igen az ellentetes oldalon milyen mezo van
-				if(m.Mozog(elso) == Kimenetel.Mozoghat || m.Mozog(elso) == Kimenetel.PontotErt ){
+				Kimenetel k = m.Mozog(elso);
+				if(k == Kimenetel.Mozoghat ||
+						k == Kimenetel.PontotErt ){
 					if(m.SzomszedokLekerdez(ellentetes) instanceof Mezo || 
 							m.SzomszedokLekerdez(ellentetes) instanceof Kapcsolo ||
 							m.SzomszedokLekerdez(ellentetes) instanceof Cel ||
 							m.SzomszedokLekerdez(ellentetes) instanceof Lyuk){
-						
 						//MEzo a kezdo vizsgalt mezore allitasa
-						m = m.SzomszedokLekerdez(elso);
+						m = m.SzomszedokLekerdez(ellentetes);
 						
 						//HA munkas all rajta es mozoghat akkor igaz
 						if(m.getMunkas() != null)
 							return false;
-						
 						
 						if(m.getLada() == null){
 							jatekvm = mezok;
 							List<Mezo> latogatott = new ArrayList();
 							List<Mezo> latogatando = new ArrayList();
 							latogatott.add(m);
-							
+							System.out.println(elso+ "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwelso");
 							//Kezdo meglatogatandokkal valo feltoltes
 							if(m.SzomszedokLekerdez(Irany.JOBBRA) != null)
 								latogatando.add(m.SzomszedokLekerdez(Irany.JOBBRA));

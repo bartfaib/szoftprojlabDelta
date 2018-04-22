@@ -5,41 +5,61 @@ public class Mezo {
 	private Munkas munkas;
 	private Lada lada;
 	protected List<Mezo> szomszedok;
+	private boolean teszt = false;
+	private Kenoanyag surlodas=Kenoanyag.Semleges;
 	
+	public void setTeszt (boolean t) { teszt = t; }
+	
+	public void setOlaj() {
+		surlodas = Kenoanyag.Ragacsos;
+	}
+	public void setMez() {
+		surlodas = Kenoanyag.Ragacsos;
+	}
+	public boolean getOlaj(){
+		if(surlodas == Kenoanyag.Csuszos)
+			return true;
+		return false;
+	}
+	public boolean getMez(){
+		if(surlodas == Kenoanyag.Ragacsos)
+			return true;
+		return false;
+	}
 	public Kimenetel Mozog ( Irany i ) {
-		System.out.println("Mezo MOZOG "+ i);
+		if( teszt) System.out.println("Mezo MOZOG "+ i);
 		//csak a kiiras miatt kell felvenni
 		Kimenetel k = null;
 		
 		if(lada != null) {
 			k = lada.Mozog(i);
 			
-			System.out.println("Mezo mozog RETURN"+k);
+			if( teszt) System.out.println("Mezo mozog RETURN"+k);
 			return k;
 		}else if (munkas != null) {
 			k = munkas.Mozog(i);
-			System.out.println("Mezo Mozog RETURN "+k);
+			if( teszt) System.out.println("Mezo Mozog RETURN "+k);
 			return k;
 		}else {
-			System.out.println("Mezo Mozog RETURN Mozoghat");
+			if( teszt) System.out.println("Mezo Mozog RETURN Mozoghat");
 			return Kimenetel.Mozoghat;
 		}
 	}
 	public Mezo SzomszedokLekerdez ( Irany i ){
-		System.out.println("Szomszedok Lekerdez "+i);
-		System.out.println("Szomszedok Lekerdez RETURN");
+		if( teszt) System.out.println("Szomszedok Lekerdez "+i);
+		if( teszt) System.out.println("Szomszedok Lekerdez RETURN");
 		return szomszedok.get(i.getValue());		
 	}
 	
 	public void Add (Munkas m) {
-		System.out.println("Mezo ADD Munkas");
-		System.out.println("Mezo ADD Munkas RETURN");
+		if( teszt) System.out.println("Mezo ADD Munkas");
+		if( teszt) System.out.println("Mezo ADD Munkas RETURN");
 		this.munkas=m;
 	}	
 
 	public void Add (Lada l) {
-		System.out.println("Mezo ADD Lada");
-		System.out.println("Mezo ADD Lada RETURN");
+		if( teszt) System.out.println("Mezo ADD Lada");
+		if( teszt) System.out.println("Mezo ADD Lada RETURN");
 		this.lada=l;
 	}
 	
@@ -50,13 +70,13 @@ public class Mezo {
 	
 	
 	public void Torol () {
-		System.out.println("Mezo TOROL");
+		if( teszt) System.out.println("Mezo TOROL");
 		this.munkas=null;
 		this.lada=null;
 	}
 	//Ures konstruktor
 	public Mezo(){
-		System.out.println("Mezo osztaly ctor");
+		if( teszt) System.out.println("Mezo osztaly ctor");
 		this.szomszedok = new ArrayList<Mezo>();
 		szomszedok.add(null);
 		szomszedok.add(null);
@@ -67,21 +87,21 @@ public class Mezo {
 	}
 	
 	public Mezo(List<Mezo> szomsz, Lada l){
-	System.out.println("Mezo osztaly ctor");
+	if( teszt) System.out.println("Mezo osztaly ctor");
 		this.szomszedok = szomsz;
 		this.lada = l;
 		this.munkas = null;
 	}
 	
 	public Mezo(List<Mezo> szomsz, Munkas m){
-	System.out.println("Mezo osztaly ctor");
+	if( teszt) System.out.println("Mezo osztaly ctor");
 		this.szomszedok = szomsz;
 		this.lada = null;
 		this.munkas = m;
 	}
 	
 	public Mezo(List<Mezo> szomsz){
-	System.out.println("Mezo osztaly ctor");
+	if( teszt) System.out.println("Mezo osztaly ctor");
 		this.szomszedok = szomsz;
 		this.lada = null;
 		this.munkas = null;

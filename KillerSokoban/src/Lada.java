@@ -1,13 +1,15 @@
 
 public class Lada {
 	private Mezo indulo;
+	private boolean teszt = false;	
 	
+	public void setTeszt (boolean t) { teszt = t; }
 	public void setIndulo(Mezo indulo){
 		this.indulo = indulo;
 	}
 	
 	Kimenetel Mozog(Irany i){
-		System.out.println("Lada mozog");
+		if( teszt) System.out.println("Lada mozog");
 		
 		Mezo szomszed = indulo.SzomszedokLekerdez(i);
 		
@@ -17,7 +19,7 @@ public class Lada {
 			szomszed.Add(this);
 			indulo.Torol();
 		}
-		System.out.println("Lada Mozog Return " +k);
+		if( teszt) System.out.println("Lada Mozog Return " +k);
 		return k;
 	}
 

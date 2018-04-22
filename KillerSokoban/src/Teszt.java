@@ -8,6 +8,8 @@ import java.util.Scanner;
 public class Teszt {
 	//A fo menuvel kapcsolatos kiirasok
 	public void tesztMainMenu(){
+		
+		
 		System.out.println("Udvozol a Killer sokoban tesztprogramja");
 		System.out.println();
 		System.out.println("Kerlek add meg azt a szamot ami az altalad valasztott tesztesetet jelzi");
