@@ -1,7 +1,12 @@
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -86,7 +91,7 @@ public class Teszt {
 	}
 	
 	//Munkas ures mezore lep teszt eset
-	private void MunkasUresMezoreLep() throws FileNotFoundException, UnsupportedEncodingException{
+	private void MunkasUresMezoreLep() throws IOException{
 		Mezo m1 = new Mezo();	
 		Mezo m0 = new Mezo();
 		Munkas m = new Munkas("kezo munkas",m0, true);
@@ -97,10 +102,11 @@ public class Teszt {
 		
 		m.Mozog(i);
 		DrawToFile(m0, "teszt1.xml");
+		Compare(System.getProperty("user.dir")+"\\Maps\\Test\\Outputs\\teszt1.xml",System.getProperty("user.dir")+"\\Maps\\Test\\Samples\\sample1.xml" );
 	}
 	
 	//Lada ures mezore tolasa
-	private void ladaEltolasaUresMezore() throws FileNotFoundException, UnsupportedEncodingException{
+	private void ladaEltolasaUresMezore() throws IOException{
 		//Palya mezok munkasok lada inicializalasa
 		System.out.println("Teszthez szukseges objektumok inicializalasa");
 		Mezo m0 = new Mezo();
@@ -120,10 +126,11 @@ public class Teszt {
 		
 		m.Mozog(i);
 		DrawToFile(m0, "teszt2.xml");
+		Compare(System.getProperty("user.dir")+"\\Maps\\Test\\Outputs\\teszt2.xml",System.getProperty("user.dir")+"\\Maps\\Test\\Samples\\sample2.xml" );
 	}
 	
 	//Lada lyukra tolasa
-	private void LadaEltolasaLyukra() throws FileNotFoundException, UnsupportedEncodingException{
+	private void LadaEltolasaLyukra() throws IOException{
 		//Palya mezok munkasok lada inicializalasa
 		System.out.println("Teszthez szukseges objektumok inicializalasa");
 		Mezo m0 = new Mezo();
@@ -142,10 +149,11 @@ public class Teszt {
 		System.out.println();
 		m.Mozog(i);
 		DrawToFile(m0, "teszt3.xml");
+		Compare(System.getProperty("user.dir")+"\\Maps\\Test\\Outputs\\teszt3.xml",System.getProperty("user.dir")+"\\Maps\\Test\\Samples\\sample3.xml" );
 	}
 	
 	//Lada falnak tolasa
-	private void ldaFalnakTolasa() throws FileNotFoundException, UnsupportedEncodingException{
+	private void ldaFalnakTolasa() throws IOException{
 		//Palya mezok munkasok lada inicializalasa
 		System.out.println("Teszthez szukseges objektumok inicializalasa");
 		Mezo m0 = new Mezo();
@@ -165,10 +173,11 @@ public class Teszt {
 		System.out.println();
 		m.Mozog(i);
 		DrawToFile(m0, "teszt4.xml");
+		Compare(System.getProperty("user.dir")+"\\Maps\\Test\\Outputs\\teszt4.xml",System.getProperty("user.dir")+"\\Maps\\Test\\Samples\\sample4.xml" );
 	}
 	
 	//Lada celteruletre tolasa
-	private void ladaCelteruletreTolasa() throws FileNotFoundException, UnsupportedEncodingException{
+	private void ladaCelteruletreTolasa() throws IOException{
 		//Palya mezok munkasok lada inicializalasa
 		System.out.println("Teszthez szukseges objektumok inicializalasa");
 		Mezo m0 = new Mezo();
@@ -189,10 +198,11 @@ public class Teszt {
 		System.out.println();
 		m.Mozog(i);
 		DrawToFile(m0, "teszt5.xml");
+		Compare(System.getProperty("user.dir")+"\\Maps\\Test\\Outputs\\teszt5.xml",System.getProperty("user.dir")+"\\Maps\\Test\\Samples\\sample5.xml" );
 	}
 	
 	//Lada tolasa munkasra
-	private void ladaTolasaMunkasra() throws FileNotFoundException, UnsupportedEncodingException{
+	private void ladaTolasaMunkasra() throws IOException{
 		//Palya mezok munkasok lada inicializalasa
 		System.out.println("Teszthez szukseges objektumok inicializalasa");
 		Mezo m0 = new Mezo();
@@ -215,10 +225,11 @@ public class Teszt {
 		System.out.println();
 		m.Mozog(i);
 		DrawToFile(m0, "teszt6.xml");
+		Compare(System.getProperty("user.dir")+"\\Maps\\Test\\Outputs\\teszt6.xml",System.getProperty("user.dir")+"\\Maps\\Test\\Samples\\sample6.xml" );
 	}
 	
 	//Lada tolasa kapcsolora
-	private void ladaTolasaKapcsolora() throws FileNotFoundException, UnsupportedEncodingException{
+	private void ladaTolasaKapcsolora() throws IOException{
 		//Palya mezok munkasok lada inicializalasa
 		System.out.println("Teszthez szukseges objektumok inicializalasa");
 		Mezo m0 = new Mezo();
@@ -238,10 +249,11 @@ public class Teszt {
 		System.out.println();
 		m.Mozog(i);
 		DrawToFile(m0, "teszt7.xml");
+		Compare(System.getProperty("user.dir")+"\\Maps\\Test\\Outputs\\teszt7.xml",System.getProperty("user.dir")+"\\Maps\\Test\\Samples\\sample7.xml" );
 	}
 	
 	//Lada eltolasa teszteset menu
-	private void ladaEltolasa() throws FileNotFoundException, UnsupportedEncodingException{
+	private void ladaEltolasa() throws IOException{
 		while(true){
 			tesztketto();
 			
@@ -282,7 +294,7 @@ public class Teszt {
 	}
 
 	//MUnkas lyukba lep
-	private void lyukbaLepes() throws FileNotFoundException, UnsupportedEncodingException{
+	private void lyukbaLepes() throws IOException{
 		System.out.println("Teszthez szukseges objektumok inicializalasa");
 		Mezo m0 = new Mezo();
 		Lyuk ly = new Lyuk(true);
@@ -295,10 +307,11 @@ public class Teszt {
 		System.out.println();
 		m.Mozog(i);
 		DrawToFile(m0, "teszt8.xml");
+		Compare(System.getProperty("user.dir")+"\\Maps\\Test\\Outputs\\teszt8.xml",System.getProperty("user.dir")+"\\Maps\\Test\\Samples\\sample8.xml" );
 	}
 	
 	//Munkas falnak lep
-	private void munkasFalnakLep() throws FileNotFoundException, UnsupportedEncodingException{
+	private void munkasFalnakLep() throws IOException{
 		//Palya mezok munkasok lada inicializalasa
 		System.out.println("Teszthez szukseges objektumok inicializalasa");
 		Mezo m0 = new Mezo();
@@ -313,10 +326,11 @@ public class Teszt {
 		System.out.println();
 		m.Mozog(i);
 		DrawToFile(m0, "teszt9.xml");
+		Compare(System.getProperty("user.dir")+"\\Maps\\Test\\Outputs\\teszt9.xml",System.getProperty("user.dir")+"\\Maps\\Test\\Samples\\sample9.xml" );
 	}
 	
 	//Munkas celteruletre lep
-	private void munkasCelteruletreLEp() throws FileNotFoundException, UnsupportedEncodingException{
+	private void munkasCelteruletreLEp() throws IOException{
 		//Palya mezok munkasok lada inicializalasa
 		System.out.println("Munkas celteruletre lep");
 		System.out.println("Teszthez szukseges objektumok inicializalasa");
@@ -332,10 +346,11 @@ public class Teszt {
 		System.out.println();
 		m.Mozog(i);
 		DrawToFile(m0, "teszt10.xml");
+		Compare(System.getProperty("user.dir")+"\\Maps\\Test\\Outputs\\teszt10.xml",System.getProperty("user.dir")+"\\Maps\\Test\\Samples\\sample10.xml" );
 	}
 	
 	//Masik munkas ures mezore tolasa
-	private void masikMunkasUresMezoreTolasa() throws FileNotFoundException, UnsupportedEncodingException{
+	private void masikMunkasUresMezoreTolasa() throws IOException{
 		//Palya mezok munkasok lada inicializalasa
 		System.out.println("Teszthez szukseges objektumok inicializalasa");
 		Mezo m0 = new Mezo();
@@ -355,10 +370,11 @@ public class Teszt {
 		System.out.println();
 		m.Mozog(i);
 		DrawToFile(m0, "teszt11.xml");
+		Compare(System.getProperty("user.dir")+"\\Maps\\Test\\Outputs\\teszt11.xml",System.getProperty("user.dir")+"\\Maps\\Test\\Samples\\sample11.xml" );
 	}
 	
 	//Masik munkas falnak tolasa	
-	private void masikMunkasFalnakTolasa() throws FileNotFoundException, UnsupportedEncodingException{
+	private void masikMunkasFalnakTolasa() throws IOException{
 		//Palya mezok munkasok lada inicializalasa
 		System.out.println("Teszthez szukseges objektumok inicializalasa");
 		Mezo m0 = new Mezo();
@@ -377,10 +393,11 @@ public class Teszt {
 		System.out.println();
 		m.Mozog(i);
 		DrawToFile(m0, "teszt12.xml");
+		Compare(System.getProperty("user.dir")+"\\Maps\\Test\\Outputs\\teszt12.xml",System.getProperty("user.dir")+"\\Maps\\Test\\Samples\\sample12.xml" );
 	}
 	
 	//Masik munkas lyukba tolasa
-	private void masikMunkasLyukbaTolasa() throws FileNotFoundException, UnsupportedEncodingException{
+	private void masikMunkasLyukbaTolasa() throws IOException{
 		//Palya mezok munkasok lada inicializalasa
 		System.out.println("Teszthez szukseges objektumok inicializalasa");
 		Mezo m0 = new Mezo();
@@ -399,10 +416,11 @@ public class Teszt {
 		System.out.println();
 		m.Mozog(i);
 		DrawToFile(m0, "teszt13.xml");
+		Compare(System.getProperty("user.dir")+"\\Maps\\Test\\Outputs\\teszt13.xml",System.getProperty("user.dir")+"\\Maps\\Test\\Samples\\sample13.xml" );
 	}
 	
 	//Masik munkas eltolasa
-	private void masikMunkasEltolasa() throws FileNotFoundException, UnsupportedEncodingException{
+	private void masikMunkasEltolasa() throws IOException{
 		while(true){
 			teszthat();
 			
@@ -431,7 +449,7 @@ public class Teszt {
 	}
 	
 	//Munkas Kapcsolora lep
-	private void munkasKapcsoloraLep() throws FileNotFoundException, UnsupportedEncodingException{
+	private void munkasKapcsoloraLep() throws IOException{
 		//Palya mezok munkasok lada inicializalasa
 		System.out.println("Teszthez szukseges objektumok inicializalasa");
 		Mezo m0 = new Mezo();
@@ -446,9 +464,10 @@ public class Teszt {
 		System.out.println();
 		m.Mozog(i);
 		DrawToFile(m0, "teszt14.xml");
+		Compare(System.getProperty("user.dir")+"\\Maps\\Test\\Outputs\\teszt14.xml",System.getProperty("user.dir")+"\\Maps\\Test\\Samples\\sample14.xml" );
 	}
 	//Munkas->lada->munkas->lada->fal
-	private void mlmlf() throws FileNotFoundException, UnsupportedEncodingException{
+	private void mlmlf() throws IOException{
 		System.out.println("Teszthez szukseges objektumok inicializalasa");
 		Mezo m0 = new Mezo();
 		Mezo m1 = new Mezo();
@@ -477,10 +496,11 @@ public class Teszt {
 		System.out.println();
 		m.Mozog(Irany.JOBBRA);
 		DrawToFile(m0, "teszt15.xml");
+		Compare(System.getProperty("user.dir")+"\\Maps\\Test\\Outputs\\teszt15.xml",System.getProperty("user.dir")+"\\Maps\\Test\\Samples\\sample15.xml" );
 	}
 	
 	//Munkas->lada->munkas->lada->cel
-	private void mlmlc() throws FileNotFoundException, UnsupportedEncodingException{
+	private void mlmlc() throws IOException{
 		System.out.println("Teszthez szukseges objektumok inicializalasa");
 		Mezo m0 = new Mezo();
 		Mezo m1 = new Mezo();
@@ -511,10 +531,11 @@ public class Teszt {
 		System.out.println();
 		m.Mozog(Irany.JOBBRA);
 		DrawToFile(m0, "teszt16.xml");
+		Compare(System.getProperty("user.dir")+"\\Maps\\Test\\Outputs\\teszt16.xml",System.getProperty("user.dir")+"\\Maps\\Test\\Samples\\sample16.xml" );
 	}
 	
 	//Oszetetteb esetek menuje
-	private void oszetetteb() throws FileNotFoundException, UnsupportedEncodingException{
+	private void oszetetteb() throws IOException{
 		while(true){
 			tesztnyolc();
 			
@@ -539,7 +560,7 @@ public class Teszt {
 	}
 
 	//Fo teszt fuggveny ezt hivja meg a main fuggveny
-	public void tesztFG() throws FileNotFoundException, UnsupportedEncodingException{
+	public void tesztFG() throws IOException{
 
 		
 		while(true){
@@ -669,52 +690,68 @@ public class Teszt {
 		// Az elozo lepesben letrehozott tomb segitsegevel kirajzoljuk a dolgokat.
 		for(x = 0; x <magassag;x++){
 			for(y = 0; y <szelesseg;y++){
-				if(palya[x][y] instanceof Fal){  // Fal kirajzolasa
-					writer.print("F");
-				}else if(palya[x][y] instanceof Mezo){ 
+				if(palya[x][y] instanceof Fal){
+					System.out.print("F");  //Fal kirajzolasa
+				}else if(palya[x][y] instanceof Kapcsolo){
 					if(palya[x][y].getLada() != null){
-						writer.print("L"); 			// Lada kirajzolasa
+						System.out.print("L");		//Lada kirajzolasa kapcsolon
+					}else if(palya[x][y].getMunkas()!= null){
+						Munkas mu = palya[x][y].getMunkas();
+						for(int in = 0;in <munkasok.size();in++){
+							if(munkasok.get(in) == mu)
+								System.out.print(in);		//Munkas kirajzolasa kapcsolon
+						}
+					}else{
+						System.out.print("K");		//Kapcsolo kirajzolasa
+					}
+				}else if(palya[x][y] instanceof Lyuk){
+					System.out.print("Y");		//Lyuk kirajzolasa
+				
+				}else if(palya[x][y] instanceof Cel){
+					if(palya[x][y].getLada() != null){
+						System.out.print("L");		//Lada kirajzolasa celon
+					}else if(palya[x][y].getMunkas()!= null){
+						Munkas mu = palya[x][y].getMunkas();
+						for(int in = 0;in <munkasok.size();in++){
+							if(munkasok.get(in) == mu)
+								System.out.print(in);		//Munkas kirajzolasa celon
+						}
+					}else{
+						System.out.print("C");		//Cel kirajzolasa
+					}
+				}else if(palya[x][y] instanceof Mezo){
+					if(palya[x][y].getLada() != null){
+						System.out.print("L");		//Lada kirajzolasa mezon
 					}else if(palya[x][y].getMunkas() != null){
 						Munkas mu = palya[x][y].getMunkas();
 						for(int in = 0;in <munkasok.size();in++){
 							if(munkasok.get(in) == mu)
-								writer.print(in);
+								System.out.print(in);		//Munkas kirajzolasa mezon
 						}
-					}else{
-						writer.print("M");			//Munkas kirajzolasa
+					}else if(palya[x][y].getOlaj()){
+						System.out.println("O");		//Olaj kirajzolasa mezon
+					}else if(palya[x][y].getMez()){
+						System.out.println("E");		//Mez kirajzolasa mezon
 					}
-				}else if(palya[x][y] instanceof Kapcsolo){
-					if(palya[x][y].getLada() != null){
-						writer.print("L");
-					}else if(palya[x][y].getMunkas()!= null){
-						Munkas mu = palya[x][y].getMunkas();
-						for(int in = 0;in <munkasok.size();in++){
-							if(munkasok.get(in) == mu)
-								writer.print(in);
-						}
-					}else{
-						writer.print("K");		// Kapcsolo kirajzolasa
-					}
-				}else if(palya[x][y] instanceof Lyuk){
-					writer.print("Y");
-				
-				}else if(palya[x][y] instanceof Cel){
-					if(palya[x][y].getLada() != null){
-						writer.print("L");
-					}else if(palya[x][y].getMunkas()!= null){
-						Munkas mu = palya[x][y].getMunkas();
-						for(int in = 0;in <munkasok.size();in++){
-							if(munkasok.get(in) == mu)
-								writer.print(in);
-						}
-					}else{
-						writer.print("C");		// Cel kirajzolasa
+					else{
+						System.out.print("M");		//Mezo kirajzolasa
 					}
 				}
 			}
-			writer.println();
+			writer.println("");
 		}
 		writer.close();
 	}
 	
+	public void Compare(String sampletest, String outputtest) throws IOException {
+		
+		Path sample = Paths.get(sampletest);
+		Path output = Paths.get(outputtest);
+		byte[] sample_array = Files.readAllBytes(sample);	//A tesztesethez tartozó mintakimenet binárisát betöltjük
+		byte[] output_array = Files.readAllBytes(output);	//A teszteset kimenetének binárisát betöltjük
+		
+		if(Arrays.equals(sample_array,output_array)) {   //A két fájl bináris tartalmát ellenõrizzük, ha ezek egyeznek, akkor a két fájl tartalma is.
+			System.out.println("A kiement megegyezik az elvartakkal!");
+		}else { System.out.println("A kimenet elter az elvartaktol");}
+	}
 }
