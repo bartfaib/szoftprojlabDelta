@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -14,7 +17,7 @@ public class Jatek {
 		munkasok = new ArrayList<>();
 		//Ha nem kap jatekosokat akkor a palyan levoket keri meg es oket adja hozza a munkas 
 		//listahoz
-		if(jatekosok == null || jatekosok.size() != 0){
+		if(jatekosok == null ){
 			for(int i = 0;i<mezok.size();i++){
 				Mezo m = mezok.get(i);
 				if(m.getMunkas() != null){
@@ -25,16 +28,14 @@ public class Jatek {
 			while(jatekosok.size() > 0){
 				boolean talalt = false;
 				while(talalt != true){
-					Random generator = new Random(); 
-					int i = generator.nextInt(mezok.size()) + 1;
+					Random generator = new Random();
+					int i = generator.nextInt(mezok.size());
 					
 					/*ha kapcsolo cel vagy mezo a veletlenul kivalasztott akkor
 					 * megnezi hogy va e rajta valami ha nincs akkor arra a mezõre rakja
 					 * a munkast
 					 */
-					if(mezok.get(i) instanceof Mezo || 
-							mezok.get(i) instanceof Kapcsolo ||
-							mezok.get(i) instanceof Cel){
+					if(mezok.get(i) instanceof Mezo){
 						if(mezok.get(i).getLada() == null && mezok.get(i).getMunkas() == null){
 							talalt = true;
 							Munkas m = new Munkas(jatekosok.get(0),mezok.get(i));
@@ -118,6 +119,7 @@ public class Jatek {
 				palya[x][y] = koztes;
 				koztes = koztes.SzomszedokLekerdez(Irany.LE);
 			}
+			x=0; //RESETELNI X-t
 			y += 1;
 			if(m.SzomszedokLekerdez(Irany.JOBBRA) == null)
 				kessz = true;
@@ -175,6 +177,7 @@ public class Jatek {
 					}
 				}
 			}
+			System.out.print("\n");
 		}
 		
 		//Jatek maga addig tart amig a tart valtozo true
@@ -184,31 +187,43 @@ public class Jatek {
 		    volt = false;
 			
 		    //Parancs beolvasasa
-			while(volt == false){
-				Scanner  sc = new Scanner (System.in);
-				komm = sc.nextLine();
-				if(komm.equals("tol w")){
-					i = Irany.FEL;
-					volt = true;
-				}else if(komm.equals("tol s")){
-					i = Irany.LE;
-					volt = true;
-				}else if(komm.equals("tol d")){
-					i = Irany.JOBBRA;
-					volt = true;
-				}else if(komm.equals("tol a")){
-					i = Irany.BALRA;
-					volt = true;
-				}else if(komm.equals("next")){
-					volt = true;
-				}else if(komm.equals("addOlaj")){
-					munkasok.get(aktivMunkas).addOlaj();
-					volt = true;
-				}else if(komm.equals("addMez")){
-					munkasok.get(aktivMunkas).addMez();
-					volt = true;
-				}
+			//Scanner  sc = new Scanner (System.in);
+			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+			try {
+				String s = br.readLine();
+				
+				komm = s;
+				s = null;
+				br = null;
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
+
+				//if (sc.hasNextLine()){
+					//komm = sc.nextLine();
+					if(komm.equals("tol w")){
+						i = Irany.FEL;
+						volt = true;
+					}else if(komm.equals("tol s")){
+						i = Irany.LE;
+						volt = true;
+					}else if(komm.equals("tol d")){
+						i = Irany.JOBBRA;
+						volt = true;
+					}else if(komm.equals("tol a")){
+						i = Irany.BALRA;
+						volt = true;
+					}else if(komm.equals("next")){
+						volt = true;
+					}else if(komm.equals("addOlaj")){
+						munkasok.get(aktivMunkas).addOlaj();
+						volt = true;
+					}else if(komm.equals("addMez")){
+						munkasok.get(aktivMunkas).addMez();
+						volt = true;
+					}
+				
+			//}sc.close();
 			
 			//Ha a kovetkezo parancsot kapta a program
 			if(komm.equals("next")){
@@ -288,10 +303,11 @@ public class Jatek {
 				palya[x][y] = m;
 				Mezo koztes = m.SzomszedokLekerdez(Irany.LE);
 				while(koztes != null){
-					y = y+1;
+					x = x+1;
 					palya[x][y] = koztes;
 					koztes = koztes.SzomszedokLekerdez(Irany.LE);
 				}
+				x=0;
 				y += 1;
 				if(m.SzomszedokLekerdez(Irany.JOBBRA) == null)
 					kessz = true;
@@ -348,7 +364,7 @@ public class Jatek {
 							System.out.print("M");
 						}
 					}
-				}
+				}System.out.print("\n");
 			}
 			System.out.println("Jelenleg aktiv munkas: "+aktivMunkas );
 		}
@@ -450,7 +466,7 @@ public class Jatek {
 							List<Mezo> latogatott = new ArrayList();
 							List<Mezo> latogatando = new ArrayList();
 							latogatott.add(m);
-							System.out.println(elso+ "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwelso");
+							System.out.println(elso+ "elso");
 							//Kezdo meglatogatandokkal valo feltoltes
 							if(m.SzomszedokLekerdez(Irany.JOBBRA) != null)
 								latogatando.add(m.SzomszedokLekerdez(Irany.JOBBRA));
