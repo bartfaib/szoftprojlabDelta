@@ -38,15 +38,15 @@ public class Kapcsolo extends Mezo {
 		}
 	}
 	
-	/*public void Add(Munkas m){
+	public void Add(Munkas m){
 		if( teszt) System.out.println("Kapcs ADD munkas");
-		this.setMunkas(m);		
-	}*/
+		super.Add(m);		
+	}
 	
 	public void Add(Lada l){
 		if( teszt) System.out.println("Kapcs ADD lada");
 		super.Add(l);
-		this.lyuk.setStateTrue();
+		if(lyuk != null )this.lyuk.setStateTrue();
 	}
 	
 	public void Torol(){
@@ -57,5 +57,9 @@ public class Kapcsolo extends Mezo {
 	
 	public void setLyuk(Lyuk l) {
 		this.lyuk = l;
+	}
+	
+	public Lyuk getLyuk() {
+		return this.lyuk;
 	}
 }
