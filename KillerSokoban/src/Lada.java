@@ -16,8 +16,9 @@ public class Lada {
 		Kimenetel k = szomszed.Mozog(i);
 		
 		if(k == Kimenetel.Mozoghat || k == Kimenetel.PontotErt) {
+			Mezo korabbi = indulo;
 			szomszed.Add(this);
-			indulo.Torol();
+			korabbi.Torol();
 		}
 		if( teszt) System.out.println("Lada Mozog Return " +k);
 		return k;

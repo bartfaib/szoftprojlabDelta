@@ -276,7 +276,7 @@ public class Jatek {
 			//Ha valamelyik iranyba mozgas utasitast kapott a jatek
 			}else{
 				
-				//Megfelelo iranyba tolasa a munkassal
+				//Megfelelo iranyba tolasa a munkasnak
 				k = munkasok.get(aktivMunkas).Mozog(irany);
 				
 				//Ha tudtunk l駱ni a munk疽sal akkor a l駱駸 sz疥ot cskentj�k 1 el ha pontot 駻t�nk 

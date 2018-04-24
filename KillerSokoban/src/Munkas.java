@@ -32,8 +32,9 @@ public class Munkas{
 		Kimenetel k = szomszed.Mozog(i);
 		
 		if(k == Kimenetel.Mozoghat || k == Kimenetel.PontotErt) {
+			Mezo korabbi = indulo;
 			szomszed.Add(this);
-			indulo.Torol();
+			korabbi.Torol();
 			if(k == Kimenetel.PontotErt && this.kezdo == true) {
 				this.pontok +=1;
 				System.out.println(this.nev + " Kapott"+"1 pontot igy van :"+this.pontok);
