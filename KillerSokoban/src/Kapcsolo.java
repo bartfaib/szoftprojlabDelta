@@ -3,7 +3,7 @@ import java.util.List;
 
 public class Kapcsolo extends Mezo {
 	
-	private Lyuk lyuk;
+	private Lyuk lyuk = null;
 	private boolean teszt = false;	
 	
 	public void setTeszt (boolean t) { teszt = t; }
@@ -19,6 +19,7 @@ public class Kapcsolo extends Mezo {
 	
 	public Kapcsolo(List<Mezo> szomsz) {
 		super(szomsz);
+		lyuk = null;
 		if( teszt) System.out.println("Kapcsolo Ctor");
 	}
 	
@@ -37,19 +38,24 @@ public class Kapcsolo extends Mezo {
 		}
 	}
 	
-	public void Add(Munkas m){
+	/*public void Add(Munkas m){
 		if( teszt) System.out.println("Kapcs ADD munkas");
 		this.setMunkas(m);		
-	}
+	}*/
 	
 	public void Add(Lada l){
 		if( teszt) System.out.println("Kapcs ADD lada");
-		this.setLada(l);		
+		super.Add(l);
+		this.lyuk.setStateTrue();
 	}
 	
 	public void Torol(){
 		if( teszt) System.out.println("Kapcsolo Torol");
-		this.setLada(null);
-		this.setMunkas(null);
+		if(lyuk != null )this.lyuk.setStateFalse();
+		super.Torol();
+	}
+	
+	public void setLyuk(Lyuk l) {
+		this.lyuk = l;
 	}
 }
