@@ -70,4 +70,11 @@ public Lyuk(boolean nyit) {
 		this.setMunkas(null);
 	}
  
+	public void setStateFalse() {
+		this.Nyitott = false;
+	}
+	
+	public void setStateTrue() {
+		this.Nyitott = true;
+	}
 }
