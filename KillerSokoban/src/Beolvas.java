@@ -38,6 +38,8 @@ public class Beolvas {
 		//System.out.println("Beolvas");
 		ArrayList<String> List = new ArrayList<String>(Init());
 		ArrayList<Mezo> mezok = new ArrayList<Mezo>();
+		ArrayList<Kapcsolo> kapcsolok = new ArrayList<Kapcsolo>();
+		ArrayList<Lyuk> lyuk = new ArrayList<Lyuk>();
 		
 		for(int i = 0; i < List.size(); i++) {
 			char[] betuk =List.get(i).toCharArray();
@@ -69,11 +71,13 @@ public class Beolvas {
 			
 			case 'Y': {
 				mezok.add(new Lyuk());
+				lyuk.add(new Lyuk());
 			}
 			break;
 			
 			case 'K': {
 				mezok.add(new Kapcsolo());
+				kapcsolok.add(new Kapcsolo());
 			}
 			break;
 			
