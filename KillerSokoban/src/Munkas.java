@@ -7,12 +7,15 @@ public class Munkas{
 	private boolean kezdo;
 	private boolean elet;
 	private Mezo indulo;
-	private boolean teszt = true;	
+	private boolean teszt = false;	
 	
 	public void setTeszt (boolean t) { teszt = t; }
 	
 	public void setKezdo  (boolean k) { kezdo = k; }
 	
+	public void setIndulo(Mezo m) {
+		this.indulo = m;
+	}
 	
 	public void addOlaj() {
 		indulo.setOlaj();

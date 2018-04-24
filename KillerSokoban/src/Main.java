@@ -34,7 +34,7 @@ public class Main {
      	catch (Exception e) {}*/
     	Beolvas b = new Beolvas("prebuilt1.xml");
     	ArrayList<String> jatekos= new ArrayList<String>();
-    	jatekos.add("peti");
+    	jatekos.add("Peti");
     	jatekos.add("Bali");
     	Jatek j = new Jatek(b.Beolvas(), jatekos);
     	j.Kor();

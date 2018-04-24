@@ -5,7 +5,7 @@ public class Mezo {
 	private Munkas munkas;
 	private Lada lada;
 	protected List<Mezo> szomszedok;
-	private boolean teszt = true;
+	private boolean teszt = false;
 	private Kenoanyag surlodas=Kenoanyag.Semleges;
 	
 	public void setTeszt (boolean t) { teszt = t; }
@@ -56,12 +56,14 @@ public class Mezo {
 		if( teszt) System.out.println("Mezo ADD Munkas");
 		if( teszt) System.out.println("Mezo ADD Munkas RETURN");
 		this.munkas=m;
+		m.setIndulo(this);
 	}	
 
 	public void Add (Lada l) {
 		if( teszt) System.out.println("Mezo ADD Lada");
 		if( teszt) System.out.println("Mezo ADD Lada RETURN");
 		this.lada=l;
+		l.setIndulo(this);
 	}
 	
 	//szomszed hozzaadasa

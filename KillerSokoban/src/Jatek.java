@@ -30,7 +30,7 @@ public class Jatek {
 				Random generator = new Random();
 				while(talalt != true){
 					int i = generator.nextInt(mezok.size());
-					System.out.println(i);
+					//System.out.println(i);
 					/*ha kapcsolo cel vagy mezo a veletlenul kivalasztott akkor
 					 * megnezi hogy va e rajta valami ha nincs akkor arra a meze rakja
 					 * a munkast
@@ -436,7 +436,11 @@ public class Jatek {
 		}
 	}
 	
-	boolean JatekVege(){
+	boolean JatekVege() {
+		return false;
+	}
+	
+	boolean JatekVege2(){
 		//Elosszor megvizsgalja hogy van-e meg elo munkas
 		boolean elo = false;
 		for(int i = 0; i < munkasok.size();i++){
@@ -454,7 +458,7 @@ public class Jatek {
 		List<Mezo> jatekvm = new ArrayList();
 		jatekvm = mezok;
 		
-		while(tolhato == false || i == mezok.size()){
+		while(tolhato == false && i < mezok.size()){
 			m = jatekvm.get(i);
 			
 			/*Megnezi hogy a lada eltolhato e valamelyik iranyba ha igen akkor megnezi hogy van
@@ -485,18 +489,17 @@ public class Jatek {
 				System.out.println(m.SzomszedokLekerdez(elso));
 				Kimenetel k = m.Mozog(elso);
 				System.out.println("lefutott");
-				if(k == Kimenetel.Mozoghat ||
-						k == Kimenetel.PontotErt ){
+				if(k == Kimenetel.Mozoghat || k == Kimenetel.PontotErt ){
 					if(m.SzomszedokLekerdez(ellentetes) instanceof Mezo || 
 							m.SzomszedokLekerdez(ellentetes) instanceof Kapcsolo ||
 							m.SzomszedokLekerdez(ellentetes) instanceof Cel ||
 							m.SzomszedokLekerdez(ellentetes) instanceof Lyuk){
 						//MEzo a kezdo vizsgalt mezore allitasa
 						m = m.SzomszedokLekerdez(ellentetes);
-						
+						tolhato = true;
 						//HA munkas all rajta es mozoghat akkor igaz
 						if(m.getMunkas() != null)
-							return false;
+							tolhato =  false;
 						
 						if(m.getLada() == null){
 							jatekvm = mezok;
@@ -563,6 +566,7 @@ public class Jatek {
 											latogatando.add(m.SzomszedokLekerdez(Irany.LE));
 									}
 									latogatando.remove(0);
+									System.out.println("Latogatando:"+latogatando.size());
 								}
 							}
 							
@@ -578,6 +582,6 @@ public class Jatek {
 			i +=1;
 		}
 		
-		return true;
+		return !tolhato;
 	}
 }
