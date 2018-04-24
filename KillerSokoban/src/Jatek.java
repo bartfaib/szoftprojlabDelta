@@ -241,12 +241,14 @@ public class Jatek {
 					break;
 					
 					case("addOlaj"):{
+						irany = null;
 						munkasok.get(aktivMunkas).addOlaj();
 						volt = true;
 					}
 					break;
 					
 					case("addMez"):{
+						irany = null;
 						munkasok.get(aktivMunkas).addMez();
 						volt = true;
 					}
@@ -274,7 +276,7 @@ public class Jatek {
 					}
 				}
 			//Ha valamelyik iranyba mozgas utasitast kapott a jatek
-			}else{
+			}else if(irany != null){
 				
 				//Megfelelo iranyba tolasa a munkasnak
 				k = munkasok.get(aktivMunkas).Mozog(irany);
@@ -385,9 +387,9 @@ public class Jatek {
 									System.out.print(in);
 							}
 						}else if(palya[x][y].getOlaj()){
-							System.out.println("O");
+							System.out.print("O");
 						}else if(palya[x][y].getMez()){
-							System.out.println("E");
+							System.out.print("E");
 						}
 						else{
 							System.out.print("M");
@@ -436,11 +438,11 @@ public class Jatek {
 		}
 	}
 	
-	boolean JatekVege() {
+	boolean JatekVege2() {
 		return false;
 	}
 	
-	boolean JatekVege2(){
+	boolean JatekVege(){
 		//Elosszor megvizsgalja hogy van-e meg elo munkas
 		boolean elo = false;
 		for(int i = 0; i < munkasok.size();i++){

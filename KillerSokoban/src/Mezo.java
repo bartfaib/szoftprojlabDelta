@@ -11,7 +11,7 @@ public class Mezo {
 	public void setTeszt (boolean t) { teszt = t; }
 	
 	public void setOlaj() {
-		surlodas = Kenoanyag.Ragacsos;
+		surlodas = Kenoanyag.Csuszos;
 	}
 	public void setMez() {
 		surlodas = Kenoanyag.Ragacsos;
@@ -56,7 +56,7 @@ public class Mezo {
 		if( teszt) System.out.println("Mezo ADD Munkas");
 		if( teszt) System.out.println("Mezo ADD Munkas RETURN");
 		this.munkas=m;
-		m.setIndulo(this);
+		this.munkas.setIndulo(this);
 	}	
 
 	public void Add (Lada l) {
@@ -124,7 +124,7 @@ public class Mezo {
 	
 	public void setLada(Lada l) {
 		if(this.lada == null) {
-			this.lada = new Lada();
+			this.lada = l;
 		}
 		this.lada = l;
 	}

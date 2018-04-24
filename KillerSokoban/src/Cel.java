@@ -50,11 +50,12 @@ public class Cel extends Mezo {
 		if( teszt) System.out.println("Cel Mozog");
 		
 		if (this.getMunkas()!= null) {
-			if (this.getMunkas().Mozog(i) != Kimenetel.NemMozoghat) {
+				if (this.getMunkas().Mozog(i) != Kimenetel.NemMozoghat) {
 				if (this.getSzomsz().get(iranyEllentetes(i)).getLada() != null) {
 					if( teszt) System.out.println("Cel Return PontotErt");
 					return Kimenetel.PontotErt;
 				}
+				this.Torol();
 			}
 			if( teszt) System.out.println("Cel Return"+this.getMunkas().Mozog(i));
 		}
@@ -67,14 +68,11 @@ public class Cel extends Mezo {
 		if( teszt) System.out.println("Cel Return Mozoghat");
 		return Kimenetel.Mozoghat;
 	}
+
 	
-	public void Add(Munkas m){
-		if( teszt) System.out.println("Cel ADD munkas");
-		this.setMunkas(m);
-	}
 	public void Add(Lada l){
 		if( teszt) System.out.println("Cel ADD lada");
-		this.setLada(l);
+		this.setLada(null);
 	}
 	
 
