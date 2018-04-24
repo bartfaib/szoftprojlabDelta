@@ -7,7 +7,7 @@ public class Munkas{
 	private boolean kezdo;
 	private boolean elet;
 	private Mezo indulo;
-	private boolean teszt = false;	
+	private boolean teszt = true;	
 	
 	public void setTeszt (boolean t) { teszt = t; }
 	
@@ -22,16 +22,18 @@ public class Munkas{
 		indulo.setMez();
 	}
 	public Kimenetel Mozog (Irany i) {
-		if( teszt) System.out.println(this.nev + " Munkas mozog");
+		if( i == null) System.out.println(this.nev + " Munkas mozog" + i);
+		
 		
 		Mezo szomszed = indulo.SzomszedokLekerdez(i);
 		Kimenetel k = szomszed.Mozog(i);
+		
 		if(k == Kimenetel.Mozoghat || k == Kimenetel.PontotErt) {
 			szomszed.Add(this);
 			indulo.Torol();
 			if(k == Kimenetel.PontotErt && this.kezdo == true) {
 				this.pontok +=1;
-				if( teszt) System.out.println(this.nev + " Kapott"+"1 pontot igy van :"+this.pontok);
+				System.out.println(this.nev + " Kapott"+"1 pontot igy van :"+this.pontok);
 			}
 		}else {
 			if (this.kezdo == false) {
@@ -48,7 +50,7 @@ public class Munkas{
 	
 	public void Halal () {
 		this.elet = false;
-		if( teszt) System.out.println(this.nev + " Munkas Meghalt");
+		System.out.println(this.nev + " Munkas Meghalt");
 	}
 	
 	public boolean Elet() {
@@ -56,7 +58,7 @@ public class Munkas{
 	}
 	
 	public Munkas (String n, Mezo i) {
-		if( teszt) System.out.println("Munkas osztály ctor");
+		if( teszt) System.out.println(n + "Munkas osztály ctor");
 		this.nev = n;
 		this.pontok = 0;
 		this.lepett = 0;
@@ -66,7 +68,7 @@ public class Munkas{
 	}
 	
 	public Munkas (String n, Mezo i, boolean a) {
-		if( teszt) System.out.println("Munkas osztály ctor");
+		if( teszt) System.out.println(n + "Munkas osztály ctor");
 		this.nev = n;
 		this.pontok = 0;
 		this.lepett = 0;

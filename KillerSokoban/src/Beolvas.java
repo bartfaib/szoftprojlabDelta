@@ -33,6 +33,7 @@ public class Beolvas {
 	
 	
 	public ArrayList<Mezo> Beolvas() {
+		int zs = 0;
 		boolean teszt = true;
 		System.out.println("Beolvas");
 		ArrayList<String> List = new ArrayList<String>(Init());
@@ -97,15 +98,20 @@ public class Beolvas {
 			break;
 				
 			
-			default:				
+			default:	
 			break;
 			
 			}
 			
-			if(i== 0) { //Elsõ sor	
-				if(j != 0 ) { //Elsõ sor de NEM elsõ elem
+			if(i == 0) { //Elsõ sor	
+				if(j != 0 ) {
+					System.out.print("Set Balra + Jobbra");
 					mezok.get(j).setSzomszed(Irany.BALRA, mezok.get(j-1));
 					mezok.get(j-1).setSzomszed(Irany.JOBBRA, mezok.get(j));
+					zs++;
+					if(betuk[j] == 'L') {
+						mezok.get(j).getLada().setIndulo(mezok.get(j));
+					}
 				}					
 			}
 			if(i > 0) { //Nem elsõ sor
@@ -113,20 +119,40 @@ public class Beolvas {
 				int rm = (i-1)*betuk.length;
 				//System.out.println(r+" "+i+" "+ rm + " " + j + " "+mezok.size());
 				if(j == 0) { // Elsõ eleme
+					System.out.print("Set Le + Fel");
 					mezok.get(rm+j).setSzomszed(Irany.LE, mezok.get(r+j));
 					mezok.get(r+j).setSzomszed(Irany.FEL, mezok.get(rm+j));
+					zs++;
+					if(betuk[j] == 'L') {
+						mezok.get(r+j).getLada().setIndulo(mezok.get(r+j));
+					}
 				}		
 				if(j != 0 ) { //NEM elsõ elem
+					System.out.print("Set Balra + Jobbra + le + fel");
 					mezok.get(rm+j).setSzomszed(Irany.LE, mezok.get(r+j));
 					mezok.get(r+j).setSzomszed(Irany.FEL, mezok.get(rm+j));
 					mezok.get(r+j).setSzomszed(Irany.BALRA, mezok.get(r+j-1));
 					mezok.get(r+j-1).setSzomszed(Irany.JOBBRA, mezok.get(r+j));
+					zs++;
+					if(betuk[j] == 'L') {
+						mezok.get(r+j).getLada().setIndulo(mezok.get(r+j));
+					}
+					
 				}		
 			}
 		}
 			
 	}
-		System.out.println("Beolvas Vege");
+		
+		for(int i = 0; i < mezok.size(); i++) {
+			System.out.println(i + mezok.get(i).szomszedok.size());
+			for(int j = 0 ; j < mezok.get(i).szomszedok.size(); j++) {
+				System.out.print(j);
+				
+			}
+			System.out.println("\n");
+		}
+		System.out.println("Beolvas Vege " + zs);
 	return mezok;	
 	}
 	

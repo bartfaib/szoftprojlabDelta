@@ -5,7 +5,7 @@ public class Mezo {
 	private Munkas munkas;
 	private Lada lada;
 	protected List<Mezo> szomszedok;
-	private boolean teszt = false;
+	private boolean teszt = true;
 	private Kenoanyag surlodas=Kenoanyag.Semleges;
 	
 	public void setTeszt (boolean t) { teszt = t; }
@@ -27,7 +27,7 @@ public class Mezo {
 		return false;
 	}
 	public Kimenetel Mozog ( Irany i ) {
-		if( teszt) System.out.println("Mezo MOZOG "+ i);
+		if( i == null) System.out.println("Mezo MOZOG "+ i);
 		//csak a kiiras miatt kell felvenni
 		Kimenetel k = null;
 		
@@ -46,8 +46,9 @@ public class Mezo {
 		}
 	}
 	public Mezo SzomszedokLekerdez ( Irany i ){
-		if( teszt) System.out.println("Szomszedok Lekerdez "+i);
-		if( teszt) System.out.println("Szomszedok Lekerdez RETURN");
+		
+		if(i == null) System.out.println("Szomszedok Lekerdez "+i);
+		if( teszt ) System.out.println("Szomszedok Lekerdez RETURN");
 		return szomszedok.get(i.getValue());		
 	}
 	
@@ -65,7 +66,7 @@ public class Mezo {
 	
 	//szomszed hozzaadasa
 	public void setSzomszed(Irany i, Mezo m){
-		szomszedok.add(i.getValue(),m);
+		szomszedok.set(i.getValue(),m);
 	}
 	
 	
@@ -120,6 +121,9 @@ public class Mezo {
 	}
 	
 	public void setLada(Lada l) {
+		if(this.lada == null) {
+			this.lada = new Lada();
+		}
 		this.lada = l;
 	}
 	
