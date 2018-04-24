@@ -49,7 +49,7 @@ public Lyuk(boolean nyit) {
 		m.Halal();
 	 } else {
 			if( teszt) System.out.println("Lyuk ADD munkas Zart");
-			this.setMunkas(m);
+			super.Add(m);;
 	 }
  }
 	 
@@ -60,14 +60,14 @@ public Lyuk(boolean nyit) {
 		this.setLada(null);
 	 } else {
 			if( teszt) System.out.println("Lyuk ADD lada Zart");
-			this.setLada(l);
+			super.Add(l);;
 	 }
  }
  
 	public void Torol(){
 		if( teszt) System.out.println("Lyuk Torol");
-		this.setLada(null);
-		this.setMunkas(null);
+		super.Torol();
+
 	}
  
 	public void setStateFalse() {

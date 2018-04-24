@@ -45,15 +45,14 @@ public class Kapcsolo extends Mezo {
 	
 	public void Add(Lada l){
 		if( teszt) System.out.println("Kapcs ADD lada");
-		this.setLada(l);
+		super.Add(l);
 		this.lyuk.setStateTrue();
 	}
 	
 	public void Torol(){
 		if( teszt) System.out.println("Kapcsolo Torol");
-		this.setLada(null);
-		this.lyuk.setStateFalse();
-		this.setMunkas(null);
+		if(lyuk != null )this.lyuk.setStateFalse();
+		super.Torol();
 	}
 	
 	public void setLyuk(Lyuk l) {
