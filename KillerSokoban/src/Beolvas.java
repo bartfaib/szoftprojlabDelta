@@ -60,10 +60,8 @@ public class Beolvas {
 				Mezo m = new Mezo();
 				Lada l = new Lada();
 				
-				if (teszt)
-					l.setTeszt(teszt);
 				l.setIndulo(m);
-				m.Add(new Lada());
+				m.Add(l);
 				mezok.add(m);
 
 			}
@@ -86,14 +84,14 @@ public class Beolvas {
 			}
 			break;
 			
-			case 'E': {
+			case 'O': {
 				Mezo m = new Mezo();
 				m.setOlaj();
 				mezok.add(m);
 				
 			}
-			
-			case 'Z': {
+			break;
+			case 'E': {
 				Mezo m = new Mezo();
 				m.setMez();
 				mezok.add(m);
@@ -102,7 +100,9 @@ public class Beolvas {
 			break;
 				
 			
-			default:	
+			default:{
+				mezok.add(new Mezo());
+			}	
 			break;
 			
 			}
@@ -119,8 +119,9 @@ public class Beolvas {
 				}					
 			}
 			if(i > 0) { //Nem elsõ sor
-				int r = i*betuk.length;
-				int rm = (i-1)*betuk.length;
+				int tmp = betuk.length;
+				int r = i*tmp;
+				int rm = (i-1)*tmp;
 				//System.out.println(r+" "+i+" "+ rm + " " + j + " "+mezok.size());
 				if(j == 0) { // Elsõ eleme
 					//System.out.print("Set Le + Fel");

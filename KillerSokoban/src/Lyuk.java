@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Lyuk extends Mezo {
-private boolean Nyitott = false;
+private boolean Nyitott = true;
 
 private boolean teszt = false;	
 
@@ -28,15 +28,15 @@ public Lyuk(boolean nyit) {
 	if( teszt) System.out.println("Lyuk Ctor" + nyit);
 	this.Nyitott =nyit;
 }
- public Kimenetel Mozog(Irany i){
+ public Kimenetel Mozog(Irany i,int tomeg){
 		if( teszt) System.out.println("Lyuk MOZOG "+ i);
 		
 		if(this.getLada() != null) {
-			if( teszt) System.out.println("Lyuk mozog Return"+this.getLada().Mozog(i));
-			return this.getLada().Mozog(i);
+			if( teszt) System.out.println("Lyuk mozog Return"+this.getLada().Mozog(i,tomeg));
+			return this.getLada().Mozog(i,tomeg);
 		}else if (this.getMunkas() != null) {
-			if( teszt) System.out.println("Lyuk mozog Return"+this.getMunkas().Mozog(i));
-			return this.getMunkas().Mozog(i);
+			if( teszt) System.out.println("Lyuk mozog Return"+this.getMunkas().Mozog(i,tomeg));
+			return this.getMunkas().Mozog(i,tomeg);
 		}else {
 			if( teszt) System.out.println("Lyuk mozog Return Mozoghat");
 			return Kimenetel.Mozoghat;
@@ -76,5 +76,9 @@ public Lyuk(boolean nyit) {
 	
 	public void setStateTrue() {
 		this.Nyitott = true;
+	}
+	
+	public boolean getState() {
+		return Nyitott;
 	}
 }

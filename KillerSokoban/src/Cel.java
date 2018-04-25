@@ -46,18 +46,18 @@ public class Cel extends Mezo {
 		return 0;
 	}
 	
-	public Kimenetel Mozog(Irany i){
+	public Kimenetel Mozog(Irany i,int tomeg){
 		if( teszt) System.out.println("Cel Mozog");
 		
 		if (this.getMunkas()!= null) {
-				if (this.getMunkas().Mozog(i) != Kimenetel.NemMozoghat) {
+				if (this.getMunkas().Mozog(i,tomeg) != Kimenetel.NemMozoghat) {
 				if (this.getSzomsz().get(iranyEllentetes(i)).getLada() != null) {
 					if( teszt) System.out.println("Cel Return PontotErt");
 					return Kimenetel.PontotErt;
 				}
 				this.Torol();
 			}
-			if( teszt) System.out.println("Cel Return"+this.getMunkas().Mozog(i));
+			if( teszt) System.out.println("Cel Return"+this.getMunkas().Mozog(i,tomeg));
 		}
 		
 		if (this.getSzomsz().get(iranyEllentetes(i)).getLada() != null) {
