@@ -1,4 +1,4 @@
-import java.io.BufferedReader;
+﻿import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -52,86 +52,12 @@ public class Jatek {
 		}
 	}
 
-	public void Kor() {
-
-		// Az aktuç–ťis munkç–˝t szç–Ąontartďż˝ vç–ťtozďż˝
-		int aktivMunkas = 0;
-
-		munkasok.get(aktivMunkas).setKezdo(true);
-
-		// Amilyen irĂˇnyba mozgatjuk a munkĂˇst
-		Irany irany = null;
-
-		// Mozgas kimenetelé§­ek eltç–µolç–˝ç–¸ szolgç–ťďż˝ vç–ťtozďż˝.
-		Kimenetel k = null;
-
-		// Munkas ç–ťltal mé¦® megtehetďż˝ lé§±é§¸ek szç–Ąa
-		int megLephet = MaxLepes;
-
-		// Jatek tare vagy vé¦®et é§»t-e vç–ťtozďż˝
-		boolean tart = true;
-
-		// Volt-e é§»vé§­yes parancs
-		boolean volt = false;
-
-		// Felhasznalo alltal megasott utasitasok
-		String komm = null;
-		/*
-		 * Szelesseg es magassag megnezese, hogy letrelehessen hozni egy 2d-s
-		 * tombot a kirajzolashoz
-		 */
-		// egyrol indul mert a kezdo pozicit nem szamolja bele.
-		int magassag = 1;
-		int szelesseg = 1;
-
-		Mezo m = mezok.get(0);
-		while (m.SzomszedokLekerdez(Irany.FEL) != null) {
-			m = m.SzomszedokLekerdez(Irany.FEL);
-			magassag += 1;
-		}
-		m = mezok.get(0);
-		while (m.SzomszedokLekerdez(Irany.LE) != null) {
-			m = m.SzomszedokLekerdez(Irany.LE);
-			magassag += 1;
-		}
-		m = mezok.get(0);
-		while (m.SzomszedokLekerdez(Irany.JOBBRA) != null) {
-			m = m.SzomszedokLekerdez(Irany.JOBBRA);
-			szelesseg += 1;
-		}
-		m = mezok.get(0);
-		while (m.SzomszedokLekerdez(Irany.BALRA) != null) {
-			m = m.SzomszedokLekerdez(Irany.BALRA);
-			szelesseg += 1;
-		}
-		// kirajzolashoz a 2d-s tomb
-		Mezo[][] palya = new Mezo[magassag][szelesseg];
-
-		while (m.SzomszedokLekerdez(Irany.FEL) != null) {
-			m = m.SzomszedokLekerdez(Irany.FEL);
-		}
-		while (m.SzomszedokLekerdez(Irany.BALRA) != null) {
-			m = m.SzomszedokLekerdez(Irany.BALRA);
-		}
-		int x = 0;
-		int y = 0;
-		boolean kessz = false;
-		while (kessz != true) {
-			palya[x][y] = m;
-			Mezo koztes = m.SzomszedokLekerdez(Irany.LE);
-			while (koztes != null) {
-				x = x + 1;
-				palya[x][y] = koztes;
-				koztes = koztes.SzomszedokLekerdez(Irany.LE);
-			}
-			x = 0; // RESETELNI X-t
-			y += 1;
-			if (m.SzomszedokLekerdez(Irany.JOBBRA) == null)
-				kessz = true;
-			m = m.SzomszedokLekerdez(Irany.JOBBRA);
-		}
-
-		// Palya kirajzolasa
+	int magassag = 1;
+	int szelesseg = 1;
+	int x = 0;
+	int y = 0;
+	
+	public void Palyarajzolas(Mezo[][] palya){
 		for (x = 0; x < magassag; x++) {
 			for (y = 0; y < szelesseg; y++) {
 				if (palya[x][y] instanceof Fal) {
@@ -173,11 +99,11 @@ public class Jatek {
 								System.out.print(in);
 						}
 					} else if (palya[x][y].getOlaj()) {
-						System.out.println("O");
+						System.out.print("O");
 					} else if (palya[x][y].getMez()) {
-						System.out.println("E");
+						System.out.print("E");
 					} else {
-						System.out.print("M");
+						System.out.print("-");
 					}
 				}
 			}
@@ -188,6 +114,89 @@ public class Jatek {
 					+ munkasok.get(index).getPont());
 			;
 		}
+	}
+	
+	public void Kor() {
+
+		// Az aktuç–ťis munkç–˝t szç–Ąontartďż˝ vç–ťtozďż˝
+		int aktivMunkas = 0;
+
+		munkasok.get(aktivMunkas).setKezdo(true);
+
+		// Amilyen irĂˇnyba mozgatjuk a munkĂˇst
+		Irany irany = null;
+
+		// Mozgas kimenetelé§­ek eltç–µolç–˝ç–¸ szolgç–ťďż˝ vç–ťtozďż˝.
+		Kimenetel k = null;
+
+		// Munkas ç–ťltal mé¦® megtehetďż˝ lé§±é§¸ek szç–Ąa
+		int megLephet = MaxLepes;
+
+		// Jatek tare vagy vé¦®et é§»t-e vç–ťtozďż˝
+		boolean tart = true;
+
+		// Volt-e é§»vé§­yes parancs
+		boolean volt = false;
+
+		// Felhasznalo alltal megasott utasitasok
+		String komm = null;
+		/*
+		 * Szelesseg es magassag megnezese, hogy letrelehessen hozni egy 2d-s
+		 * tombot a kirajzolashoz
+		 */
+		// egyrol indul mert a kezdo pozicit nem szamolja bele.
+		magassag = 1;
+		szelesseg = 1;
+
+		Mezo m = mezok.get(0);
+		while (m.SzomszedokLekerdez(Irany.FEL) != null) {
+			m = m.SzomszedokLekerdez(Irany.FEL);
+			magassag += 1;
+		}
+		m = mezok.get(0);
+		while (m.SzomszedokLekerdez(Irany.LE) != null) {
+			m = m.SzomszedokLekerdez(Irany.LE);
+			magassag += 1;
+		}
+		m = mezok.get(0);
+		while (m.SzomszedokLekerdez(Irany.JOBBRA) != null) {
+			m = m.SzomszedokLekerdez(Irany.JOBBRA);
+			szelesseg += 1;
+		}
+		m = mezok.get(0);
+		while (m.SzomszedokLekerdez(Irany.BALRA) != null) {
+			m = m.SzomszedokLekerdez(Irany.BALRA);
+			szelesseg += 1;
+		}
+		// kirajzolashoz a 2d-s tomb
+		Mezo[][] palya = new Mezo[magassag][szelesseg];
+
+		while (m.SzomszedokLekerdez(Irany.FEL) != null) {
+			m = m.SzomszedokLekerdez(Irany.FEL);
+		}
+		while (m.SzomszedokLekerdez(Irany.BALRA) != null) {
+			m = m.SzomszedokLekerdez(Irany.BALRA);
+		}
+		x = 0;
+		y = 0;
+		boolean kessz = false;
+		while (kessz != true) {
+			palya[x][y] = m;
+			Mezo koztes = m.SzomszedokLekerdez(Irany.LE);
+			while (koztes != null) {
+				x = x + 1;
+				palya[x][y] = koztes;
+				koztes = koztes.SzomszedokLekerdez(Irany.LE);
+			}
+			x = 0; // RESETELNI X-t
+			y += 1;
+			if (m.SzomszedokLekerdez(Irany.JOBBRA) == null)
+				kessz = true;
+			m = m.SzomszedokLekerdez(Irany.JOBBRA);
+		}
+
+		// Palya kirajzolasa
+		Palyarajzolas(palya);
 
 		for (int index = 0; index < mezok.size(); index++) {
 			if (mezok.get(index).getMunkas() != null) {
@@ -354,62 +363,8 @@ public class Jatek {
 			}
 
 			// Palya kirajzolasa
-			for (x = 0; x < magassag; x++) {
-				for (y = 0; y < szelesseg; y++) {
-					if (palya[x][y] instanceof Fal) {
-						System.out.print("F");
-					} else if (palya[x][y] instanceof Kapcsolo) {
-						if (palya[x][y].getLada() != null) {
-							System.out.print("L");
-						} else if (palya[x][y].getMunkas() != null) {
-							Munkas mu = palya[x][y].getMunkas();
-							for (int in = 0; in < munkasok.size(); in++) {
-								if (munkasok.get(in) == mu)
-									System.out.print(in);
-							}
-						} else {
-							System.out.print("K");
-						}
-					} else if (palya[x][y] instanceof Lyuk) {
-						System.out.print("Y");
-
-					} else if (palya[x][y] instanceof Cel) {
-						if (palya[x][y].getLada() != null) {
-							System.out.print("L");
-						} else if (palya[x][y].getMunkas() != null) {
-							Munkas mu = palya[x][y].getMunkas();
-							for (int in = 0; in < munkasok.size(); in++) {
-								if (munkasok.get(in) == mu)
-									System.out.print(in);
-							}
-						} else {
-							System.out.print("C");
-						}
-					} else if (palya[x][y] instanceof Mezo) {
-						if (palya[x][y].getLada() != null) {
-							System.out.print("L");
-						} else if (palya[x][y].getMunkas() != null) {
-							Munkas mu = palya[x][y].getMunkas();
-							for (int in = 0; in < munkasok.size(); in++) {
-								if (munkasok.get(in) == mu)
-									System.out.print(in);
-							}
-						} else if (palya[x][y].getOlaj()) {
-							System.out.print("O");
-						} else if (palya[x][y].getMez()) {
-							System.out.print("E");
-						} else {
-							System.out.print("M");
-						}
-					}
-				}
-				System.out.print("\n");
-			}
-			for (int index = 0; index < munkasok.size(); index++) {
-				System.out.println(munkasok.get(index).getNev() + " azonositoja: " + index + " pont: "
-						+ munkasok.get(index).getPont());
-				;
-			}
+			Palyarajzolas(palya);
+			
 			System.out.println("Jelenleg aktiv munkas: " + aktivMunkas);
 		}
 		// Jç–¸é§ť vé¦®e kiiratç–˝ok
@@ -467,7 +422,7 @@ public class Jatek {
 		boolean tolhato = false;
 		int i = 0;
 		Mezo m = null;
-		List<Mezo> jatekvm = new ArrayList();
+		List<Mezo> jatekvm = new ArrayList<Mezo>();
 		jatekvm = mezok;
 
 		while (tolhato == false && i < mezok.size()) {
@@ -530,8 +485,8 @@ public class Jatek {
 
 						if (m.getLada() == null) {
 							jatekvm = mezok;
-							List<Mezo> latogatott = new ArrayList();
-							List<Mezo> latogatando = new ArrayList();
+							List<Mezo> latogatott = new ArrayList<Mezo>();
+							List<Mezo> latogatando = new ArrayList<Mezo>();
 							latogatott.add(m);
 							System.out.println(elso + "elso");
 							// Kezdo meglatogatandokkal valo feltoltes

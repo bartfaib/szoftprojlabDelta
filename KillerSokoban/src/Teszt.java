@@ -86,7 +86,7 @@ public class Teszt {
 		int number;
 
 		number = input.nextInt();
-		// input.close();
+		input.close();
 		return number;
 	}
 
@@ -689,7 +689,6 @@ public class Teszt {
 		// A korabban felderitett osszes mezo konvertalasa egy 2D tombbe
 		palya = new Mezo[magassag][szelesseg];
 
-		Mezo balfelso = new Mezo();
 		m = mezok.get(0);
 		while (m.SzomszedokLekerdez(Irany.FEL) != null) {
 			m = m.SzomszedokLekerdez(Irany.FEL);
@@ -697,7 +696,7 @@ public class Teszt {
 		while (m.SzomszedokLekerdez(Irany.BALRA) != null) {
 			m = m.SzomszedokLekerdez(Irany.BALRA);
 		}
-		balfelso = m;
+
 		x = 0;
 		y = 0;
 		boolean done = false;
@@ -777,20 +776,20 @@ public class Teszt {
 		Path sample = Paths.get(sampletest);
 		Path output = Paths.get(outputtest);
 		byte[] sample_array = Files.readAllBytes(sample); // A tesztesethez
-															// tartozó
+															// tartozï¿½
 															// mintakimenet
-															// binárisát
-															// betöltjük
+															// binï¿½risï¿½t
+															// betï¿½ltjï¿½k
 		byte[] output_array = Files.readAllBytes(output); // A teszteset
-															// kimenetének
-															// binárisát
-															// betöltjük
+															// kimenetï¿½nek
+															// binï¿½risï¿½t
+															// betï¿½ltjï¿½k
 
-		if (Arrays.equals(sample_array, output_array)) { // A két fájl bináris
-															// tartalmát
-															// ellenõrizzük, ha
+		if (Arrays.equals(sample_array, output_array)) { // A kï¿½t fï¿½jl binï¿½ris
+															// tartalmï¿½t
+															// ellenï¿½rizzï¿½k, ha
 															// ezek egyeznek,
-															// akkor a két fájl
+															// akkor a kï¿½t fï¿½jl
 															// tartalma is.
 			System.out.println("A kiement megegyezik az elvartakkal!");
 		} else {

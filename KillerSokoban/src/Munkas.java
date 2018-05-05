@@ -2,7 +2,6 @@
 public class Munkas {
 	private String nev;
 	private int pontok;
-	private int lepett;
 	private boolean kezdo;
 	private boolean elet;
 	private Mezo indulo;
@@ -69,10 +68,9 @@ public class Munkas {
 
 	public Munkas(String n, Mezo i) {
 		if (teszt)
-			System.out.println(n + "Munkas osztály ctor");
+			System.out.println(n + "Munkas osztï¿½ly ctor");
 		this.nev = n;
 		this.pontok = 0;
-		this.lepett = 0;
 		this.kezdo = false;
 		this.elet = true;
 		this.indulo = i;
@@ -80,10 +78,9 @@ public class Munkas {
 
 	public Munkas(String n, Mezo i, boolean a) {
 		if (teszt)
-			System.out.println(n + "Munkas osztály ctor");
+			System.out.println(n + "Munkas osztï¿½ly ctor");
 		this.nev = n;
 		this.pontok = 0;
-		this.lepett = 0;
 		this.kezdo = a;
 		this.elet = true;
 		this.indulo = i;
