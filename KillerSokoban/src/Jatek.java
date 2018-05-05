@@ -56,8 +56,28 @@ public class Jatek {
 	int szelesseg = 1;
 	int x = 0;
 	int y = 0;
-	
-	public void Palyarajzolas(Mezo[][] palya){
+	boolean kessz;
+
+	public void Palyarajzolas(Mezo m, Mezo[][] palya) {
+		x = 0;
+		y = 0;
+		kessz = false;
+
+		while (kessz != true) {
+			palya[x][y] = m;
+			Mezo koztes = m.SzomszedokLekerdez(Irany.LE);
+			while (koztes != null) {
+				x = x + 1;
+				palya[x][y] = koztes;
+				koztes = koztes.SzomszedokLekerdez(Irany.LE);
+			}
+			x = 0; // RESETELNI X-t
+			y += 1;
+			if (m.SzomszedokLekerdez(Irany.JOBBRA) == null)
+				kessz = true;
+			m = m.SzomszedokLekerdez(Irany.JOBBRA);
+		}
+		
 		for (x = 0; x < magassag; x++) {
 			for (y = 0; y < szelesseg; y++) {
 				if (palya[x][y] instanceof Fal) {
@@ -110,12 +130,12 @@ public class Jatek {
 			System.out.print("\n");
 		}
 		for (int index = 0; index < munkasok.size(); index++) {
-			System.out.println(munkasok.get(index).getNev() + " azonositoja: " + index + " pont: "
-					+ munkasok.get(index).getPont());
+			System.out
+					.println(munkasok.get(index).getNev() + " (" + index + ") pont: " + munkasok.get(index).getPont());
 			;
 		}
 	}
-	
+
 	public void Kor() {
 
 		// Az aktuç–ťis munkç–˝t szç–Ąontartďż˝ vç–ťtozďż˝
@@ -177,30 +197,13 @@ public class Jatek {
 		while (m.SzomszedokLekerdez(Irany.BALRA) != null) {
 			m = m.SzomszedokLekerdez(Irany.BALRA);
 		}
-		x = 0;
-		y = 0;
-		boolean kessz = false;
-		while (kessz != true) {
-			palya[x][y] = m;
-			Mezo koztes = m.SzomszedokLekerdez(Irany.LE);
-			while (koztes != null) {
-				x = x + 1;
-				palya[x][y] = koztes;
-				koztes = koztes.SzomszedokLekerdez(Irany.LE);
-			}
-			x = 0; // RESETELNI X-t
-			y += 1;
-			if (m.SzomszedokLekerdez(Irany.JOBBRA) == null)
-				kessz = true;
-			m = m.SzomszedokLekerdez(Irany.JOBBRA);
-		}
 
 		// Palya kirajzolasa
-		Palyarajzolas(palya);
+		Palyarajzolas(m, palya);
 
 		for (int index = 0; index < mezok.size(); index++) {
 			if (mezok.get(index).getMunkas() != null) {
-				System.out.println("talalt");
+				System.out.println("Munkas megtalalva.");
 			}
 		}
 		// Jatek maga addig tart amig a tart valtozo true
@@ -223,25 +226,25 @@ public class Jatek {
 				}
 				System.out.println(komm);
 				switch (komm) {
-				case ("tol w"): {
+				case ("w"): {
 					irany = Irany.FEL;
 					volt = true;
 				}
 					break;
 
-				case ("tol s"): {
+				case ("s"): {
 					irany = Irany.LE;
 					volt = true;
 				}
 					break;
 
-				case ("tol a"): {
+				case ("a"): {
 					irany = Irany.BALRA;
 					volt = true;
 				}
 					break;
 
-				case ("tol d"): {
+				case ("d"): {
 					irany = Irany.JOBBRA;
 					volt = true;
 				}
@@ -344,28 +347,11 @@ public class Jatek {
 			while (m.SzomszedokLekerdez(Irany.BALRA) != null) {
 				m = m.SzomszedokLekerdez(Irany.BALRA);
 			}
-			x = 0;
-			y = 0;
-			kessz = false;
-			while (kessz != true) {
-				palya[x][y] = m;
-				Mezo koztes = m.SzomszedokLekerdez(Irany.LE);
-				while (koztes != null) {
-					x = x + 1;
-					palya[x][y] = koztes;
-					koztes = koztes.SzomszedokLekerdez(Irany.LE);
-				}
-				x = 0;
-				y += 1;
-				if (m.SzomszedokLekerdez(Irany.JOBBRA) == null)
-					kessz = true;
-				m = m.SzomszedokLekerdez(Irany.JOBBRA);
-			}
 
 			// Palya kirajzolasa
-			Palyarajzolas(palya);
-			
-			System.out.println("Jelenleg aktiv munkas: " + aktivMunkas);
+			Palyarajzolas(m, palya);
+
+			System.out.println(munkasok.get(aktivMunkas).getNev() + " (" + aktivMunkas + ") Munkas kovetkezik.");
 		}
 		// Jç–¸é§ť vé¦®e kiiratç–˝ok
 		// JAtek vegen a gyoztes meghatarozasa
