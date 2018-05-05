@@ -198,9 +198,6 @@ public class Jatek {
 			m = m.SzomszedokLekerdez(Irany.BALRA);
 		}
 
-		// Palya kirajzolasa
-		Palyarajzolas(m, palya);
-
 		for (int index = 0; index < mezok.size(); index++) {
 			if (mezok.get(index).getMunkas() != null) {
 				System.out.println("Munkas megtalalva.");
@@ -208,6 +205,11 @@ public class Jatek {
 		}
 		// Jatek maga addig tart amig a tart valtozo true
 		while (tart == true) {
+
+			// Palya kirajzolasa
+			Palyarajzolas(m, palya);
+
+			System.out.println(munkasok.get(aktivMunkas).getNev() + " (" + aktivMunkas + ") Munkas kovetkezik.");
 
 			komm = null;
 			volt = false;
@@ -347,12 +349,8 @@ public class Jatek {
 			while (m.SzomszedokLekerdez(Irany.BALRA) != null) {
 				m = m.SzomszedokLekerdez(Irany.BALRA);
 			}
-
-			// Palya kirajzolasa
-			Palyarajzolas(m, palya);
-
-			System.out.println(munkasok.get(aktivMunkas).getNev() + " (" + aktivMunkas + ") Munkas kovetkezik.");
 		}
+		
 		// Jç–¸é§ť vé¦®e kiiratç–˝ok
 		// JAtek vegen a gyoztes meghatarozasa
 		Munkas[] eredmeny = new Munkas[munkasok.size()];
