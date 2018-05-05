@@ -1,68 +1,75 @@
 
-
-public class Munkas{
+public class Munkas {
 	private String nev;
 	private int pontok;
 	private int lepett;
 	private boolean kezdo;
 	private boolean elet;
 	private Mezo indulo;
-	private boolean teszt = false;	
-	
-	public void setTeszt (boolean t) { teszt = t; }
-	
-	public void setKezdo  (boolean k) { kezdo = k; }
-	
+	private boolean teszt = false;
+
+	public void setTeszt(boolean t) {
+		teszt = t;
+	}
+
+	public void setKezdo(boolean k) {
+		kezdo = k;
+	}
+
 	public void setIndulo(Mezo m) {
 		this.indulo = m;
 	}
-	
+
 	public void addOlaj() {
 		indulo.setOlaj();
 	}
-	
+
 	public void addMez() {
 		indulo.setMez();
 	}
-	public Kimenetel Mozog (Irany i) {
-		if( i == null) System.out.println(this.nev + " Munkas mozog" + i);
-		
-		
+
+	public Kimenetel Mozog(Irany i) {
+		if (i == null)
+			System.out.println(this.nev + " Munkas mozog" + i);
+
 		Mezo szomszed = indulo.SzomszedokLekerdez(i);
 		Kimenetel k = szomszed.Mozog(i);
-		
-		if(k == Kimenetel.Mozoghat || k == Kimenetel.PontotErt) {
+
+		if (k == Kimenetel.Mozoghat || k == Kimenetel.PontotErt) {
 			Mezo korabbi = indulo;
 			szomszed.Add(this);
 			korabbi.Torol();
-			if(k == Kimenetel.PontotErt && this.kezdo == true) {
-				this.pontok +=1;
-				System.out.println(this.nev + " Kapott"+"1 pontot igy van :"+this.pontok);
+			if (k == Kimenetel.PontotErt && this.kezdo == true) {
+				this.pontok += 1;
+				System.out.println(this.nev + " Kapott" + "1 pontot igy van :" + this.pontok);
 			}
-		}else {
+		} else {
 			if (this.kezdo == false) {
 				this.Halal();
 				indulo.Torol();
-				if( teszt) System.out.println(this.nev + " Munkas mozog Return Mozoghat");
+				if (teszt)
+					System.out.println(this.nev + " Munkas mozog Return Mozoghat");
 				return Kimenetel.Mozoghat;
-			}			
+			}
 		}
-		if( teszt) System.out.println(this.nev+" Munkas mozog Return"+k);
+		if (teszt)
+			System.out.println(this.nev + " Munkas mozog Return" + k);
 		return k;
-		
+
 	}
-	
-	public void Halal () {
+
+	public void Halal() {
 		this.elet = false;
 		System.out.println(this.nev + " Munkas Meghalt");
 	}
-	
+
 	public boolean Elet() {
 		return elet;
 	}
-	
-	public Munkas (String n, Mezo i) {
-		if( teszt) System.out.println(n + "Munkas osztály ctor");
+
+	public Munkas(String n, Mezo i) {
+		if (teszt)
+			System.out.println(n + "Munkas osztály ctor");
 		this.nev = n;
 		this.pontok = 0;
 		this.lepett = 0;
@@ -70,9 +77,10 @@ public class Munkas{
 		this.elet = true;
 		this.indulo = i;
 	}
-	
-	public Munkas (String n, Mezo i, boolean a) {
-		if( teszt) System.out.println(n + "Munkas osztály ctor");
+
+	public Munkas(String n, Mezo i, boolean a) {
+		if (teszt)
+			System.out.println(n + "Munkas osztály ctor");
 		this.nev = n;
 		this.pontok = 0;
 		this.lepett = 0;
@@ -87,6 +95,6 @@ public class Munkas{
 
 	public String getNev() {
 		return nev;
-	}	
-	
+	}
+
 }
