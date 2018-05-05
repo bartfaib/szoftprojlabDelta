@@ -51,14 +51,13 @@ public class Jatek {
 		}
 	}
 
-	int MaxLepes = 5;
 	int magassag = 1;
 	int szelesseg = 1;
 	int x = 0;
 	int y = 0;
 	boolean kessz;
 
-	public void Palyarajzolas(Mezo m, Mezo[][] palya) {
+	public void PalyaKirajzolas(Mezo m, Mezo[][] palya) {
 		x = 0;
 		y = 0;
 		kessz = false;
@@ -136,33 +135,22 @@ public class Jatek {
 		}
 	}
 
+	int aktivMunkas = 0;
+	int maxLepesSzam = 8;
+	Irany mozgasiIrany = null;
+	int lepesSzam = maxLepesSzam;
+	boolean jatekFolyik = true;
+	boolean voltErvenyesParancs = false;
+	String felhasznaloiParancs = null;
+
 	public void Kor() {
-
-		// Az aktuáis munkát szç–Ąontartü vátozü
-		int aktivMunkas = 0;
-
+		aktivMunkas = 0;
 		munkasok.get(aktivMunkas).setKezdo(true);
-
-		// Amilyen irányba mozgatjuk a munkást
-		Irany mozgasiIrany = null;
-
-		// Mozgas kimenetelé§­ek eltç–µoláç–¸ szolgáü vátozü.
-		Kimenetel k = null;
-
-		// Munkas által mé¦® megtehetü lé§±é§¸ek szç–Ąa
-		int lepesSzam = MaxLepes;
-
-		// Jatek tare vagy vé¦®et é§»t-e vátozü
-		boolean tart = true;
-		boolean voltErvenyesParancs = false;
-
-		// Felhasznalo alltal megasott utasitasok
-		String komm = null;
-		/*
-		 * Szelesseg es magassag megnezese, hogy letrelehessen hozni egy 2d-s
-		 * tombot a kirajzolashoz
-		 */
-		// egyrol indul mert a kezdo pozicit nem szamolja bele.
+		lepesSzam = maxLepesSzam;
+		mozgasiIrany = null;
+		jatekFolyik = true;
+		voltErvenyesParancs = false;
+		
 		magassag = 1;
 		szelesseg = 1;
 
@@ -186,6 +174,7 @@ public class Jatek {
 			m = m.SzomszedokLekerdez(Irany.BALRA);
 			szelesseg += 1;
 		}
+		
 		// kirajzolashoz a 2d-s tomb
 		Mezo[][] palya = new Mezo[magassag][szelesseg];
 
@@ -201,16 +190,15 @@ public class Jatek {
 				System.out.println("Munkas megtalalva.");
 			}
 		}
-		// Jatek maga addig tart amig a tart valtozo true
-		while (tart == true) {
 
-			// Palya kirajzolasa
-			Palyarajzolas(m, palya);
+		while (jatekFolyik) {
+			PalyaKirajzolas(m, palya);
 
 			System.out.println("Az iranyitas a 'wasd om' gombok utan ENTER-rel tortenik.");
-			System.out.println(munkasok.get(aktivMunkas).getNev() + " (" + aktivMunkas + ") kovetkezik " + lepesSzam + " lepes van hatra.");
+			System.out.println(munkasok.get(aktivMunkas).getNev() + " (" + aktivMunkas + ") kovetkezik " + lepesSzam
+					+ " lepes van hatra.");
 
-			komm = null;
+			felhasznaloiParancs = null;
 			voltErvenyesParancs = false;
 
 			// Parancs beolvasasa
@@ -219,14 +207,14 @@ public class Jatek {
 				try {
 					String s = br.readLine();
 
-					komm = s;
+					felhasznaloiParancs = s;
 					s = null;
 					br = null;
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-				System.out.println(komm);
-				switch (komm) {
+
+				switch (felhasznaloiParancs) {
 				case ("w"): {
 					mozgasiIrany = Irany.FEL;
 					voltErvenyesParancs = true;
@@ -274,8 +262,8 @@ public class Jatek {
 			}
 
 			// Ha a kovetkezo parancsot kapta a program
-			if (komm.equals("")) {
-				lepesSzam = MaxLepes;
+			if (felhasznaloiParancs.equals("")) {
+				lepesSzam = maxLepesSzam;
 				boolean kov = false;
 				munkasok.get(aktivMunkas).setKezdo(false);
 
@@ -293,18 +281,12 @@ public class Jatek {
 						munkasok.get(aktivMunkas).setKezdo(true);
 					}
 				}
-				// Ha valamelyik iranyba mozgas utasitast kapott a jatek
 			} else if (mozgasiIrany != null) {
-
-				// Megfelelo iranyba tolasa a munkasnak
-				k = munkasok.get(aktivMunkas).Mozog(mozgasiIrany);
-
-				// Ha tudtunk léni a munkásal, akkor a lépés számot 1 el
-				// csökentjük, ha pontot értünk Nullázuk a hátralévő lépés
-				// számot.
-				if (k == Kimenetel.PontotErt) {
+				if (munkasok.get(aktivMunkas).Mozog(mozgasiIrany) == Kimenetel.PontotErt) {
+					// Ha pontot értünk Nullázuk a hátralévő lépés számot.
 					lepesSzam = 0;
 				} else {
+					// Egyébként 1 el csökentjük a lépés számot.
 					lepesSzam -= 1;
 				}
 
@@ -315,7 +297,7 @@ public class Jatek {
 
 					// Ha mar nem tud tobbet lepni a munkas a kovetkezo jon
 					if (lepesSzam == 0) {
-						lepesSzam = MaxLepes;
+						lepesSzam = maxLepesSzam;
 						boolean kov = false;
 						munkasok.get(aktivMunkas).setKezdo(false);
 						// Keresi a kovetkezo eletben levo munkast
@@ -336,7 +318,7 @@ public class Jatek {
 						}
 					}
 				} else {
-					tart = false;
+					jatekFolyik = false;
 				}
 			}
 
