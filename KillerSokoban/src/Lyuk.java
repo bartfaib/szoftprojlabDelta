@@ -2,8 +2,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Lyuk extends Mezo {
-	private boolean Nyitott = false;
-
 	private boolean teszt = false;
 
 	public void setTeszt(boolean t) {

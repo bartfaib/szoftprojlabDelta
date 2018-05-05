@@ -8,6 +8,7 @@ public class Mezo {
 	protected List<Mezo> szomszedok;
 	private boolean teszt = false;
 	private Kenoanyag surlodas = Kenoanyag.Semleges;
+	protected boolean Nyitott = true;
 
 	public void setTeszt(boolean t) {
 		teszt = t;
@@ -135,6 +136,10 @@ public class Mezo {
 
 	public Munkas getMunkas() {
 		return this.munkas;
+	}
+
+	public boolean getNyitva() {
+		return Nyitott;
 	}
 
 	public void setMunkas(Munkas m) {
