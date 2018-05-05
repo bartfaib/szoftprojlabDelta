@@ -141,12 +141,12 @@ public class Jatek {
 			System.out.print("\n");
 		}
 		for (int index = 0; index < munkasok.size(); index++) {
-			if(munkasok.get(index).Elet() == false) {
-				System.out
-				.println(munkasok.get(index).getNev() + " (" + index + ") doglott, pont: " + munkasok.get(index).getPont());
+			if (munkasok.get(index).Elet() == false) {
+				System.out.println(munkasok.get(index).getNev() + " (" + index + ") doglott, pont: "
+						+ munkasok.get(index).getPont());
 			} else {
-				System.out
-				.println(munkasok.get(index).getNev() + " (" + index + ") elo, pont: " + munkasok.get(index).getPont());
+				System.out.println(
+						munkasok.get(index).getNev() + " (" + index + ") elo, pont: " + munkasok.get(index).getPont());
 			}
 		}
 	}
@@ -280,7 +280,7 @@ public class Jatek {
 				}
 
 			}
-			
+
 			if (mozgasiIrany != null) {
 				if (munkasok.get(aktivMunkas).Mozog(mozgasiIrany) == Kimenetel.PontotErt) {
 					lepesSzam = 0;
@@ -321,75 +321,75 @@ public class Jatek {
 				}
 			}
 
-			// Ha a kovetkezo parancsot kapta a program vagy megdoglott a munkasunk
+			// Ha a kovetkezo parancsot kapta a program vagy megdoglott a
+			// munkasunk
 			if (felhasznaloiParancs.equals("") || munkasok.get(aktivMunkas).Elet() == false) {
-				lepesSzam = maxLepesSzam;
-				munkasok.get(aktivMunkas).setKezdo(false);
+				// Elosszor megvizsgalja hogy van-e meg elo munkas
+				boolean vanEloMunkas = false;
+				for (int i = 0; i < munkasok.size(); i++) {
+					if (munkasok.get(i).Elet() == true)
+						vanEloMunkas = true;
+				}
 
-				// Keresi a kovetkezo eletben levo munkast
-				while (true) {
-					aktivMunkas += 1;
-					if (aktivMunkas == munkasok.size())
-						aktivMunkas = 0;
+				// Ha nincs elo munkas falsal ter vissza ami a jatek
+				// vegétjelenti
+				if (!vanEloMunkas) {
+					jatekFolyik = false;
+				} else {
+					lepesSzam = maxLepesSzam;
+					munkasok.get(aktivMunkas).setKezdo(false);
 
-					// Ha a kovetkezo kivalasztott munkas eletben van akkor
-					// leallitja a kerest
-					if (munkasok.get(aktivMunkas).Elet() == true) {
-						munkasok.get(aktivMunkas).setKezdo(true);
-						break;
+					// Keresi a kovetkezo eletben levo munkast
+					while (true) {
+						aktivMunkas += 1;
+						if (aktivMunkas == munkasok.size())
+							aktivMunkas = 0;
+
+						// Ha a kovetkezo kivalasztott munkas eletben van akkor
+						// leallitja a kerest
+						if (munkasok.get(aktivMunkas).Elet() == true) {
+							munkasok.get(aktivMunkas).setKezdo(true);
+							break;
+						}
 					}
 				}
 			}
 		}
 
+		System.out.println("Game Over");
+
 		// Jç–¸é§ť vé¦®e kiiratáok
 		// JAtek vegen a gyoztes meghatarozasa
 		Munkas[] eredmeny = new Munkas[munkasok.size()];
-		int n = eredmeny.length;
 
-		for (int index = 0; index < n; index++) {
+		for (int index = 0; index < eredmeny.length; index++) {
 			eredmeny[index] = munkasok.get(index);
 		}
-		Munkas temp;
+		
 		// sorba rakja oket
-		for (int index = 0; index < n; index++) {
-			for (int j = 1; j < (n - index); j++) {
-
-				if (eredmeny[j - 1].getPont() > eredmeny[j].getPont()) {
-					temp = eredmeny[j - 1];
-					eredmeny[j - 1] = eredmeny[j];
-					eredmeny[j] = temp;
+		for (int j = 0; j < eredmeny.length; j++) {
+			for (int index = 0; index < eredmeny.length - 1; index++) {
+				if (eredmeny[index].getPont() > eredmeny[index + 1].getPont()) {
+					Munkas temp = eredmeny[index + 1];
+					eredmeny[index + 1] = eredmeny[index];
+					eredmeny[index] = temp;
 				}
-
 			}
 		}
 		// Eredmenyek kiirasa
 		int helyezett = 1;
-		for (int index = 0; index < n; index++) {
-			if (index == 0) {
-				System.out.println(helyezett + ". lett:" + eredmeny[index].getNev());
-			} else {
+		for (int index = 0; index < eredmeny.length; index++) {
+			System.out
+			.println(helyezett + ". lett: " + eredmeny[index].getNev() + ", " + eredmeny[index].getPont());
+			if (index < eredmeny.length - 1 && eredmeny[index].getPont() > eredmeny[index + 1].getPont()) {
 				// Ha a kovetkezonek kevesebb pontja van akkor a helyezes
 				// szamanka novelese
-				if (eredmeny[index - 1].getPont() > eredmeny[index].getPont())
-					helyezett += 1;
-				System.out.println(helyezett + ". lett:" + eredmeny[index].getNev());
+				helyezett += 1;
 			}
 		}
 	}
 
 	boolean JatekVege() {
-		// Elosszor megvizsgalja hogy van-e meg elo munkas
-		boolean vanEloMunkas = false;
-		for (int i = 0; i < munkasok.size(); i++) {
-			if (munkasok.get(i).Elet() == true)
-				vanEloMunkas = true;
-		}
-
-		// Ha nincs elo munkas falsal ter vissza ami a jatek vegétjelenti
-		if (!vanEloMunkas)
-			return true;
-
 		boolean vanTolhatoLada = false;
 		int i = 0;
 		Mezo m = null;
