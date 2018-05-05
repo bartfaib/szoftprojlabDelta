@@ -12,7 +12,7 @@ public class Beolvas {
 
 	public ArrayList<String> Init() {
 		Scanner tempAlpha = null;
-		ArrayList<String> List = new ArrayList<String>();
+		ArrayList<String> tempLista = new ArrayList<String>();
 
 		try {
 			tempAlpha = new Scanner(new File(System.getProperty("user.dir") + "\\Maps\\Sample\\" + fileName));
@@ -21,7 +21,7 @@ public class Beolvas {
 				Scanner tempBeta = new Scanner(tempAlpha.nextLine());
 				while (tempBeta.hasNext()) {
 					String s = tempBeta.next();
-					List.add(s);
+					tempLista.add(s);
 				}
 				tempBeta.close();
 			}
@@ -32,7 +32,7 @@ public class Beolvas {
 			tempAlpha.close();
 		}
 
-		return List;
+		return tempLista;
 	}
 
 	public ArrayList<Mezo> Beolvasas() {
@@ -40,13 +40,13 @@ public class Beolvas {
 		boolean teszt = false;
 		// System.out.println("Beolvas");
 
-		ArrayList<String> List = new ArrayList<String>(Init());
+		ArrayList<String> tempLista = new ArrayList<String>(Init());
 		ArrayList<Mezo> mezok = new ArrayList<Mezo>();
 		ArrayList<Kapcsolo> kapcsolok = new ArrayList<Kapcsolo>();
 		ArrayList<Lyuk> lyukak = new ArrayList<Lyuk>();
 
-		for (int i = 0; i < List.size(); i++) {
-			char[] betuk = List.get(i).toCharArray();
+		for (int i = 0; i < tempLista.size(); i++) {
+			char[] betuk = tempLista.get(i).toCharArray();
 
 			for (int j = 0; j < betuk.length; j++) {
 				switch (betuk[j]) {
