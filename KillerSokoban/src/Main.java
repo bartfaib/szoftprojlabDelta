@@ -1,13 +1,7 @@
 import java.util.ArrayList;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
 
 public class Main {
+<<<<<<< HEAD
     public static void main(String[] args) {
 	/*	Mezo m0 = new Mezo();	
 		Fal m1 = new Fal();
@@ -155,4 +149,15 @@ public class Main {
     		}
 
     }
+=======
+	public static void main(String[] args) {
+		Beolvas b = new Beolvas("prebuilt1.xml");
+
+		ArrayList<String> jatekos = new ArrayList<String>();
+		jatekos.add("Peti");
+		jatekos.add("Bali");
+		Jatek j = new Jatek(b.Beolvasas(), jatekos);
+		j.Kor();
+	}
+>>>>>>> 61319b3495590571225dbe3e131e2446e507b2df
 }
