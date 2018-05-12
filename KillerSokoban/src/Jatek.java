@@ -282,7 +282,7 @@ public class Jatek {
 			}
 
 			if (mozgasiIrany != null) {
-				if (munkasok.get(aktivMunkas).Mozog(mozgasiIrany, 0) == Kimenetel.PontotErt) {
+				if (munkasok.get(aktivMunkas).Mozog(mozgasiIrany) == Kimenetel.PontotErt) {
 					lepesSzam = 0;
 					// Ha pontot értünk Nullázuk a hátralévő lépés számot.
 				} else {
@@ -401,7 +401,7 @@ public class Jatek {
 
 			/*
 			 * Megnezi hogy a lada eltolhato e valamelyik iranyba ha igen akkor
-			 * megnezi hogy van emelette üres mezo ha igen akkor abbî‰  a
+			 * megnezi hogy van emelette üres mezo ha igen akkor abbî‰  a
 			 * mezőîŹ� kiindulva megné¨·i az î’›szes lehetseges utat amĺ�• nem
 			 * talá egy mezé munkát vagy minden lehetsé¦®es ĺ�€ el nem fogyott.
 			 */
@@ -438,7 +438,7 @@ public class Jatek {
 				// megnezi hogy mozoghat e a lada es ha igen az ellentetes
 				// oldalon milyen mezo van
 
-				Kimenetel k = m.Mozog(elso, 0);
+				Kimenetel k = m.Mozog(elso);
 				if (k == Kimenetel.Mozoghat || k == Kimenetel.PontotErt) {
 					if (m.SzomszedokLekerdez(ellentetes) instanceof Mezo
 							|| m.SzomszedokLekerdez(ellentetes) instanceof Kapcsolo

@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Lyuk extends Mezo {
-	private boolean Nyitott = true;
 	private boolean teszt = false;
 
 	public void setTeszt(boolean t) {
@@ -27,21 +26,27 @@ public class Lyuk extends Mezo {
 		this.Nyitott = nyit;
 	}
 
-public Lyuk(boolean nyit) {
-	if( teszt) System.out.println("Lyuk Ctor" + nyit);
-	this.Nyitott =nyit;
-}
- public Kimenetel Mozog(Irany i,int tomeg){
-		if( teszt) System.out.println("Lyuk MOZOG "+ i);
-		
-		if(this.getLada() != null) {
-			if( teszt) System.out.println("Lyuk mozog Return"+this.getLada().Mozog(i,tomeg));
-			return this.getLada().Mozog(i,tomeg);
-		}else if (this.getMunkas() != null) {
-			if( teszt) System.out.println("Lyuk mozog Return"+this.getMunkas().Mozog(i,tomeg));
-			return this.getMunkas().Mozog(i,tomeg);
-		}else {
-			if( teszt) System.out.println("Lyuk mozog Return Mozoghat");
+	public Lyuk(boolean nyit) {
+		if (teszt)
+			System.out.println("Lyuk Ctor" + nyit);
+		this.Nyitott = nyit;
+	}
+
+	public Kimenetel Mozog(Irany i) {
+		if (teszt)
+			System.out.println("Lyuk MOZOG " + i);
+
+		if (this.getLada() != null) {
+			if (teszt)
+				System.out.println("Lyuk mozog Return" + this.getLada().Mozog(i));
+			return this.getLada().Mozog(i);
+		} else if (this.getMunkas() != null) {
+			if (teszt)
+				System.out.println("Lyuk mozog Return" + this.getMunkas().Mozog(i));
+			return this.getMunkas().Mozog(i);
+		} else {
+			if (teszt)
+				System.out.println("Lyuk mozog Return Mozoghat");
 			return Kimenetel.Mozoghat;
 		}
 	}
@@ -85,9 +90,5 @@ public Lyuk(boolean nyit) {
 
 	public void setStateTrue() {
 		this.Nyitott = true;
-	}
-	
-	public boolean getState() {
-		return Nyitott;
 	}
 }

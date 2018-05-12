@@ -26,14 +26,15 @@ public class Munkas {
 	public void addMez() {
 		indulo.setMez();
 	}
-	public Kimenetel Mozog (Irany i,int tomeg) {
-		if( i == null) System.out.println(this.nev + " Munkas mozog" + i);
-		
-		
+
+	public Kimenetel Mozog(Irany i) {
+		if (i == null)
+			System.out.println(this.nev + " Munkas mozog" + i);
+
 		Mezo szomszed = indulo.SzomszedokLekerdez(i);
-		Kimenetel k = szomszed.Mozog(i, 60);
-		
-		if(k == Kimenetel.Mozoghat || k == Kimenetel.PontotErt) {
+		Kimenetel k = szomszed.Mozog(i);
+
+		if (k == Kimenetel.Mozoghat || k == Kimenetel.PontotErt) {
 			Mezo korabbi = indulo;
 			szomszed.Add(this);
 			korabbi.Torol();
@@ -43,7 +44,9 @@ public class Munkas {
 		} else {
 			if (this.kezdo == false) {
 				this.Halal();
-				if( teszt) System.out.println(this.nev + " Munkas mozog Return Mozoghat");
+				indulo.Torol();
+				if (teszt)
+					System.out.println(this.nev + " Munkas mozog Return Mozoghat");
 				return Kimenetel.Mozoghat;
 			}
 		}
@@ -55,7 +58,6 @@ public class Munkas {
 
 	public void Halal() {
 		this.elet = false;
-		indulo.Torol();
 		System.out.println(this.nev + " Munkas Meghalt");
 	}
 

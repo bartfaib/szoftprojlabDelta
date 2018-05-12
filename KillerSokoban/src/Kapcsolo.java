@@ -24,20 +24,25 @@ public class Kapcsolo extends Mezo {
 	public Kapcsolo(List<Mezo> szomsz) {
 		super(szomsz);
 		lyuk = null;
-		if( teszt) System.out.println("Kapcsolo Ctor");
+		if (teszt)
+			System.out.println("Kapcsolo Ctor");
 	}
-	
-	public Kimenetel Mozog(Irany i, int tomeg){
-		if( teszt) System.out.println("Kapcsolo MOZOG "+ i);
-		
-		if(this.getLada() != null) {
-			if( teszt) System.out.println("Kapcsolo mozog Return"+this.getLada().Mozog(i,tomeg));
-			return this.getLada().Mozog(i,tomeg);
-		}else if (this.getMunkas() != null) {
-			if( teszt) System.out.println("Kapcsolo mozog Return"+this.getMunkas().Mozog(i,tomeg));
-			return this.getMunkas().Mozog(i,tomeg);
-		}else {
-			if( teszt) System.out.println("Kapcsolo mozog Return Mozoghat");
+
+	public Kimenetel Mozog(Irany i) {
+		if (teszt)
+			System.out.println("Kapcsolo MOZOG " + i);
+
+		if (this.getLada() != null) {
+			if (teszt)
+				System.out.println("Kapcsolo mozog Return" + this.getLada().Mozog(i));
+			return this.getLada().Mozog(i);
+		} else if (this.getMunkas() != null) {
+			if (teszt)
+				System.out.println("Kapcsolo mozog Return" + this.getMunkas().Mozog(i));
+			return this.getMunkas().Mozog(i);
+		} else {
+			if (teszt)
+				System.out.println("Kapcsolo mozog Return Mozoghat");
 			return Kimenetel.Mozoghat;
 		}
 	}
@@ -52,8 +57,8 @@ public class Kapcsolo extends Mezo {
 		if (teszt)
 			System.out.println("Kapcs ADD lada");
 		super.Add(l);
-		
-		if(lyuk != null )this.lyuk.setStateTrue();
+		if (lyuk != null)
+			this.lyuk.setStateTrue();
 	}
 
 	public void Torol() {

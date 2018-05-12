@@ -33,19 +33,23 @@ public class Mezo {
 			return true;
 		return false;
 	}
-	public Kimenetel Mozog ( Irany i ,int tomeg) {
-		if( i == null) System.out.println("Mezo MOZOG "+ i);
-		//csak a kiiras miatt kell felvenni
+
+	public Kimenetel Mozog(Irany i) {
+		if (i == null)
+			System.out.println("Mezo MOZOG " + i);
+		// csak a kiiras miatt kell felvenni
 		Kimenetel k = null;
-		
-		if(lada != null) {
-			k = lada.Mozog(i, tomeg);
-			
-			if( teszt) System.out.println("Mezo mozog RETURN"+k);
+
+		if (lada != null) {
+			k = lada.Mozog(i);
+
+			if (teszt)
+				System.out.println("Mezo mozog RETURN" + k);
 			return k;
-		}else if (munkas != null) {
-			k = munkas.Mozog(i,tomeg);
-			if( teszt) System.out.println("Mezo Mozog RETURN "+k);
+		} else if (munkas != null) {
+			k = munkas.Mozog(i);
+			if (teszt)
+				System.out.println("Mezo Mozog RETURN " + k);
 			return k;
 		} else {
 			if (teszt)
@@ -155,8 +159,5 @@ public class Mezo {
 
 	public List<Mezo> getSzomsz() {
 		return this.szomszedok;
-	}
-	public boolean getState() {
-		return false;
 	}
 }

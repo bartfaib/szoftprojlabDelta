@@ -99,7 +99,8 @@ public class Teszt {
 		m0.Add(m);
 
 		Irany i = Irany.JOBBRA;
-		m.Mozog(i, 60);
+
+		m.Mozog(i);
 		DrawToFile(m0, "teszt1.xml");
 		Compare(System.getProperty("user.dir") + "\\Maps\\Test\\Outputs\\teszt1.xml",
 				System.getProperty("user.dir") + "\\Maps\\Test\\Samples\\sample1.xml");
@@ -123,7 +124,8 @@ public class Teszt {
 		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
 		System.out.println();
 		Irany i = Irany.JOBBRA;
-		m.Mozog(i, 100);
+
+		m.Mozog(i);
 		DrawToFile(m0, "teszt2.xml");
 		Compare(System.getProperty("user.dir") + "\\Maps\\Test\\Outputs\\teszt2.xml",
 				System.getProperty("user.dir") + "\\Maps\\Test\\Samples\\sample2.xml");
@@ -147,7 +149,7 @@ public class Teszt {
 		System.out.println();
 		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
 		System.out.println();
-		m.Mozog(i, 100);
+		m.Mozog(i);
 		DrawToFile(m0, "teszt3.xml");
 		Compare(System.getProperty("user.dir") + "\\Maps\\Test\\Outputs\\teszt3.xml",
 				System.getProperty("user.dir") + "\\Maps\\Test\\Samples\\sample3.xml");
@@ -172,7 +174,7 @@ public class Teszt {
 		System.out.println();
 		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
 		System.out.println();
-		m.Mozog(i, 100);
+		m.Mozog(i);
 		DrawToFile(m0, "teszt4.xml");
 		Compare(System.getProperty("user.dir") + "\\Maps\\Test\\Outputs\\teszt4.xml",
 				System.getProperty("user.dir") + "\\Maps\\Test\\Samples\\sample4.xml");
@@ -198,7 +200,7 @@ public class Teszt {
 		System.out.println();
 		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
 		System.out.println();
-		m.Mozog(i, 100);
+		m.Mozog(i);
 		DrawToFile(m0, "teszt5.xml");
 		Compare(System.getProperty("user.dir") + "\\Maps\\Test\\Outputs\\teszt5.xml",
 				System.getProperty("user.dir") + "\\Maps\\Test\\Samples\\sample5.xml");
@@ -226,7 +228,7 @@ public class Teszt {
 		System.out.println();
 		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
 		System.out.println();
-		m.Mozog(i, 100);
+		m.Mozog(i);
 		DrawToFile(m0, "teszt6.xml");
 		Compare(System.getProperty("user.dir") + "\\Maps\\Test\\Outputs\\teszt6.xml",
 				System.getProperty("user.dir") + "\\Maps\\Test\\Samples\\sample6.xml");
@@ -251,7 +253,7 @@ public class Teszt {
 		System.out.println();
 		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
 		System.out.println();
-		m.Mozog(i, 100);
+		m.Mozog(i);
 		DrawToFile(m0, "teszt7.xml");
 		Compare(System.getProperty("user.dir") + "\\Maps\\Test\\Outputs\\teszt7.xml",
 				System.getProperty("user.dir") + "\\Maps\\Test\\Samples\\sample7.xml");
@@ -310,7 +312,7 @@ public class Teszt {
 		System.out.println();
 		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
 		System.out.println();
-		m.Mozog(i, 100);
+		m.Mozog(i);
 		DrawToFile(m0, "teszt8.xml");
 		Compare(System.getProperty("user.dir") + "\\Maps\\Test\\Outputs\\teszt8.xml",
 				System.getProperty("user.dir") + "\\Maps\\Test\\Samples\\sample8.xml");
@@ -330,7 +332,7 @@ public class Teszt {
 		System.out.println();
 		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
 		System.out.println();
-		m.Mozog(i, 100);
+		m.Mozog(i);
 		DrawToFile(m0, "teszt9.xml");
 		Compare(System.getProperty("user.dir") + "\\Maps\\Test\\Outputs\\teszt9.xml",
 				System.getProperty("user.dir") + "\\Maps\\Test\\Samples\\sample9.xml");
@@ -351,7 +353,7 @@ public class Teszt {
 		System.out.println();
 		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
 		System.out.println();
-		m.Mozog(i, 100);
+		m.Mozog(i);
 		DrawToFile(m0, "teszt10.xml");
 		Compare(System.getProperty("user.dir") + "\\Maps\\Test\\Outputs\\teszt10.xml",
 				System.getProperty("user.dir") + "\\Maps\\Test\\Samples\\sample10.xml");
@@ -375,7 +377,7 @@ public class Teszt {
 		System.out.println();
 		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
 		System.out.println();
-		m.Mozog(i, 100);
+		m.Mozog(i);
 		DrawToFile(m0, "teszt11.xml");
 		Compare(System.getProperty("user.dir") + "\\Maps\\Test\\Outputs\\teszt11.xml",
 				System.getProperty("user.dir") + "\\Maps\\Test\\Samples\\sample11.xml");
@@ -399,7 +401,7 @@ public class Teszt {
 		System.out.println();
 		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
 		System.out.println();
-		m.Mozog(i, 100);
+		m.Mozog(i);
 		DrawToFile(m0, "teszt12.xml");
 		Compare(System.getProperty("user.dir") + "\\Maps\\Test\\Outputs\\teszt12.xml",
 				System.getProperty("user.dir") + "\\Maps\\Test\\Samples\\sample12.xml");
@@ -423,7 +425,7 @@ public class Teszt {
 		System.out.println();
 		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
 		System.out.println();
-		m.Mozog(i, 100);
+		m.Mozog(i);
 		DrawToFile(m0, "teszt13.xml");
 		Compare(System.getProperty("user.dir") + "\\Maps\\Test\\Outputs\\teszt13.xml",
 				System.getProperty("user.dir") + "\\Maps\\Test\\Samples\\sample13.xml");
@@ -472,7 +474,7 @@ public class Teszt {
 		System.out.println();
 		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
 		System.out.println();
-		m.Mozog(i, 100);
+		m.Mozog(i);
 		DrawToFile(m0, "teszt14.xml");
 		Compare(System.getProperty("user.dir") + "\\Maps\\Test\\Outputs\\teszt14.xml",
 				System.getProperty("user.dir") + "\\Maps\\Test\\Samples\\sample14.xml");
@@ -506,7 +508,7 @@ public class Teszt {
 		System.out.println();
 		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
 		System.out.println();
-		m.Mozog(Irany.JOBBRA, 0);
+		m.Mozog(Irany.JOBBRA);
 		DrawToFile(m0, "teszt15.xml");
 		Compare(System.getProperty("user.dir") + "\\Maps\\Test\\Outputs\\teszt15.xml",
 				System.getProperty("user.dir") + "\\Maps\\Test\\Samples\\sample15.xml");
@@ -542,7 +544,7 @@ public class Teszt {
 		System.out.println();
 		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
 		System.out.println();
-		m.Mozog(Irany.JOBBRA, 0);
+		m.Mozog(Irany.JOBBRA);
 		DrawToFile(m0, "teszt16.xml");
 		Compare(System.getProperty("user.dir") + "\\Maps\\Test\\Outputs\\teszt16.xml",
 				System.getProperty("user.dir") + "\\Maps\\Test\\Samples\\sample16.xml");
@@ -773,10 +775,22 @@ public class Teszt {
 
 		Path sample = Paths.get(sampletest);
 		Path output = Paths.get(outputtest);
-		byte[] sample_array = Files.readAllBytes(sample);	//A tesztesethez tartoz� mintakimenet bin�ris�t bet�ltj�k
-		byte[] output_array = Files.readAllBytes(output);	//A teszteset kimenet�nek bin�ris�t bet�ltj�k
-		
-		if(Arrays.equals(sample_array,output_array)) {   //A k�t f�jl bin�ris tartalm�t ellen�rizz�k, ha ezek egyeznek, akkor a k�t f�jl tartalma is.
+		byte[] sample_array = Files.readAllBytes(sample); // A tesztesethez
+															// tartoz�
+															// mintakimenet
+															// bin�ris�t
+															// bet�ltj�k
+		byte[] output_array = Files.readAllBytes(output); // A teszteset
+															// kimenet�nek
+															// bin�ris�t
+															// bet�ltj�k
+
+		if (Arrays.equals(sample_array, output_array)) { // A k�t f�jl bin�ris
+															// tartalm�t
+															// ellen�rizz�k, ha
+															// ezek egyeznek,
+															// akkor a k�t f�jl
+															// tartalma is.
 			System.out.println("A kiement megegyezik az elvartakkal!");
 		} else {
 			System.out.println("A kimenet elter az elvartaktol");
