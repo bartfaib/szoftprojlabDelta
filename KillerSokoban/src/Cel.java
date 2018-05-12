@@ -53,22 +53,11 @@ public class Cel extends Mezo {
 		}
 		return 0;
 	}
-<<<<<<< HEAD
-	
 	public Kimenetel Mozog(Irany i,int tomeg){
 		if( teszt) System.out.println("Cel Mozog");
 		
 		if (this.getMunkas()!= null) {
 				if (this.getMunkas().Mozog(i,tomeg) != Kimenetel.NemMozoghat) {
-=======
-
-	public Kimenetel Mozog(Irany i) {
-		if (teszt)
-			System.out.println("Cel Mozog");
-
-		if (this.getMunkas() != null) {
-			if (this.getMunkas().Mozog(i) != Kimenetel.NemMozoghat) {
->>>>>>> 61319b3495590571225dbe3e131e2446e507b2df
 				if (this.getSzomsz().get(iranyEllentetes(i)).getLada() != null) {
 					if (teszt)
 						System.out.println("Cel Return PontotErt");
@@ -76,12 +65,7 @@ public class Cel extends Mezo {
 				}
 				this.Torol();
 			}
-<<<<<<< HEAD
 			if( teszt) System.out.println("Cel Return"+this.getMunkas().Mozog(i,tomeg));
-=======
-			if (teszt)
-				System.out.println("Cel Return" + this.getMunkas().Mozog(i));
->>>>>>> 61319b3495590571225dbe3e131e2446e507b2df
 		}
 
 		if (this.getSzomsz().get(iranyEllentetes(i)).getLada() != null) {

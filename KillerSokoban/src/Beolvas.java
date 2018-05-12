@@ -35,214 +35,120 @@ public class Beolvas {
 		return tempLista;
 	}
 
-	public ArrayList<Mezo> Beolvasas() {
-		boolean teszt = false;
+	public ArrayList<Mezo> Beolvas() {
 		// System.out.println("Beolvas");
 
 		ArrayList<String> tempLista = new ArrayList<String>(Init());
 		ArrayList<Mezo> mezok = new ArrayList<Mezo>();
 		ArrayList<Kapcsolo> kapcsolok = new ArrayList<Kapcsolo>();
 		ArrayList<Lyuk> lyukak = new ArrayList<Lyuk>();
-<<<<<<< HEAD
 		
-		for(int i = 0; i < List.size(); i++) {
-			char[] betuk =List.get(i).toCharArray();
+		for(int i = 0; i < tempLista.size(); i++) {
+			char[] betuk = tempLista.get(i).toCharArray();
 			
 			for(int j = 0; j < betuk.length; j++) {
-			switch(betuk[j]){			
-			case 'F': {
-				mezok.add(new Fal());
-			}
-			break;			
-			
-			case 'M': {
-				mezok.add(new Mezo());
-			}
-			break;
-			
-			case 'L': {
-				Mezo m = new Mezo();
-				Lada l = new Lada();
-				
-				l.setIndulo(m);
-				m.Add(l);
-				mezok.add(m);
-
-			}
-			break;
-			
-			case 'Y': {
-				mezok.add(new Lyuk());
-				lyukak.add(new Lyuk());
-			}
-			break;
-			
-			case 'K': {
-				mezok.add(new Kapcsolo());
-				kapcsolok.add(new Kapcsolo());
-			}
-			break;
-			
-			case 'C': {
-				mezok.add(new Cel());
-			}
-			break;
-			
-			case 'O': {
-				Mezo m = new Mezo();
-				m.setOlaj();
-				mezok.add(m);
-				
-			}
-			break;
-			case 'E': {
-				Mezo m = new Mezo();
-				m.setMez();
-				mezok.add(m);
-				
-			}
-			break;
-				
-			
-			default:{
-				mezok.add(new Mezo());
-			}	
-			break;
-			
-			}
-			
-			if(i == 0) { //Elsı sor	
-				if(j != 0 ) {
-					//System.out.print("Set Balra + Jobbra");
-					mezok.get(j).setSzomszed(Irany.BALRA, mezok.get(j-1));
-					mezok.get(j-1).setSzomszed(Irany.JOBBRA, mezok.get(j));
-					zs++;
-					if(betuk[j] == 'L') {
-						mezok.get(j).getLada().setIndulo(mezok.get(j));
-					}
-				}					
-			}
-			if(i > 0) { //Nem elsı sor
-				int tmp = betuk.length;
-				int r = i*tmp;
-				int rm = (i-1)*tmp;
-				//System.out.println(r+" "+i+" "+ rm + " " + j + " "+mezok.size());
-				if(j == 0) { // Elsı eleme
-					//System.out.print("Set Le + Fel");
-					mezok.get(rm+j).setSzomszed(Irany.LE, mezok.get(r+j));
-					mezok.get(r+j).setSzomszed(Irany.FEL, mezok.get(rm+j));
-					zs++;
-					if(betuk[j] == 'L') {
-						mezok.get(r+j).getLada().setIndulo(mezok.get(r+j));
-=======
-
-		for (int i = 0; i < tempLista.size(); i++) {
-			char[] betuk = tempLista.get(i).toCharArray();
-
-			for (int j = 0; j < betuk.length; j++) {
-				switch (betuk[j]) {
+				switch(betuk[j]){			
 				case 'F': {
 					mezok.add(new Fal());
 				}
-					break;
-
+				break;			
+				
 				case 'M': {
 					mezok.add(new Mezo());
 				}
-					break;
-
+				break;
+				
 				case 'L': {
 					Mezo m = new Mezo();
 					Lada l = new Lada();
-
-					if (teszt)
-						l.setTeszt(teszt);
+					
 					l.setIndulo(m);
-					m.Add(new Lada());
+					m.Add(l);
 					mezok.add(m);
-
+	
 				}
-					break;
-
+				break;
+				
 				case 'Y': {
 					mezok.add(new Lyuk());
 					lyukak.add(new Lyuk());
 				}
-					break;
-
+				break;
+				
 				case 'K': {
 					mezok.add(new Kapcsolo());
 					kapcsolok.add(new Kapcsolo());
 				}
-					break;
-
+				break;
+				
 				case 'C': {
 					mezok.add(new Cel());
 				}
-					break;
-
-				case 'E': {
+				break;
+				
+				case 'O': {
 					Mezo m = new Mezo();
 					m.setOlaj();
 					mezok.add(m);
-
+					
 				}
-
-				case 'Z': {
+				break;
+				case 'E': {
 					Mezo m = new Mezo();
 					m.setMez();
 					mezok.add(m);
-
+					
 				}
-					break;
-
-				default:
-					break;
-
+				break;
+					
+				
+				default:{
+					mezok.add(new Mezo());
+				}	
+				break;
+				
 				}
-
-				if (i == 0) { // Els≈ë sor
-					if (j != 0) {
-						// System.out.print("Set Balra + Jobbra");
-						mezok.get(j).setSzomszed(Irany.BALRA, mezok.get(j - 1));
-						mezok.get(j - 1).setSzomszed(Irany.JOBBRA, mezok.get(j));
-						if (betuk[j] == 'L') {
+				
+				if(i == 0) { //ElsÔøΩ sor	
+					if(j != 0 ) {
+						//System.out.print("Set Balra + Jobbra");
+						mezok.get(j).setSzomszed(Irany.BALRA, mezok.get(j-1));
+						mezok.get(j-1).setSzomszed(Irany.JOBBRA, mezok.get(j));
+						if(betuk[j] == 'L') {
 							mezok.get(j).getLada().setIndulo(mezok.get(j));
 						}
-					}
+					}					
 				}
-				if (i > 0) { // Nem els≈ë sor
-					int r = i * betuk.length;
-					int rm = (i - 1) * betuk.length;
-					// System.out.println(r+" "+i+" "+ rm + " " + j + "
-					// "+mezok.size());
-					if (j == 0) { // Els≈ë eleme
-						// System.out.print("Set Le + Fel");
-						mezok.get(rm + j).setSzomszed(Irany.LE, mezok.get(r + j));
-						mezok.get(r + j).setSzomszed(Irany.FEL, mezok.get(rm + j));
-						if (betuk[j] == 'L') {
-							mezok.get(r + j).getLada().setIndulo(mezok.get(r + j));
+				if(i > 0) { //Nem elsÔøΩ sor
+					int tmp = betuk.length;
+					int r = i*tmp;
+					int rm = (i-1)*tmp;
+					//System.out.println(r+" "+i+" "+ rm + " " + j + " "+mezok.size());
+					if(j == 0) { // ElsÔøΩ eleme
+						//System.out.print("Set Le + Fel");
+						mezok.get(rm+j).setSzomszed(Irany.LE, mezok.get(r+j));
+						mezok.get(r+j).setSzomszed(Irany.FEL, mezok.get(rm+j));
+						if(betuk[j] == 'L') {
+							mezok.get(r+j).getLada().setIndulo(mezok.get(r+j));
 						}
->>>>>>> 61319b3495590571225dbe3e131e2446e507b2df
-					}
-					if (j != 0) { // NEM els≈ë elem
-						// System.out.print("Set Balra + Jobbra + le + fel");
-						mezok.get(rm + j).setSzomszed(Irany.LE, mezok.get(r + j));
-						mezok.get(r + j).setSzomszed(Irany.FEL, mezok.get(rm + j));
-						mezok.get(r + j).setSzomszed(Irany.BALRA, mezok.get(r + j - 1));
-						mezok.get(r + j - 1).setSzomszed(Irany.JOBBRA, mezok.get(r + j));
-						if (betuk[j] == 'L') {
-							mezok.get(r + j).getLada().setIndulo(mezok.get(r + j));
+						if (j != 0) { // NEM els≈ë elem
+							// System.out.print("Set Balra + Jobbra + le + fel");
+							mezok.get(rm + j).setSzomszed(Irany.LE, mezok.get(r + j));
+							mezok.get(r + j).setSzomszed(Irany.FEL, mezok.get(rm + j));
+							mezok.get(r + j).setSzomszed(Irany.BALRA, mezok.get(r + j - 1));
+							mezok.get(r + j - 1).setSzomszed(Irany.JOBBRA, mezok.get(r + j));
+							if (betuk[j] == 'L') {
+								mezok.get(r + j).getLada().setIndulo(mezok.get(r + j));
+							}
+	
 						}
-
 					}
 				}
 			}
-
 		}
-
 		Connect(kapcsolok, lyukak);
 		return mezok;
+		
 	}
 
 	private void Connect(ArrayList<Kapcsolo> k, ArrayList<Lyuk> l) {

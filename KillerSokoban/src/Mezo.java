@@ -33,7 +33,6 @@ public class Mezo {
 			return true;
 		return false;
 	}
-<<<<<<< HEAD
 	public Kimenetel Mozog ( Irany i ,int tomeg) {
 		if( i == null) System.out.println("Mezo MOZOG "+ i);
 		//csak a kiiras miatt kell felvenni
@@ -47,25 +46,6 @@ public class Mezo {
 		}else if (munkas != null) {
 			k = munkas.Mozog(i,tomeg);
 			if( teszt) System.out.println("Mezo Mozog RETURN "+k);
-=======
-
-	public Kimenetel Mozog(Irany i) {
-		if (i == null)
-			System.out.println("Mezo MOZOG " + i);
-		// csak a kiiras miatt kell felvenni
-		Kimenetel k = null;
-
-		if (lada != null) {
-			k = lada.Mozog(i);
-
-			if (teszt)
-				System.out.println("Mezo mozog RETURN" + k);
-			return k;
-		} else if (munkas != null) {
-			k = munkas.Mozog(i);
-			if (teszt)
-				System.out.println("Mezo Mozog RETURN " + k);
->>>>>>> 61319b3495590571225dbe3e131e2446e507b2df
 			return k;
 		} else {
 			if (teszt)

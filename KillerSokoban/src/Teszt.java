@@ -99,13 +99,7 @@ public class Teszt {
 		m0.Add(m);
 
 		Irany i = Irany.JOBBRA;
-<<<<<<< HEAD
-		
 		m.Mozog(i, 60);
-=======
-
-		m.Mozog(i);
->>>>>>> 61319b3495590571225dbe3e131e2446e507b2df
 		DrawToFile(m0, "teszt1.xml");
 		Compare(System.getProperty("user.dir") + "\\Maps\\Test\\Outputs\\teszt1.xml",
 				System.getProperty("user.dir") + "\\Maps\\Test\\Samples\\sample1.xml");
@@ -129,13 +123,7 @@ public class Teszt {
 		System.out.println("Most jonnek a futas soran meghivott fuggvenyek");
 		System.out.println();
 		Irany i = Irany.JOBBRA;
-<<<<<<< HEAD
-		
 		m.Mozog(i, 100);
-=======
-
-		m.Mozog(i);
->>>>>>> 61319b3495590571225dbe3e131e2446e507b2df
 		DrawToFile(m0, "teszt2.xml");
 		Compare(System.getProperty("user.dir") + "\\Maps\\Test\\Outputs\\teszt2.xml",
 				System.getProperty("user.dir") + "\\Maps\\Test\\Samples\\sample2.xml");
@@ -785,29 +773,10 @@ public class Teszt {
 
 		Path sample = Paths.get(sampletest);
 		Path output = Paths.get(outputtest);
-<<<<<<< HEAD
 		byte[] sample_array = Files.readAllBytes(sample);	//A tesztesethez tartoz� mintakimenet bin�ris�t bet�ltj�k
 		byte[] output_array = Files.readAllBytes(output);	//A teszteset kimenet�nek bin�ris�t bet�ltj�k
 		
 		if(Arrays.equals(sample_array,output_array)) {   //A k�t f�jl bin�ris tartalm�t ellen�rizz�k, ha ezek egyeznek, akkor a k�t f�jl tartalma is.
-=======
-		byte[] sample_array = Files.readAllBytes(sample); // A tesztesethez
-															// tartoz�
-															// mintakimenet
-															// bin�ris�t
-															// bet�ltj�k
-		byte[] output_array = Files.readAllBytes(output); // A teszteset
-															// kimenet�nek
-															// bin�ris�t
-															// bet�ltj�k
-
-		if (Arrays.equals(sample_array, output_array)) { // A k�t f�jl bin�ris
-															// tartalm�t
-															// ellen�rizz�k, ha
-															// ezek egyeznek,
-															// akkor a k�t f�jl
-															// tartalma is.
->>>>>>> 61319b3495590571225dbe3e131e2446e507b2df
 			System.out.println("A kiement megegyezik az elvartakkal!");
 		} else {
 			System.out.println("A kimenet elter az elvartaktol");

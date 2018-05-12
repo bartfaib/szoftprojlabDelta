@@ -7,17 +7,9 @@ import java.util.Random;
 
 public class Jatek {
 	private List<Munkas> munkasok;
-<<<<<<< HEAD
-	private static List<Mezo>   mezok;
-	int MaxLepes = 5;
-	boolean vege = false;
-	
-	public Jatek(List<Mezo> palya, List<String> jatekosok){
-=======
 	private static List<Mezo> mezok;
 
 	public Jatek(List<Mezo> palya, List<String> jatekosok) {
->>>>>>> 61319b3495590571225dbe3e131e2446e507b2df
 		mezok = new ArrayList<Mezo>();
 		mezok = palya;
 		munkasok = new ArrayList<>();
@@ -41,18 +33,10 @@ public class Jatek {
 					 * megnezi hogy va e rajta valami ha nincs akkor arra a
 					 * mezőe rakja a munkast
 					 */
-<<<<<<< HEAD
-					if(mezok.get(i) instanceof Fal || mezok.get(i) instanceof Lyuk || 
-							mezok.get(i) instanceof Cel || mezok.get(i).getOlaj() || mezok.get(i).getMez()){
-						
-					}else if(mezok.get(i) instanceof Mezo){
-						if(mezok.get(i).getLada() == null && mezok.get(i).getMunkas() == null){
-=======
 					if (mezok.get(i) instanceof Fal || mezok.get(i) instanceof Lyuk || mezok.get(i) instanceof Cel) {
 
 					} else if (mezok.get(i) instanceof Mezo) {
 						if (mezok.get(i).getLada() == null && mezok.get(i).getMunkas() == null) {
->>>>>>> 61319b3495590571225dbe3e131e2446e507b2df
 							talalt = true;
 							Munkas m = new Munkas(jatekosok.get(0), mezok.get(i));
 							munkasok.add(m);
@@ -117,27 +101,6 @@ public class Jatek {
 					} else {
 						System.out.print("K");
 					}
-<<<<<<< HEAD
-				}else if(palya[x][y] instanceof Lyuk){
-					if(palya[x][y].getState()) {
-					System.out.print("Y");}
-					else {System.out.print("M");}
-				
-				}else if(palya[x][y] instanceof Cel){
-					if(palya[x][y].getLada() != null){
-						System.out.print("L");
-					}else{
-						System.out.print("C");
-					}
-				}else if(palya[x][y].getMunkas()!= null){
-					Munkas mu = palya[x][y].getMunkas();
-					for(int in = 0;in <munkasok.size();in++){
-						if(munkasok.get(in) == mu)
-							System.out.print(in);
-					}
-				}else if(palya[x][y] instanceof Mezo){
-					if(palya[x][y].getLada() != null){
-=======
 				} else if (palya[x][y] instanceof Lyuk) {
 					if (palya[x][y].getNyitva() == true) {
 						System.out.print("Y");
@@ -159,7 +122,6 @@ public class Jatek {
 					}
 				} else if (palya[x][y] instanceof Mezo) {
 					if (palya[x][y].getLada() != null) {
->>>>>>> 61319b3495590571225dbe3e131e2446e507b2df
 						System.out.print("L");
 					} else if (palya[x][y].getMunkas() != null) {
 						Munkas mu = palya[x][y].getMunkas();
@@ -167,22 +129,12 @@ public class Jatek {
 							if (munkasok.get(in) == mu)
 								System.out.print(in);
 						}
-<<<<<<< HEAD
-					}else if(palya[x][y].getOlaj()){
-						System.out.print("O");
-					}else if(palya[x][y].getMez()){
-						System.out.print("E");
-					}
-					else{
-						System.out.print("M");
-=======
 					} else if (palya[x][y].getOlaj()) {
 						System.out.print("O");
 					} else if (palya[x][y].getMez()) {
 						System.out.print("E");
 					} else {
 						System.out.print("-");
->>>>>>> 61319b3495590571225dbe3e131e2446e507b2df
 					}
 				}
 			}
@@ -197,12 +149,6 @@ public class Jatek {
 						munkasok.get(index).getNev() + " (" + index + ") elo, pont: " + munkasok.get(index).getPont());
 			}
 		}
-<<<<<<< HEAD
-		
-		for(int index = 0 ;index < mezok.size();index++){
-			if(mezok.get(index).getMunkas()!= null){
-				//System.out.println("talalt");
-=======
 	}
 
 	int aktivMunkas = 0;
@@ -257,7 +203,6 @@ public class Jatek {
 		for (int index = 0; index < mezok.size(); index++) {
 			if (mezok.get(index).getMunkas() != null) {
 				System.out.println("Munkas megtalalva.");
->>>>>>> 61319b3495590571225dbe3e131e2446e507b2df
 			}
 		}
 
@@ -288,21 +233,12 @@ public class Jatek {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-<<<<<<< HEAD
-				//System.out.println(komm);
-					switch(komm) {
-					case("tol w"):{
-						irany = Irany.FEL;
-						volt = true;
-					}
-=======
 
 				switch (felhasznaloiParancs) {
 				case ("w"): {
 					mozgasiIrany = Irany.FEL;
 					vanErvenyesParancs = true;
 				}
->>>>>>> 61319b3495590571225dbe3e131e2446e507b2df
 					break;
 
 				case ("s"): {
@@ -334,57 +270,24 @@ public class Jatek {
 					vanErvenyesParancs = true;
 				}
 					break;
-<<<<<<< HEAD
-					
-					case("addMez"):{
-						irany = null;
-						munkasok.get(aktivMunkas).addMez();
-						volt = true;
-					}
-					break;
-					case("Exit"):{
-						irany = null;
-						volt = true;
-						tart = false;
-						
-					}
-					break;
-					}
-=======
->>>>>>> 61319b3495590571225dbe3e131e2446e507b2df
 
 				case ("m"): {
 					mozgasiIrany = null;
 					munkasok.get(aktivMunkas).addMez();
 					vanErvenyesParancs = true;
 				}
-<<<<<<< HEAD
-			//Ha valamelyik iranyba mozgas utasitast kapott a jatek
-			}else if(irany != null){
-				
-				//Megfelelo iranyba tolasa a munkasnak
-				k = munkasok.get(aktivMunkas).Mozog(irany, 0);
-				
-				//Ha tudtunk l駱ni a munk疽sal akkor a l駱駸 sz疥ot cskentj�k 1 el ha pontot 駻t�nk 
-				//Null痙zuk a h疸ral騅� l駱駸 sz疥ot.
-				if(k == Kimenetel.Mozoghat){
-					megLephet -= megLephet;
-				}else if(k == Kimenetel.PontotErt){
-					megLephet = 0;
-=======
 					break;
 				}
 
 			}
 
 			if (mozgasiIrany != null) {
-				if (munkasok.get(aktivMunkas).Mozog(mozgasiIrany) == Kimenetel.PontotErt) {
+				if (munkasok.get(aktivMunkas).Mozog(mozgasiIrany, 0) == Kimenetel.PontotErt) {
 					lepesSzam = 0;
 					// Ha pontot értünk Nullázuk a hátralévő lépés számot.
 				} else {
 					lepesSzam -= 1;
 					// Egyébként 1 el csökentjük a lépés számot.
->>>>>>> 61319b3495590571225dbe3e131e2446e507b2df
 				}
 
 				// Ellenorzi hogy vege van e a jateknak a lepes utç–Ł ha nm é§¸
@@ -427,64 +330,6 @@ public class Jatek {
 					if (munkasok.get(i).Elet() == true)
 						vanEloMunkas = true;
 				}
-<<<<<<< HEAD
-				x=0;
-				y += 1;
-				if(m.SzomszedokLekerdez(Irany.JOBBRA) == null)
-					kessz = true;
-				m = m.SzomszedokLekerdez(Irany.JOBBRA);
-			}
-			
-			//Palya kirajzolasa
-			for(x = 0; x <magassag;x++){
-				for(y = 0; y <szelesseg;y++){
-					if(palya[x][y] instanceof Fal){
-						System.out.print("F");
-					}else if(palya[x][y] instanceof Kapcsolo){
-						if(palya[x][y].getLada() != null){
-							System.out.print("L");
-						}else{
-							System.out.print("K");
-						}
-					}else if(palya[x][y] instanceof Lyuk){
-						if(palya[x][y].getState()) {
-						System.out.print("Y");}
-						else {System.out.print("M");}
-
-					}else if(palya[x][y].getMunkas()!= null){
-						Munkas mu = palya[x][y].getMunkas();
-						for(int in = 0;in <munkasok.size();in++){
-							if(munkasok.get(in) == mu)
-								System.out.print(in);
-						}}else if(palya[x][y] instanceof Cel){
-						if(palya[x][y].getLada() != null){
-							System.out.print("L");
-						}else{
-							System.out.print("C");
-						}
-					}else if(palya[x][y].getMunkas()!= null){
-						Munkas mu = palya[x][y].getMunkas();
-						for(int in = 0;in <munkasok.size();in++){
-							if(munkasok.get(in) == mu)
-								System.out.print(in);
-						}
-					}else if(palya[x][y] instanceof Mezo){
-						if(palya[x][y].getLada() != null){
-							System.out.print("L");
-						}else if(palya[x][y].getMunkas() != null){
-							Munkas mu = palya[x][y].getMunkas();
-							for(int in = 0;in <munkasok.size();in++){
-								if(munkasok.get(in) == mu)
-									System.out.print(in);
-							}
-						}else if(palya[x][y].getOlaj()){
-							System.out.print("O");
-						}else if(palya[x][y].getMez()){
-							System.out.print("E");
-						}
-						else{
-							System.out.print("M");
-=======
 
 				// Ha nincs elo munkas falsal ter vissza ami a jatek
 				// vegétjelenti
@@ -505,35 +350,11 @@ public class Jatek {
 						if (munkasok.get(aktivMunkas).Elet() == true) {
 							munkasok.get(aktivMunkas).setKezdo(true);
 							break;
->>>>>>> 61319b3495590571225dbe3e131e2446e507b2df
 						}
 					}
 				}
 			}
 		}
-<<<<<<< HEAD
-		//J疸駝 v馮e kiirat疽ok
-		//JAtek vegen a gyoztes meghatarozasa
-
-		Munkas winner = munkasok.get(0);
-		
-			for(int ii = 0; ii< munkasok.size(); ii++) {
-					if (munkasok.get(ii).getPont() > winner.getPont()) {
-						winner=munkasok.get(ii);
-				}
-			}
-			System.out.println("A győztes: " + winner.getNev() + " Pontja: " + winner.getPont()+ "!!!");
-			}
-		
-
-	
-	boolean JatekVege(){
-		//Elosszor megvizsgalja hogy van-e meg elo munkas
-		boolean elo = false;
-		for(int i = 0; i < munkasok.size();i++){
-			if(munkasok.get(i).Elet() == true)
-				elo = true;
-=======
 
 		System.out.println("Game Over");
 
@@ -565,7 +386,6 @@ public class Jatek {
 				// szamanka novelese
 				helyezett += 1;
 			}
->>>>>>> 61319b3495590571225dbe3e131e2446e507b2df
 		}
 	}
 
@@ -575,20 +395,13 @@ public class Jatek {
 		Mezo m = null;
 		List<Mezo> jatekvm = new ArrayList<Mezo>();
 		jatekvm = mezok;
-<<<<<<< HEAD
-		boolean Vanelada = false;
-
-		
-		while(tolhato == false && i < mezok.size()){
-=======
 
 		while (vanTolhatoLada == false && i < mezok.size()) {
->>>>>>> 61319b3495590571225dbe3e131e2446e507b2df
 			m = jatekvm.get(i);
 
 			/*
 			 * Megnezi hogy a lada eltolhato e valamelyik iranyba ha igen akkor
-			 * megnezi hogy van emelette üres mezo ha igen akkor abbî‰  a
+			 * megnezi hogy van emelette üres mezo ha igen akkor abbî‰  a
 			 * mezőîŹ� kiindulva megné¨·i az î’›szes lehetseges utat amĺ�• nem
 			 * talá egy mezé munkát vagy minden lehetsé¦®es ĺ�€ el nem fogyott.
 			 */
@@ -621,32 +434,17 @@ public class Jatek {
 				default:
 					break;
 				}
-<<<<<<< HEAD
-				
-				//megnezi hogy mozoghat e a lada es ha igen az ellentetes oldalon milyen mezo van
-				
-				//System.out.println(m.SzomszedokLekerdez(elso));
-				Kimenetel k = m.Mozog(elso, 0);
-				//System.out.println("lefutott");
-				if(k == Kimenetel.Mozoghat || k == Kimenetel.PontotErt ){
-					if(m.SzomszedokLekerdez(ellentetes) instanceof Mezo || 
-							m.SzomszedokLekerdez(ellentetes) instanceof Kapcsolo ||
-							m.SzomszedokLekerdez(ellentetes) instanceof Cel ||
-							m.SzomszedokLekerdez(ellentetes) instanceof Lyuk){
-						//MEzo a kezdo vizsgalt mezore allitasa
-=======
 
 				// megnezi hogy mozoghat e a lada es ha igen az ellentetes
 				// oldalon milyen mezo van
 
-				Kimenetel k = m.Mozog(elso);
+				Kimenetel k = m.Mozog(elso, 0);
 				if (k == Kimenetel.Mozoghat || k == Kimenetel.PontotErt) {
 					if (m.SzomszedokLekerdez(ellentetes) instanceof Mezo
 							|| m.SzomszedokLekerdez(ellentetes) instanceof Kapcsolo
 							|| m.SzomszedokLekerdez(ellentetes) instanceof Cel
 							|| m.SzomszedokLekerdez(ellentetes) instanceof Lyuk) {
 						// MEzo a kezdo vizsgalt mezore allitasa
->>>>>>> 61319b3495590571225dbe3e131e2446e507b2df
 						m = m.SzomszedokLekerdez(ellentetes);
 						vanTolhatoLada = true;
 						// HA munkas all rajta es mozoghat akkor igaz
@@ -658,14 +456,8 @@ public class Jatek {
 							List<Mezo> latogatott = new ArrayList<Mezo>();
 							List<Mezo> latogatando = new ArrayList<Mezo>();
 							latogatott.add(m);
-<<<<<<< HEAD
-							//System.out.println(elso+ "elso");
-							//Kezdo meglatogatandokkal valo feltoltes
-							if(m.SzomszedokLekerdez(Irany.JOBBRA) != null)
-=======
 							// Kezdo meglatogatandokkal valo feltoltes
 							if (m.SzomszedokLekerdez(Irany.JOBBRA) != null)
->>>>>>> 61319b3495590571225dbe3e131e2446e507b2df
 								latogatando.add(m.SzomszedokLekerdez(Irany.JOBBRA));
 							// Kezdo meglatogatandokkal valo feltoltes
 							if (m.SzomszedokLekerdez(Irany.BALRA) != null)
@@ -725,11 +517,7 @@ public class Jatek {
 											latogatando.add(m.SzomszedokLekerdez(Irany.LE));
 									}
 									latogatando.remove(0);
-<<<<<<< HEAD
-									//System.out.println("Latogatando:"+latogatando.size());
-=======
 									System.out.println("Latogatando:" + latogatando.size());
->>>>>>> 61319b3495590571225dbe3e131e2446e507b2df
 								}
 							}
 
@@ -744,27 +532,7 @@ public class Jatek {
 			}
 			i += 1;
 		}
-<<<<<<< HEAD
-		i = 0;
-		tolhato = false;
-		while(!Vanelada && i < jatekvm.size()){
-			Mezo me = jatekvm.get(i);
-			if (me.getLada() != null) {
-				Vanelada= true;
-				tolhato = true;
-			}
-			i++;
-		}
-		if(this.vege==true) {
-			tolhato = false;
-			System.out.println("VÉGE");
-		}
-		return !tolhato;
-=======
 
 		return !vanTolhatoLada;
->>>>>>> 61319b3495590571225dbe3e131e2446e507b2df
 	}
-	
-	
 }
