@@ -56,6 +56,7 @@ public class Jatek {
 	boolean kessz;
 
 	public void PalyaKirajzolas(Mezo m, Mezo[][] palya) {
+		
 		// Palya 2-d kepenek a frissitese kirajzolas elott
 		m = mezok.get(0);
 		// Megkeresi a balfelso sarkot
@@ -165,7 +166,7 @@ public class Jatek {
 		lepesSzam = maxLepesSzam;
 		mozgasiIrany = null;
 		jatekFolyik = true;
-
+		Nezet nezet = new Nezet(munkasok,mezok);
 		magassag = 1;
 		szelesseg = 1;
 
@@ -208,6 +209,7 @@ public class Jatek {
 
 		while (jatekFolyik) {
 			PalyaKirajzolas(m, palya);
+			nezet.Kirajzol(munkasok, mezok);
 
 			System.out.println("Az iranyitas a 'wasd om' gombok utan ENTER-rel tortenik.");
 			if (munkasok.get(aktivMunkas).Elet() == true) {

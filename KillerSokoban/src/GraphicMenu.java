@@ -16,10 +16,8 @@ public class GraphicMenu extends JPanel implements ActionListener{
 	JTextField t_player3;
 	JTextField t_player4;
 	
-	public GraphicMenu(Menu frame) {
+	public GraphicMenu() {
 		//System.out.println("GraphicMenü ctor");
-		this.mframe = frame;
-		frame.removeAll();
 		JButton start;
 		JButton map;
 		JButton exit_app;
@@ -175,7 +173,7 @@ public class GraphicMenu extends JPanel implements ActionListener{
 			break;
 			
 		case "OK":
-///start game function: mainbõl kell átemelni ide
+///start game function:
 			String splayer1 = t_player1.getText();
 			String splayer2 = t_player2.getText();
 			String splayer3 = t_player3.getText();
@@ -188,11 +186,11 @@ public class GraphicMenu extends JPanel implements ActionListener{
 			
 			jatekos.add(splayer1);
 			if (splayer2 != "")
-			jatekos.add(splayer2);
+				jatekos.add(splayer2);
 			if (splayer3 != "")
-			jatekos.add(splayer3);
+				jatekos.add(splayer3);
 			if (splayer4 != "")
-			jatekos.add(splayer4);
+				jatekos.add(splayer4);
 			
 			Jatek j = new Jatek(b.Beolvasas(), jatekos);
 			j.Kor();

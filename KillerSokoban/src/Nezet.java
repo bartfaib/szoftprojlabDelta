@@ -87,7 +87,11 @@ public class Nezet extends JPanel{
 	public Nezet(List<Munkas> m,List<Mezo> p){
 		munkasok = m;
 		mezok = p;
+	}
+	public void Kirajzol(List<Munkas> m, List<Mezo> p) {
 		
+		munkasok = m;
+		mezok = p;		
 		JPanel pfelso = new JPanel();
 		pfelso.setLayout(new FlowLayout());
 		
