@@ -198,8 +198,7 @@ public class GraphicMenu extends JPanel implements ActionListener{
 			Jatek j = new Jatek(b.Beolvasas(), jatekos);
 			Nezet nezet = new Nezet(j.getMunkasok(),b.Beolvasas());
 			this.add(nezet);
-			this.validate();
-			this.repaint();
+
 			//j.Kor();
 			
 			break;
