@@ -48,6 +48,10 @@ public class Jatek {
 			}
 		}
 	}
+	
+	public List<Munkas> getMunkasok(){
+		return this.munkasok;
+	}
 
 	int magassag = 1;
 	int szelesseg = 1;
@@ -166,7 +170,7 @@ public class Jatek {
 		lepesSzam = maxLepesSzam;
 		mozgasiIrany = null;
 		jatekFolyik = true;
-		Nezet nezet = new Nezet(munkasok,mezok);
+		//Nezet nezet = new Nezet(munkasok,mezok);
 		magassag = 1;
 		szelesseg = 1;
 
@@ -209,7 +213,7 @@ public class Jatek {
 
 		while (jatekFolyik) {
 			PalyaKirajzolas(m, palya);
-			nezet.Kirajzol(munkasok, mezok);
+			//nezet.Kirajzol(munkasok, mezok);
 
 			System.out.println("Az iranyitas a 'wasd om' gombok utan ENTER-rel tortenik.");
 			if (munkasok.get(aktivMunkas).Elet() == true) {

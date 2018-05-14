@@ -174,6 +174,9 @@ public class GraphicMenu extends JPanel implements ActionListener{
 			
 		case "OK":
 ///start game function:
+			this.removeAll();
+			this.invalidate();
+
 			String splayer1 = t_player1.getText();
 			String splayer2 = t_player2.getText();
 			String splayer3 = t_player3.getText();
@@ -187,13 +190,17 @@ public class GraphicMenu extends JPanel implements ActionListener{
 			jatekos.add(splayer1);
 			if (splayer2 != "")
 				jatekos.add(splayer2);
-			if (splayer3 != "")
-				jatekos.add(splayer3);
-			if (splayer4 != "")
-				jatekos.add(splayer4);
-			
+			//if (splayer3 != "")
+				//jatekos.add(splayer3);
+			//if (splayer4 != "")
+				//jatekos.add(splayer4);
+
 			Jatek j = new Jatek(b.Beolvasas(), jatekos);
-			j.Kor();
+			Nezet nezet = new Nezet(j.getMunkasok(),b.Beolvasas());
+			this.add(nezet);
+			this.validate();
+			this.repaint();
+			//j.Kor();
 			
 			break;
 			

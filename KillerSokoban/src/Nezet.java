@@ -2,6 +2,8 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.ComponentOrientation;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.util.*;
@@ -86,12 +88,11 @@ public class Nezet extends JPanel{
 	//konstruktor
 	public Nezet(List<Munkas> m,List<Mezo> p){
 		munkasok = m;
-		mezok = p;
-	}
-	public void Kirajzol(List<Munkas> m, List<Mezo> p) {
-		
-		munkasok = m;
 		mezok = p;		
+		Dimension minSize = new Dimension(175, 600);
+		Dimension prefSize = new Dimension(500, 600);
+		Dimension maxSize = new Dimension(600, 600);
+	
 		JPanel pfelso = new JPanel();
 		pfelso.setLayout(new FlowLayout());
 		
@@ -216,7 +217,8 @@ public class Nezet extends JPanel{
 		 		}
 		     }
 		};
-		
+		//this.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+		palso.add(new Box.Filler(minSize, prefSize, maxSize));	
 		for(int i = 0; i < m.size();i++){
 			
 			JLabel lab1 = new JLabel(m.get(i).getNev()+ "   Pont: " + m.get(i).getPont());
@@ -229,6 +231,8 @@ public class Nezet extends JPanel{
 		this.add(palso,BorderLayout.CENTER);
 		
 		palya = palyaTo2D();
+		this.validate();
+		this.repaint();
 	}
 	
 	//kivalasztja a megfelelo szint a megfelelo munkashoz
