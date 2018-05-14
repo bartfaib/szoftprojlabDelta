@@ -1,3 +1,4 @@
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -196,11 +197,12 @@ public class GraphicMenu extends JPanel implements ActionListener{
 				//jatekos.add(splayer4);
 
 			Jatek j = new Jatek(b.Beolvasas(), jatekos);
-			Nezet nezet = new Nezet(j.getMunkasok(),b.Beolvasas());
-			this.add(nezet);
-
-			//j.Kor();
-			
+			Nezet nezet = new Nezet();
+			this.setLayout(new BorderLayout());
+			this.add(nezet,BorderLayout.CENTER);
+			this.validate();
+			this.repaint();
+			j.Kor(nezet);
 			break;
 			
 		case "Kilépés": 

@@ -1,11 +1,13 @@
-﻿import java.io.BufferedReader;
+﻿import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Jatek {
+public class Jatek implements KeyListener{
 	private List<Munkas> munkasok;
 	private static List<Mezo> mezok;
 
@@ -58,6 +60,8 @@ public class Jatek {
 	int x = 0;
 	int y = 0;
 	boolean kessz;
+	boolean lenyomva = false;
+	String Input;
 
 	public void PalyaKirajzolas(Mezo m, Mezo[][] palya) {
 		
@@ -164,12 +168,13 @@ public class Jatek {
 	boolean vanErvenyesParancs = false;
 	String felhasznaloiParancs = null;
 
-	public void Kor() {
+	public void theread(Nezet n){
 		aktivMunkas = 0;
 		munkasok.get(aktivMunkas).setKezdo(true);
 		lepesSzam = maxLepesSzam;
 		mozgasiIrany = null;
 		jatekFolyik = true;
+		n.Kirajzol(munkasok, mezok);
 		//Nezet nezet = new Nezet(munkasok,mezok);
 		magassag = 1;
 		szelesseg = 1;
@@ -213,7 +218,7 @@ public class Jatek {
 
 		while (jatekFolyik) {
 			PalyaKirajzolas(m, palya);
-			//nezet.Kirajzol(munkasok, mezok);
+			n.Kirajzol(munkasok, mezok);
 
 			System.out.println("Az iranyitas a 'wasd om' gombok utan ENTER-rel tortenik.");
 			if (munkasok.get(aktivMunkas).Elet() == true) {
@@ -224,49 +229,55 @@ public class Jatek {
 						+ " lepes van hatra.");
 			}
 
-			felhasznaloiParancs = null;
+			felhasznaloiParancs = "start";
 			vanErvenyesParancs = false;
 
 			// Parancs beolvasasa
-			while (vanErvenyesParancs == false) {
-				BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+			//while (vanErvenyesParancs == false) {
+			while (lenyomva == true) {
+				/*BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 				try {
-					String s = br.readLine();
+					String input = br.readLine();
 
-					felhasznaloiParancs = s;
-					s = null;
+					felhasznaloiParancs = input;
+					input = null;
 					br = null;
 				} catch (IOException e) {
 					e.printStackTrace();
-				}
-
+				}*/
+				felhasznaloiParancs = Input;
 				switch (felhasznaloiParancs) {
 				case ("w"): {
 					mozgasiIrany = Irany.FEL;
 					vanErvenyesParancs = true;
+					lenyomva = false;
 				}
 					break;
 
 				case ("s"): {
 					mozgasiIrany = Irany.LE;
 					vanErvenyesParancs = true;
+					lenyomva = false;
 				}
 					break;
 
 				case ("a"): {
 					mozgasiIrany = Irany.BALRA;
 					vanErvenyesParancs = true;
+					lenyomva = false;
 				}
 					break;
 
 				case ("d"): {
 					mozgasiIrany = Irany.JOBBRA;
 					vanErvenyesParancs = true;
+					lenyomva = false;
 				}
 					break;
 
 				case (""): {
 					vanErvenyesParancs = true;
+					lenyomva = false;
 				}
 					break;
 
@@ -274,6 +285,7 @@ public class Jatek {
 					mozgasiIrany = null;
 					munkasok.get(aktivMunkas).addOlaj();
 					vanErvenyesParancs = true;
+					lenyomva = false;
 				}
 					break;
 
@@ -281,6 +293,7 @@ public class Jatek {
 					mozgasiIrany = null;
 					munkasok.get(aktivMunkas).addMez();
 					vanErvenyesParancs = true;
+					lenyomva = false;
 				}
 					break;
 				}
@@ -393,6 +406,17 @@ public class Jatek {
 				helyezett += 1;
 			}
 		}
+	}
+	
+	public void Kor(Nezet n) {
+		Thread t = new Thread(new Runnable() {
+	         @Override
+	         public void run() {
+	        	 theread(n);
+	         }
+	});
+		t.start();
+		
 	}
 
 	boolean JatekVege() {
@@ -540,5 +564,39 @@ public class Jatek {
 		}
 
 		return !vanTolhatoLada;
+	}
+
+	@Override
+	public void keyPressed(KeyEvent pKeyEvent) {
+
+		int key = pKeyEvent.getKeyCode();
+        if (key == KeyEvent.VK_LEFT ||key == KeyEvent.VK_A) {
+            this.Input = "a";
+    		lenyomva = true;
+        } else if (key == KeyEvent.VK_RIGHT ||key == KeyEvent.VK_D) {
+        	this.Input = "d";
+    		lenyomva = true;
+        } else if (key == KeyEvent.VK_UP ||key == KeyEvent.VK_W) {
+        	this.Input = "w";
+    		lenyomva = true;
+        } else if (key == KeyEvent.VK_DOWN ||key == KeyEvent.VK_S) {
+        	this.Input = "s";
+    		lenyomva = true;
+
+        }
+		
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -66,11 +66,11 @@ public class Nezet extends JPanel{
 		
 		//balfelso sarokbol kiindulva feltolti a 2d-s tombe a palya elemeit
 		while (kessz != true) {
-			palya[x][y] = m;
+			palya[y][x] = m;
 			Mezo koztes = m.SzomszedokLekerdez(Irany.LE);
 			while (koztes != null) {
 				x = x + 1;
-				palya[x][y] = koztes;
+				palya[y][x] = koztes;
 				koztes = koztes.SzomszedokLekerdez(Irany.LE);
 			}
 			x = 0; // RESETELNI X-t
@@ -84,9 +84,9 @@ public class Nezet extends JPanel{
 		return palya;
 		
 	}
-	
-	//konstruktor
-	public Nezet(List<Munkas> m,List<Mezo> p){
+	public Nezet() {}
+	//Kirajzol
+	public void Kirajzol(List<Munkas> m,List<Mezo> p){
 		munkasok = m;
 		mezok = p;		
 
@@ -226,6 +226,7 @@ public class Nezet extends JPanel{
 		
 		this.setLayout(new BorderLayout());
 		pfelso.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+		palso.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		this.add(pfelso,BorderLayout.NORTH);
 		this.add(palso,BorderLayout.CENTER);
 		
